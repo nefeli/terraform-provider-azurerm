@@ -79,7 +79,7 @@ func (d DiskPoolManagedDiskAttachmentResource) Create() sdk.ResourceFunc {
 			if poolId.SubscriptionId != subscriptionId {
 				return fmt.Errorf("Disk Pool subscription id %q is different from provider's subscription", poolId.SubscriptionId)
 			}
-			diskId, err := disks.ParseDiskID(attachment.DiskId)
+			diskId, err := disks.ParseDiskIDInsensitively(attachment.DiskId)
 			if err != nil {
 				return err
 			}
@@ -98,7 +98,7 @@ func (d DiskPoolManagedDiskAttachmentResource) Create() sdk.ResourceFunc {
 				inputDisks = *poolResp.Model.Properties.Disks
 			}
 			for _, disk := range inputDisks {
-				existedDiskId, err := disks.ParseDiskID(disk.Id)
+				existedDiskId, err := disks.ParseDiskIDInsensitively(disk.Id)
 				if err != nil {
 					return fmt.Errorf("error on parsing existing attached disk id %q %+v", disk.Id, err)
 				}

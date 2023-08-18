@@ -99,7 +99,7 @@ func resourceDataProtectionBackupInstanceDiskCreateUpdate(d *schema.ResourceData
 		}
 	}
 
-	diskId, _ := disks.ParseDiskID(d.Get("disk_id").(string))
+	diskId, _ := disks.ParseDiskIDInsensitively(d.Get("disk_id").(string))
 	location := location.Normalize(d.Get("location").(string))
 	policyId, _ := backuppolicies.ParseBackupPolicyID(d.Get("backup_policy_id").(string))
 	snapshotResourceGroupId := resourceParse.NewResourceGroupID(subscriptionId, d.Get("snapshot_resource_group_name").(string))

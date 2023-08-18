@@ -56,7 +56,7 @@ func DiskPoolManagedDiskAttachmentID(input string) (*DiskPoolManagedDiskAttachme
 	if err != nil {
 		return nil, fmt.Errorf("malformed disks pool id: %q, %v", poolId.ID(), err)
 	}
-	diskId, err := disks.ParseDiskID(parts[1])
+	diskId, err := disks.ParseDiskIDInsensitively(parts[1])
 	if diskId == nil {
 		return nil, fmt.Errorf("malformed disks pool managed disk attachment id:%q", input)
 	}

@@ -33,7 +33,7 @@ func TestAccManagedDiskSASToken_basic(t *testing.T) {
 }
 
 func (t ManagedDiskSASTokenResource) Exists(ctx context.Context, clients *clients.Client, state *pluginsdk.InstanceState) (*bool, error) {
-	id, err := disks.ParseDiskID(state.ID)
+	id, err := disks.ParseDiskIDInsensitively(state.ID)
 	if err != nil {
 		return nil, err
 	}

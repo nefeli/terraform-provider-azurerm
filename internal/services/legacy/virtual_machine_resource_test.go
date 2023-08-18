@@ -116,7 +116,7 @@ func (VirtualMachineResource) Exists(ctx context.Context, clients *clients.Clien
 
 func (VirtualMachineResource) managedDiskDelete(diskId *string) acceptance.ClientCheckFunc {
 	return func(ctx context.Context, clients *clients.Client, state *pluginsdk.InstanceState) error {
-		id, err := disks.ParseDiskID(*diskId)
+		id, err := disks.ParseDiskIDInsensitively(*diskId)
 		if err != nil {
 			return err
 		}
@@ -144,7 +144,7 @@ func (VirtualMachineResource) managedDiskDelete(diskId *string) acceptance.Clien
 
 func (VirtualMachineResource) managedDiskExists(diskId *string, shouldExist bool) acceptance.ClientCheckFunc {
 	return func(ctx context.Context, clients *clients.Client, state *pluginsdk.InstanceState) error {
-		id, err := disks.ParseDiskID(*diskId)
+		id, err := disks.ParseDiskIDInsensitively(*diskId)
 		if err != nil {
 			return err
 		}
