@@ -41,7 +41,7 @@ func resourceManagedDisk() *pluginsdk.Resource {
 		}),
 
 		Importer: pluginsdk.ImporterValidatingResourceId(func(id string) error {
-			_, err := disks.ParseDiskID(id)
+			_, err := disks.ParseDiskIDInsensitively(id)
 			return err
 		}),
 
@@ -601,7 +601,7 @@ func resourceManagedDiskUpdate(d *pluginsdk.ResourceData, meta interface{}) erro
 	onDemandBurstingEnabled := d.Get("on_demand_bursting_enabled").(bool)
 	shouldShutDown := false
 
-	id, err := disks.ParseDiskID(d.Id())
+	id, err := disks.ParseDiskIDInsensitively(d.Id())
 	if err != nil {
 		return err
 	}
@@ -909,7 +909,7 @@ func resourceManagedDiskRead(d *pluginsdk.ResourceData, meta interface{}) error 
 	ctx, cancel := timeouts.ForRead(meta.(*clients.Client).StopContext, d)
 	defer cancel()
 
-	id, err := disks.ParseDiskID(d.Id())
+	id, err := disks.ParseDiskIDInsensitively(d.Id())
 	if err != nil {
 		return err
 	}
@@ -1030,7 +1030,7 @@ func resourceManagedDiskDelete(d *pluginsdk.ResourceData, meta interface{}) erro
 	ctx, cancel := timeouts.ForDelete(meta.(*clients.Client).StopContext, d)
 	defer cancel()
 
-	id, err := disks.ParseDiskID(d.Id())
+	id, err := disks.ParseDiskIDInsensitively(d.Id())
 	if err != nil {
 		return err
 	}

@@ -1534,7 +1534,7 @@ func resourceLinuxVirtualMachineDelete(d *pluginsdk.ResourceData, meta interface
 		}
 
 		if managedDiskId != "" {
-			diskId, err := disks.ParseDiskID(managedDiskId)
+			diskId, err := disks.ParseDiskIDInsensitively(managedDiskId)
 			if err != nil {
 				return err
 			}

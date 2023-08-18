@@ -1076,7 +1076,7 @@ func resourceVirtualMachineDeleteManagedDisk(d *pluginsdk.ResourceData, disk *co
 	ctx, cancel := timeouts.ForDelete(meta.(*clients.Client).StopContext, d)
 	defer cancel()
 
-	id, err := disks.ParseDiskID(managedDiskID)
+	id, err := disks.ParseDiskIDInsensitively(managedDiskID)
 	if err != nil {
 		return err
 	}
@@ -1964,7 +1964,7 @@ func resourceVirtualMachineGetManagedDiskInfo(d *pluginsdk.ResourceData, disk *c
 	}
 
 	diskId := *disk.ID
-	id, err := disks.ParseDiskID(diskId)
+	id, err := disks.ParseDiskIDInsensitively(diskId)
 	if err != nil {
 		return nil, fmt.Errorf("parsing Disk ID %q: %+v", diskId, err)
 	}

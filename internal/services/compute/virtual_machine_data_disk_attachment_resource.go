@@ -299,7 +299,7 @@ func retrieveDataDiskAttachmentManagedDisk(d *pluginsdk.ResourceData, meta inter
 	ctx, cancel := timeouts.ForRead(meta.(*clients.Client).StopContext, d)
 	defer cancel()
 
-	parsedId, err := disks.ParseDiskID(id)
+	parsedId, err := disks.ParseDiskIDInsensitively(id)
 	if err != nil {
 		return nil, fmt.Errorf("parsing Managed Disk ID %q: %+v", id, err)
 	}

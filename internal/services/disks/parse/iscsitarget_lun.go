@@ -53,7 +53,7 @@ func IscsiTargetLunID(input string) (*DiskPoolIscsiTargetLunId, error) {
 	if err != nil {
 		return nil, fmt.Errorf("malformed iscsi target id: %q, %v", input, err)
 	}
-	managedDiskId, err := disks.ParseDiskID(parts[1])
+	managedDiskId, err := disks.ParseDiskIDInsensitively(parts[1])
 	if managedDiskId == nil {
 		return nil, fmt.Errorf("malformed iscsi target id: %q", input)
 	}

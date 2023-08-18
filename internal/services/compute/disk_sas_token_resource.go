@@ -39,7 +39,7 @@ func resourceManagedDiskSasToken() *pluginsdk.Resource {
 		},
 
 		Importer: pluginsdk.ImporterValidatingResourceId(func(id string) error {
-			_, err := disks.ParseDiskID(id)
+			_, err := disks.ParseDiskIDInsensitively(id)
 			return err
 		}),
 
@@ -87,7 +87,7 @@ func resourceManagedDiskSasTokenCreate(d *pluginsdk.ResourceData, meta interface
 	durationInSeconds := int64(d.Get("duration_in_seconds").(int))
 	access := disks.AccessLevel(d.Get("access_level").(string))
 
-	diskId, err := disks.ParseDiskID(d.Get("managed_disk_id").(string))
+	diskId, err := disks.ParseDiskIDInsensitively(d.Get("managed_disk_id").(string))
 	if err != nil {
 		return err
 	}
@@ -147,7 +147,7 @@ func resourceManagedDiskSasTokenRead(d *pluginsdk.ResourceData, meta interface{}
 	ctx, cancel := timeouts.ForRead(meta.(*clients.Client).StopContext, d)
 	defer cancel()
 
-	diskId, err := disks.ParseDiskID(d.Id())
+	diskId, err := disks.ParseDiskIDInsensitively(d.Id())
 	if err != nil {
 		return err
 	}
@@ -173,7 +173,7 @@ func resourceManagedDiskSasTokenDelete(d *pluginsdk.ResourceData, meta interface
 	ctx, cancel := timeouts.ForDelete(meta.(*clients.Client).StopContext, d)
 	defer cancel()
 
-	id, err := disks.ParseDiskID(d.Id())
+	id, err := disks.ParseDiskIDInsensitively(d.Id())
 	if err != nil {
 		return err
 	}
