@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "client",
+    srcs = ["client.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/frontdoor/client",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/common",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/frontdoor/2020-04-01/webapplicationfirewallpolicies",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/frontdoor/2020-05-01/frontdoors",
+    ],
+)

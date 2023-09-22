@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "application_v0_to_v1.go",
+        "application_v1_to_v2.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/iotcentral/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/iotcentral/2021-11-01-preview/apps",
+    ],
+)

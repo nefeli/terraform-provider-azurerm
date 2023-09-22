@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "frontdoorsecurityparams",
+    srcs = ["cdn_frontdoor_security_params.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/cdn/frontdoorsecurityparams",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//utils",
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/cdn/mgmt/2021-06-01/cdn",
+    ],
+)

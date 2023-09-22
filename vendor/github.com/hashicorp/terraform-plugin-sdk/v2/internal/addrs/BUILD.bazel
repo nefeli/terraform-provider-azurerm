@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "addrs",
+    srcs = [
+        "doc.go",
+        "instance_key.go",
+        "module.go",
+        "module_instance.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-plugin-sdk/v2/internal/addrs",
+    importpath = "github.com/hashicorp/terraform-plugin-sdk/v2/internal/addrs",
+    visibility = ["//vendor/github.com/hashicorp/terraform-plugin-sdk/v2:__subpackages__"],
+    deps = [
+        "//vendor/github.com/hashicorp/hcl/v2:hcl",
+        "//vendor/github.com/hashicorp/hcl/v2/hclsyntax",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/internal/tfdiags",
+        "//vendor/github.com/zclconf/go-cty/cty",
+        "//vendor/github.com/zclconf/go-cty/cty/gocty",
+    ],
+)

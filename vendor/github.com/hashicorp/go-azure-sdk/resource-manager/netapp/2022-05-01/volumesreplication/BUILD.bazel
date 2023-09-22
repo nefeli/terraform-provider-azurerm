@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "volumesreplication",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_volume.go",
+        "method_volumesauthorizereplication.go",
+        "method_volumesbreakreplication.go",
+        "method_volumesdeletereplication.go",
+        "method_volumeslistreplications.go",
+        "method_volumesreestablishreplication.go",
+        "method_volumesreinitializereplication.go",
+        "method_volumesreplicationstatus.go",
+        "method_volumesresyncreplication.go",
+        "model_authorizerequest.go",
+        "model_breakreplicationrequest.go",
+        "model_listreplications.go",
+        "model_reestablishreplicationrequest.go",
+        "model_replication.go",
+        "model_replicationstatus.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/netapp/2022-05-01/volumesreplication",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/netapp/2022-05-01/volumesreplication",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/pollers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

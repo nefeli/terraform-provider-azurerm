@@ -1,0 +1,40 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "customproviders",
+    srcs = [
+        "custom_provider_resource.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/customproviders",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//helpers/tf",
+        "//internal/clients",
+        "//internal/sdk",
+        "//internal/services/customproviders/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/customproviders/2018-09-01-preview/customresourceprovider",
+    ],
+)
+
+go_test(
+    name = "customproviders_test",
+    srcs = ["custom_provider_resource_test.go"],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/customproviders/2018-09-01-preview/customresourceprovider",
+    ],
+)

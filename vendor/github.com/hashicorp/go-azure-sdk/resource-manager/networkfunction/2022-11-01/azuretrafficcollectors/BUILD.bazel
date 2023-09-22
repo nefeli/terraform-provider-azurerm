@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "azuretrafficcollectors",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_azuretrafficcollector.go",
+        "method_byresourcegrouplist.go",
+        "method_bysubscriptionlist.go",
+        "method_createorupdate.go",
+        "method_delete.go",
+        "method_get.go",
+        "method_updatetags.go",
+        "model_azuretrafficcollector.go",
+        "model_azuretrafficcollectorpropertiesformat.go",
+        "model_resourcereference.go",
+        "model_systemdata.go",
+        "model_tagsobject.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/networkfunction/2022-11-01/azuretrafficcollectors",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/networkfunction/2022-11-01/azuretrafficcollectors",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/pollers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

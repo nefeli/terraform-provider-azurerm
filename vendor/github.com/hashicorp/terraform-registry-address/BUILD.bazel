@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "terraform-registry-address",
+    srcs = [
+        "errors.go",
+        "module.go",
+        "module_package.go",
+        "provider.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-registry-address",
+    importpath = "github.com/hashicorp/terraform-registry-address",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/terraform-svchost",
+        "//vendor/golang.org/x/net/idna",
+    ],
+)

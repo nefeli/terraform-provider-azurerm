@@ -1,0 +1,24 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "2021-08-01-preview",
+    srcs = ["client.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerregistry/2021-08-01-preview",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/containerregistry/2021-08-01-preview",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerregistry/2021-08-01-preview/connectedregistries",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerregistry/2021-08-01-preview/exportpipelines",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerregistry/2021-08-01-preview/importpipelines",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerregistry/2021-08-01-preview/operation",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerregistry/2021-08-01-preview/pipelineruns",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerregistry/2021-08-01-preview/privateendpointconnections",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerregistry/2021-08-01-preview/registries",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerregistry/2021-08-01-preview/replications",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerregistry/2021-08-01-preview/scopemaps",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerregistry/2021-08-01-preview/tokens",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerregistry/2021-08-01-preview/webhooks",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+    ],
+)

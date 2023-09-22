@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "tfplugin5",
+    srcs = [
+        "tfplugin5.pb.go",
+        "tfplugin5_grpc.pb.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-plugin-go/tfprotov5/internal/tfplugin5",
+    importpath = "github.com/hashicorp/terraform-plugin-go/tfprotov5/internal/tfplugin5",
+    visibility = ["//vendor/github.com/hashicorp/terraform-plugin-go/tfprotov5:__subpackages__"],
+    deps = [
+        "//vendor/google.golang.org/grpc",
+        "//vendor/google.golang.org/grpc/codes",
+        "//vendor/google.golang.org/grpc/status",
+        "//vendor/google.golang.org/protobuf/reflect/protoreflect",
+        "//vendor/google.golang.org/protobuf/runtime/protoimpl",
+    ],
+)

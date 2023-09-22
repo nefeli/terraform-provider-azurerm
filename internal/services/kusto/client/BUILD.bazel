@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "client",
+    srcs = ["client.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/kusto/client",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/common",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/kusto/2023-05-02/attacheddatabaseconfigurations",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/kusto/2023-05-02/clusterprincipalassignments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/kusto/2023-05-02/clusters",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/kusto/2023-05-02/databaseprincipalassignments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/kusto/2023-05-02/databases",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/kusto/2023-05-02/dataconnections",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/kusto/2023-05-02/managedprivateendpoints",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/kusto/2023-05-02/scripts",
+    ],
+)

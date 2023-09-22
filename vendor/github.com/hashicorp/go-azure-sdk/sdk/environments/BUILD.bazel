@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "environments",
+    srcs = [
+        "application_ids.go",
+        "azure_china.go",
+        "azure_gov.go",
+        "azure_public.go",
+        "azure_public_canary.go",
+        "azure_stack.go",
+        "base.go",
+        "constants.go",
+        "endpoint_refresh.go",
+        "environment.go",
+        "from_endpoint.go",
+        "from_name.go",
+        "helpers.go",
+        "interfaces.go",
+        "scopes.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+    importpath = "github.com/hashicorp/go-azure-sdk/sdk/environments",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/internal/metadata",
+    ],
+)

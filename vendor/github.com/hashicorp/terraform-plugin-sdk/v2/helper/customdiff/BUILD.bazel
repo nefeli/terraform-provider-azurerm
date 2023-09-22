@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "customdiff",
+    srcs = [
+        "compose.go",
+        "computed.go",
+        "condition.go",
+        "doc.go",
+        "force_new.go",
+        "validate.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/customdiff",
+    importpath = "github.com/hashicorp/terraform-plugin-sdk/v2/helper/customdiff",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-multierror",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/internal/logging",
+    ],
+)

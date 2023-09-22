@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "validators",
+    srcs = ["validators.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/hc-install/internal/validators",
+    importpath = "github.com/hashicorp/hc-install/internal/validators",
+    visibility = ["//vendor/github.com/hashicorp/hc-install:__subpackages__"],
+)

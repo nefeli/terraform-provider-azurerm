@@ -1,0 +1,42 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "hsm",
+    srcs = [
+        "dedicated_hardware_security_module_resource.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/hsm",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/tf",
+        "//helpers/validate",
+        "//internal/clients",
+        "//internal/sdk",
+        "//internal/services/hsm/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/zones",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/hardwaresecuritymodules/2021-11-30/dedicatedhsms",
+    ],
+)
+
+go_test(
+    name = "hsm_test",
+    srcs = ["dedicated_hardware_security_module_resource_test.go"],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/hardwaresecuritymodules/2021-11-30/dedicatedhsms",
+    ],
+)

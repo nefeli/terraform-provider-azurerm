@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "sentinel_alert_rule_template_migration_v0_to_v1.go",
+        "sentinel_automation_rule_migration_v0_to_v1.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/sentinel/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/sentinel/parse",
+        "//internal/tf/pluginsdk",
+    ],
+)

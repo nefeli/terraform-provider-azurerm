@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "metadata",
+    srcs = [
+        "client.go",
+        "helpers.go",
+        "models.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/sdk/internal/metadata",
+    importpath = "github.com/hashicorp/go-azure-sdk/sdk/internal/metadata",
+    visibility = ["//vendor/github.com/hashicorp/go-azure-sdk/sdk:__subpackages__"],
+)

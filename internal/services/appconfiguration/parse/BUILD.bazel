@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "app_configuration.go",
+        "app_configuration_feature.go",
+        "app_configuration_key.go",
+        "nested_item.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/appconfiguration/parse",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = ["nested_item_test.go"],
+    embed = [":parse"],
+)

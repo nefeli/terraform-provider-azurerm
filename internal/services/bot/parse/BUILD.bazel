@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "bot_channel.go",
+        "bot_connection.go",
+        "bot_healthbot.go",
+        "bot_service.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/bot/parse",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "bot_channel_test.go",
+        "bot_connection_test.go",
+        "bot_healthbot_test.go",
+        "bot_service_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

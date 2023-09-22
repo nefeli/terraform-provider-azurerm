@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "go-checkpoint",
+    srcs = [
+        "check.go",
+        "telemetry.go",
+        "versions.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-checkpoint",
+    importpath = "github.com/hashicorp/go-checkpoint",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-cleanhttp",
+        "//vendor/github.com/hashicorp/go-uuid",
+    ],
+)

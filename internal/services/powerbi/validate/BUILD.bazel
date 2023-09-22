@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "embedded_administrator_name.go",
+        "embedded_name.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/powerbi/validate",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/hashicorp/go-uuid"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "embedded_administrator_name_test.go",
+        "embedded_name_test.go",
+    ],
+    embed = [":validate"],
+)

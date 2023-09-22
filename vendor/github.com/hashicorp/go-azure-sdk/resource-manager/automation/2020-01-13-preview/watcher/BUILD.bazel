@@ -1,0 +1,32 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "watcher",
+    srcs = [
+        "client.go",
+        "id_automationaccount.go",
+        "id_watcher.go",
+        "method_createorupdate_autorest.go",
+        "method_delete_autorest.go",
+        "method_get_autorest.go",
+        "method_listbyautomationaccount_autorest.go",
+        "method_start_autorest.go",
+        "method_stop_autorest.go",
+        "method_update_autorest.go",
+        "model_watcher.go",
+        "model_watcherproperties.go",
+        "model_watcherupdateparameters.go",
+        "model_watcherupdateproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2020-01-13-preview/watcher",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/automation/2020-01-13-preview/watcher",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)

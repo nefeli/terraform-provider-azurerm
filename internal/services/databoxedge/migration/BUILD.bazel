@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = ["device_edge_order_v0_to_v1.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/databoxedge/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/databoxedge/2022-03-01/orders",
+    ],
+)

@@ -1,0 +1,63 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "digitaltwins",
+    srcs = [
+        "digital_twins_endpoint_eventgrid_resource.go",
+        "digital_twins_endpoint_eventhub_resource.go",
+        "digital_twins_endpoint_servicebus_resource.go",
+        "digital_twins_instance_data_source.go",
+        "digital_twins_instance_resource.go",
+        "digital_twins_time_series_database_connection_resource.go",
+        "endpoints.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/digitaltwins",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/tf",
+        "//internal/clients",
+        "//internal/sdk",
+        "//internal/services/digitaltwins/validate",
+        "//internal/services/eventhub/validate",
+        "//internal/services/kusto/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/identity",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/digitaltwins/2020-12-01/digitaltwinsinstance",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/digitaltwins/2020-12-01/endpoints",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/digitaltwins/2022-10-31/timeseriesdatabaseconnections",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/eventhub/2021-11-01/eventhubs",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/kusto/2023-05-02/clusters",
+    ],
+)
+
+go_test(
+    name = "digitaltwins_test",
+    srcs = [
+        "digital_twins_endpoint_eventgrid_resource_test.go",
+        "digital_twins_endpoint_eventhub_resource_test.go",
+        "digital_twins_endpoint_servicebus_resource_test.go",
+        "digital_twins_instance_data_source_test.go",
+        "digital_twins_instance_resource_test.go",
+        "digital_twins_time_series_database_connection_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/digitaltwins/2020-12-01/digitaltwinsinstance",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/digitaltwins/2020-12-01/endpoints",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/digitaltwins/2022-10-31/timeseriesdatabaseconnections",
+    ],
+)

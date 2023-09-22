@@ -1,0 +1,57 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "frontdoor",
+    srcs = [
+        "customizediff.go",
+        "frontdoor_custom_https_configuration.go",
+        "frontdoor_custom_https_configuration_resource.go",
+        "frontdoor_firewall_policy_resource.go",
+        "frontdoor_resource.go",
+        "frontdoor_rules_engine_rule.go",
+        "helper.go",
+        "registration.go",
+        "resourceids.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/frontdoor",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//helpers/tf",
+        "//helpers/validate",
+        "//internal/clients",
+        "//internal/locks",
+        "//internal/sdk",
+        "//internal/services/frontdoor/migration",
+        "//internal/services/frontdoor/parse",
+        "//internal/services/frontdoor/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/frontdoor/2020-04-01/webapplicationfirewallpolicies",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/frontdoor/2020-05-01/frontdoors",
+    ],
+)
+
+go_test(
+    name = "frontdoor_test",
+    srcs = [
+        "frontdoor_custom_https_configuration_resource_test.go",
+        "frontdoor_firewall_policy_resource_test.go",
+        "frontdoor_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/services/frontdoor/parse",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/frontdoor/2020-04-01/webapplicationfirewallpolicies",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/frontdoor/2020-05-01/frontdoors",
+    ],
+)

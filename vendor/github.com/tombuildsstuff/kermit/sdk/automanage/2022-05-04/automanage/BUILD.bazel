@@ -1,0 +1,34 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "automanage",
+    srcs = [
+        "bestpractices.go",
+        "bestpracticesversions.go",
+        "client.go",
+        "configurationprofileassignments.go",
+        "configurationprofilehciassignments.go",
+        "configurationprofilehcrpassignments.go",
+        "configurationprofiles.go",
+        "configurationprofilesversions.go",
+        "enums.go",
+        "hcireports.go",
+        "hcrpreports.go",
+        "models.go",
+        "operations.go",
+        "reports.go",
+        "serviceprincipals.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/tombuildsstuff/kermit/sdk/automanage/2022-05-04/automanage",
+    importpath = "github.com/tombuildsstuff/kermit/sdk/automanage/2022-05-04/automanage",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/Azure/go-autorest/autorest/date",
+        "//vendor/github.com/Azure/go-autorest/autorest/validation",
+        "//vendor/github.com/Azure/go-autorest/tracing",
+        "//vendor/github.com/tombuildsstuff/kermit/version",
+    ],
+)

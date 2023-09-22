@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "internal.go",
+        "log_analytics_cluster_name.go",
+        "log_analytics_data_export_name.go",
+        "log_analytics_linked_storage_account_workspace_name.go",
+        "log_analytics_storage_insights_name.go",
+        "log_analytics_storage_insights_workspace_name.go",
+        "log_analytics_workspace_name.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/loganalytics/validate",
+    visibility = ["//:__subpackages__"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "log_analytics_cluster_name_test.go",
+        "log_analytics_data_export_name_test.go",
+        "log_analytics_linked_storage_account_workspace_name_test.go",
+        "log_analytics_storage_insights_workspace_name_test.go",
+        "log_analytics_workspace_name_test.go",
+    ],
+    embed = [":validate"],
+)

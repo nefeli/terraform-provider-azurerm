@@ -1,0 +1,38 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "cluster",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_cluster.go",
+        "method_createidentity_autorest.go",
+        "method_extendsoftwareassurancebenefit_autorest.go",
+        "method_uploadcertificate_autorest.go",
+        "model_cluster.go",
+        "model_clusterdesiredproperties.go",
+        "model_clusteridentityresponse.go",
+        "model_clusteridentityresponseproperties.go",
+        "model_clusternode.go",
+        "model_clusterproperties.go",
+        "model_clusterreportedproperties.go",
+        "model_rawcertificatedata.go",
+        "model_softwareassurancechangerequest.go",
+        "model_softwareassurancechangerequestproperties.go",
+        "model_softwareassuranceproperties.go",
+        "model_uploadcertificaterequest.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/cluster",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/cluster",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/polling",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/identity",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+    ],
+)

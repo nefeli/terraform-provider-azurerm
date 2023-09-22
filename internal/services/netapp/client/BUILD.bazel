@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "client",
+    srcs = ["client.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/netapp/client",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/common",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/netapp/2022-05-01/capacitypools",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/netapp/2022-05-01/netappaccounts",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/netapp/2022-05-01/snapshotpolicy",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/netapp/2022-05-01/snapshots",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/netapp/2022-05-01/volumegroups",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/netapp/2022-05-01/volumes",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/netapp/2022-05-01/volumesreplication",
+    ],
+)

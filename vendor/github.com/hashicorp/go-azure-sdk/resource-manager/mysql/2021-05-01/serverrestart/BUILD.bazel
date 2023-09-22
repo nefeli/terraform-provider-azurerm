@@ -1,0 +1,24 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "serverrestart",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_flexibleserver.go",
+        "method_serversrestart.go",
+        "model_serverrestartparameter.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mysql/2021-05-01/serverrestart",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/mysql/2021-05-01/serverrestart",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/pollers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

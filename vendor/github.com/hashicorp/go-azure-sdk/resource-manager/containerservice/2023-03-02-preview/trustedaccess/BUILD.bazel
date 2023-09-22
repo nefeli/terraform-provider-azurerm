@@ -1,0 +1,32 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "trustedaccess",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_location.go",
+        "id_trustedaccessrolebinding.go",
+        "method_rolebindingscreateorupdate_autorest.go",
+        "method_rolebindingsdelete_autorest.go",
+        "method_rolebindingsget_autorest.go",
+        "method_rolebindingslist_autorest.go",
+        "method_roleslist_autorest.go",
+        "model_trustedaccessrole.go",
+        "model_trustedaccessrolebinding.go",
+        "model_trustedaccessrolebindingproperties.go",
+        "model_trustedaccessrolerule.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2023-03-02-preview/trustedaccess",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2023-03-02-preview/trustedaccess",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+    ],
+)

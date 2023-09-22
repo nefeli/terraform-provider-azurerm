@@ -1,0 +1,38 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "roleeligibilityschedulerequests",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_scopedroleeligibilityschedulerequest.go",
+        "method_cancel.go",
+        "method_create.go",
+        "method_get.go",
+        "method_listforscope.go",
+        "method_validate.go",
+        "model_expandedproperties.go",
+        "model_expandedpropertiesprincipal.go",
+        "model_expandedpropertiesroledefinition.go",
+        "model_expandedpropertiesscope.go",
+        "model_roleeligibilityschedulerequest.go",
+        "model_roleeligibilityschedulerequestproperties.go",
+        "model_roleeligibilityschedulerequestpropertiesscheduleinfo.go",
+        "model_roleeligibilityschedulerequestpropertiesscheduleinfoexpiration.go",
+        "model_roleeligibilityschedulerequestpropertiesticketinfo.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/authorization/2020-10-01/roleeligibilityschedulerequests",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/authorization/2020-10-01/roleeligibilityschedulerequests",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

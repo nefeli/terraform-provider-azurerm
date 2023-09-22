@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "2022-08-01",
+    srcs = ["client.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/nginx/2022-08-01",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/nginx/2022-08-01",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/nginx/2022-08-01/nginxcertificate",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/nginx/2022-08-01/nginxconfiguration",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/nginx/2022-08-01/nginxdeployment",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+    ],
+)

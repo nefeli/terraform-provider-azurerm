@@ -1,0 +1,37 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "capacityreservationgroups",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_capacityreservationgroup.go",
+        "method_createorupdate_autorest.go",
+        "method_delete_autorest.go",
+        "method_get_autorest.go",
+        "method_listbyresourcegroup_autorest.go",
+        "method_listbysubscription_autorest.go",
+        "method_update_autorest.go",
+        "model_capacityreservationgroup.go",
+        "model_capacityreservationgroupinstanceview.go",
+        "model_capacityreservationgroupproperties.go",
+        "model_capacityreservationgroupupdate.go",
+        "model_capacityreservationinstanceviewwithname.go",
+        "model_capacityreservationutilization.go",
+        "model_instanceviewstatus.go",
+        "model_subresourcereadonly.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/compute/2022-03-01/capacityreservationgroups",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/compute/2022-03-01/capacityreservationgroups",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/zones",
+    ],
+)

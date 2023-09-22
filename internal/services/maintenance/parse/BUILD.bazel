@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "maintenance_assignment_virtual_machine.go",
+        "maintenance_assignment_virtual_machine_scale_set.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/maintenance/parse",
+    visibility = ["//:__subpackages__"],
+    deps = ["//internal/services/compute/parse"],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "maintenance_assignment_virtual_machine_scale_set_test.go",
+        "maintenance_assignment_virtual_machine_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//internal/services/compute/parse"],
+)

@@ -1,0 +1,30 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "analytics_shared_item.go",
+        "analytics_user_item.go",
+        "api_key.go",
+        "component.go",
+        "smart_detection_rule.go",
+        "web_test_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/applicationinsights/parse",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "analytics_shared_item_test.go",
+        "analytics_user_item_test.go",
+        "api_key_test.go",
+        "component_test.go",
+        "smart_detection_rule_test.go",
+        "web_test_id_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

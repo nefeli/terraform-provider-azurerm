@@ -1,0 +1,45 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "client_id.go",
+        "cluster_id.go",
+        "container_registry_name.go",
+        "container_registry_scope_map_name.go",
+        "container_registry_task_name.go",
+        "container_registry_task_schedule_id.go",
+        "container_registry_token_name.go",
+        "container_registry_token_password_id.go",
+        "container_registry_webhook_name.go",
+        "container_registry_webhook_service_uri.go",
+        "duration.go",
+        "kubernetes.go",
+        "node_pool_id.go",
+        "repo_notification.go",
+        "service_version_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/containers/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/containers/parse",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "client_id_test.go",
+        "cluster_id_test.go",
+        "container_registry_scope_map_name_test.go",
+        "container_registry_task_schedule_id_test.go",
+        "container_registry_token_name_test.go",
+        "container_registry_token_password_id_test.go",
+        "kubernetes_test.go",
+        "node_pool_id_test.go",
+        "service_version_id_test.go",
+    ],
+    embed = [":validate"],
+)

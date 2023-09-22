@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "compute.go",
+        "compute_cluster.go",
+        "inference_cluster.go",
+        "kubernetes_cluster.go",
+        "workspace.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/machinelearning/parse",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "compute_cluster_test.go",
+        "compute_test.go",
+        "inference_cluster_test.go",
+        "kubernetes_cluster_test.go",
+        "workspace_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "schemaz",
+    srcs = ["api_management.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/apimanagement/schemaz",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/apimanagement/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//utils",
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/apimanagement/mgmt/2021-08-01/apimanagement",
+    ],
+)

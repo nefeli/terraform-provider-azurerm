@@ -1,0 +1,32 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "publicmaintenanceconfigurations",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_publicmaintenanceconfiguration.go",
+        "method_get_autorest.go",
+        "method_list_autorest.go",
+        "model_inputlinuxparameters.go",
+        "model_inputpatchconfiguration.go",
+        "model_inputwindowsparameters.go",
+        "model_listmaintenanceconfigurationsresult.go",
+        "model_maintenanceconfiguration.go",
+        "model_maintenanceconfigurationproperties.go",
+        "model_maintenancewindow.go",
+        "model_softwareupdateconfigurationtasks.go",
+        "model_taskproperties.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/maintenance/2022-07-01-preview/publicmaintenanceconfigurations",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/maintenance/2022-07-01-preview/publicmaintenanceconfigurations",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+    ],
+)

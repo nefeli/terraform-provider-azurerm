@@ -1,0 +1,56 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "subscription",
+    srcs = [
+        "data_source_subscription.go",
+        "data_source_subscriptions.go",
+        "extended_locations_data_source.go",
+        "registration.go",
+        "subscription_import.go",
+        "subscription_resource.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/subscription",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/tf",
+        "//internal/clients",
+        "//internal/locks",
+        "//internal/sdk",
+        "//internal/services/billing/validate",
+        "//internal/services/subscription/parse",
+        "//internal/services/subscription/validate",
+        "//internal/tags",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2020-06-01/resources",
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2021-01-01/subscriptions",
+        "//vendor/github.com/google/uuid",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/subscription/2021-10-01/subscriptions",
+    ],
+)
+
+go_test(
+    name = "subscription_test",
+    srcs = [
+        "data_source_subscription_test.go",
+        "data_source_subscriptions_test.go",
+        "extended_locations_data_source_test.go",
+        "subscription_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/subscription/2021-10-01/subscriptions",
+    ],
+)

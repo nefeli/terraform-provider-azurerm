@@ -1,0 +1,49 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "orbital",
+    srcs = [
+        "contact_profile_resource.go",
+        "contact_resource.go",
+        "helper.go",
+        "registration.go",
+        "spacecraft_resource.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/orbital",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/sdk",
+        "//internal/tags",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/orbital/2022-11-01/contact",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/orbital/2022-11-01/contactprofile",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/orbital/2022-11-01/spacecraft",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation",
+    ],
+)
+
+go_test(
+    name = "orbital_test",
+    srcs = [
+        "contact_profile_resource_test.go",
+        "contact_resource_test.go",
+        "spacecraft_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/orbital/2022-11-01/contact",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/orbital/2022-11-01/contactprofile",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/orbital/2022-11-01/spacecraft",
+    ],
+)

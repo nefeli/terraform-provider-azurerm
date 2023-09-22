@@ -1,0 +1,38 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "backend_pool.go",
+        "custom_https_configuration.go",
+        "front_door.go",
+        "frontend_endpoint.go",
+        "health_probe.go",
+        "load_balancing.go",
+        "load_balancing_rule.go",
+        "routing_rule.go",
+        "rules_engine.go",
+        "web_application_firewall_policy.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/frontdoor/parse",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "backend_pool_test.go",
+        "custom_https_configuration_test.go",
+        "front_door_test.go",
+        "frontend_endpoint_test.go",
+        "health_probe_test.go",
+        "load_balancing_rule_test.go",
+        "load_balancing_test.go",
+        "routing_rule_test.go",
+        "rules_engine_test.go",
+        "web_application_firewall_policy_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "attestation",
+    srcs = [
+        "attestation.go",
+        "client.go",
+        "enums.go",
+        "metadataconfiguration.go",
+        "models.go",
+        "policy.go",
+        "policycertificates.go",
+        "signingcertificates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/tombuildsstuff/kermit/sdk/attestation/2022-08-01/attestation",
+    importpath = "github.com/tombuildsstuff/kermit/sdk/attestation/2022-08-01/attestation",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/Azure/go-autorest/autorest/validation",
+        "//vendor/github.com/Azure/go-autorest/tracing",
+        "//vendor/github.com/tombuildsstuff/kermit/version",
+    ],
+)

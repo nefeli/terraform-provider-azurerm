@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = ["user_assigned_identity_V0_to_V1.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/managedidentity/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+    ],
+)

@@ -1,0 +1,47 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "maps",
+    srcs = [
+        "maps_account_data_source.go",
+        "maps_account_resource.go",
+        "maps_creator_resource.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/maps",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/tf",
+        "//internal/clients",
+        "//internal/sdk",
+        "//internal/services/maps/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/maps/2021-02-01/accounts",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/maps/2021-02-01/creators",
+    ],
+)
+
+go_test(
+    name = "maps_test",
+    srcs = [
+        "maps_account_data_source_test.go",
+        "maps_account_resource_test.go",
+        "maps_creator_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/maps/2021-02-01/accounts",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/maps/2021-02-01/creators",
+    ],
+)

@@ -1,0 +1,45 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "connections",
+    srcs = [
+        "api_connection_resource.go",
+        "managed_api_data_source.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/connections",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/tf",
+        "//internal/clients",
+        "//internal/sdk",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/web/2016-06-01/connections",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/web/2016-06-01/managedapis",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)
+
+go_test(
+    name = "connections_test",
+    srcs = [
+        "api_connection_resource_test.go",
+        "managed_api_data_source_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/web/2016-06-01/connections",
+    ],
+)

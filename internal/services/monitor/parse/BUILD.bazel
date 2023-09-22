@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "action_group.go",
+        "action_rule.go",
+        "log_profile.go",
+        "monitor_aad_diagnostic_setting.go",
+        "smart_detector_alert_rule.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/monitor/parse",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "action_group_test.go",
+        "action_rule_test.go",
+        "log_profile_test.go",
+        "monitor_aad_diagnostic_setting_test.go",
+        "smart_detector_alert_rule_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

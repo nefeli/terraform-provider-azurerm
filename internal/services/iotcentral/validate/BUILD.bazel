@@ -1,0 +1,24 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "application_display_name.go",
+        "application_name.go",
+        "application_subdomain.go",
+        "application_template_name.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/iotcentral/validate",
+    visibility = ["//:__subpackages__"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "application_display_name_test.go",
+        "application_name_test.go",
+        "application_subdomain_test.go",
+        "application_template_name_test.go",
+    ],
+    embed = [":validate"],
+)

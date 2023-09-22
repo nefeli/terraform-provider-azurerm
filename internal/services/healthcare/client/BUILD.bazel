@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "client",
+    srcs = ["client.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/healthcare/client",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/common",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/healthcareapis/2022-12-01/dicomservices",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/healthcareapis/2022-12-01/fhirservices",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/healthcareapis/2022-12-01/iotconnectors",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/healthcareapis/2022-12-01/resource",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/healthcareapis/2022-12-01/workspaces",
+    ],
+)

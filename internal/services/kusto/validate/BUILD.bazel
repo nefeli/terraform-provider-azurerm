@@ -1,0 +1,37 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "attached_database_configuration_id.go",
+        "cluster_id.go",
+        "cluster_principal_assignment_id.go",
+        "cluster_principal_assignment_name.go",
+        "data_connection_id.go",
+        "database_id.go",
+        "database_principal_assignment_id.go",
+        "database_principal_id.go",
+        "managed_private_endpoints_id.go",
+        "name.go",
+        "script_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/kusto/validate",
+    visibility = ["//:__subpackages__"],
+    deps = ["//internal/services/kusto/parse"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "attached_database_configuration_id_test.go",
+        "cluster_id_test.go",
+        "cluster_principal_assignment_id_test.go",
+        "data_connection_id_test.go",
+        "database_id_test.go",
+        "database_principal_assignment_id_test.go",
+        "database_principal_id_test.go",
+        "managed_private_endpoints_id_test.go",
+        "script_id_test.go",
+    ],
+    embed = [":validate"],
+)

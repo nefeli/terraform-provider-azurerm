@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "2022-09-02-preview",
+    srcs = ["client.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2022-09-02-preview",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2022-09-02-preview",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2022-09-02-preview/agentpools",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2022-09-02-preview/fleetmembers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2022-09-02-preview/fleets",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2022-09-02-preview/maintenanceconfigurations",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2022-09-02-preview/managedclusters",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2022-09-02-preview/managedclustersnapshots",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2022-09-02-preview/privateendpointconnections",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2022-09-02-preview/privatelinkresources",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2022-09-02-preview/resolveprivatelinkserviceid",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2022-09-02-preview/snapshots",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2022-09-02-preview/trustedaccess",
+    ],
+)

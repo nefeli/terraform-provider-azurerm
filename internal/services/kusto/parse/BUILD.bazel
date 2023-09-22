@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "attached_database_configuration.go",
+        "cluster.go",
+        "cluster_principal_assignment.go",
+        "data_connection.go",
+        "database.go",
+        "database_principal.go",
+        "database_principal_assignment.go",
+        "managed_private_endpoints.go",
+        "script.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/kusto/parse",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "attached_database_configuration_test.go",
+        "cluster_principal_assignment_test.go",
+        "cluster_test.go",
+        "data_connection_test.go",
+        "database_principal_assignment_test.go",
+        "database_principal_test.go",
+        "database_test.go",
+        "managed_private_endpoints_test.go",
+        "script_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

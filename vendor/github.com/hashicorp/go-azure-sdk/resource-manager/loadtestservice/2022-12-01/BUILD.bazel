@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "2022-12-01",
+    srcs = ["client.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/loadtestservice/2022-12-01",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/loadtestservice/2022-12-01",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/loadtestservice/2022-12-01/loadtest",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/loadtestservice/2022-12-01/loadtests",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/loadtestservice/2022-12-01/quotas",
+    ],
+)

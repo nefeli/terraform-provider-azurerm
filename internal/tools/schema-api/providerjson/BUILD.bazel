@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "providerjson",
+    srcs = [
+        "handlers.go",
+        "helpers.go",
+        "json.go",
+        "transform.go",
+        "write.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/tools/schema-api/providerjson",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/provider",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/terraform",
+    ],
+)

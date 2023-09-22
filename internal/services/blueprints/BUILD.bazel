@@ -1,0 +1,48 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "blueprints",
+    srcs = [
+        "blueprint.go",
+        "blueprint_assignment_resource.go",
+        "blueprint_definition_data_source.go",
+        "blueprint_published_version_data_source.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/blueprints",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//helpers/tf",
+        "//internal/clients",
+        "//internal/sdk",
+        "//internal/services/blueprints/parse",
+        "//internal/services/blueprints/validate",
+        "//internal/services/managementgroup/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/suppress",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/preview/blueprint/mgmt/2018-11-01-preview/blueprint",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/identity",
+    ],
+)
+
+go_test(
+    name = "blueprints_test",
+    srcs = [
+        "blueprint_assignment_resource_test.go",
+        "blueprint_definition_data_source_test.go",
+        "blueprint_published_version_data_source_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/services/blueprints/parse",
+        "//internal/tf/pluginsdk",
+        "//utils",
+    ],
+)

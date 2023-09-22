@@ -1,0 +1,51 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "relay",
+    srcs = [
+        "internal.go",
+        "registration.go",
+        "relay_hybrid_connection_authorization_rule_resource.go",
+        "relay_hybrid_connection_resource.go",
+        "relay_namespace_authorization_rule_resource.go",
+        "relay_namespace_resource.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/relay",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//helpers/tf",
+        "//internal/clients",
+        "//internal/sdk",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/relay/2017-04-01/hybridconnections",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/relay/2017-04-01/namespaces",
+    ],
+)
+
+go_test(
+    name = "relay_test",
+    srcs = [
+        "relay_hybrid_connection_authorization_rule_resource_test.go",
+        "relay_hybrid_connection_resource_test.go",
+        "relay_namespace_authorization_rule_ressource_test.go",
+        "relay_namespace_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/relay/2017-04-01/hybridconnections",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/relay/2017-04-01/namespaces",
+    ],
+)

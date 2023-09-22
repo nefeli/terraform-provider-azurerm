@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "domain_id.go",
+        "domain_topic_id.go",
+        "event_subscription.go",
+        "system_topic_event_subscription_id.go",
+        "system_topic_id.go",
+        "topic_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/eventgrid/validate",
+    visibility = ["//:__subpackages__"],
+    deps = ["//internal/services/eventgrid/parse"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "domain_id_test.go",
+        "domain_topic_id_test.go",
+        "system_topic_event_subscription_id_test.go",
+        "system_topic_id_test.go",
+        "topic_id_test.go",
+    ],
+    embed = [":validate"],
+)

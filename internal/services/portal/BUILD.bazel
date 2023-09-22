@@ -1,0 +1,57 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "portal",
+    srcs = [
+        "legacy_dashboard_resource.go",
+        "portal_dashboard_data_source.go",
+        "portal_dashboard_resource.go",
+        "portal_tenant_configuration_resource.go",
+        "registration.go",
+        "resourceids.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/portal",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//helpers/tf",
+        "//internal/clients",
+        "//internal/features",
+        "//internal/sdk",
+        "//internal/services/portal/parse",
+        "//internal/services/portal/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/schema",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/portal/2019-01-01-preview/dashboard",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/portal/2019-01-01-preview/tenantconfiguration",
+    ],
+)
+
+go_test(
+    name = "portal_test",
+    srcs = [
+        "legacy_dashboard_resource_test.go",
+        "portal_dashboard_data_source_test.go",
+        "portal_dashboard_resource_test.go",
+        "portal_tenant_configuration_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/services/portal/parse",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/portal/2019-01-01-preview/dashboard",
+    ],
+)

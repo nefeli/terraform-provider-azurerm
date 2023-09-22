@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "hdinsight",
+    srcs = [
+        "applications.go",
+        "client.go",
+        "clusters.go",
+        "configurations.go",
+        "enums.go",
+        "extensions.go",
+        "locations.go",
+        "models.go",
+        "operations.go",
+        "scriptactions.go",
+        "scriptexecutionhistory.go",
+        "version.go",
+        "virtualmachines.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/Azure/azure-sdk-for-go/services/hdinsight/mgmt/2018-06-01/hdinsight",
+    importpath = "github.com/Azure/azure-sdk-for-go/services/hdinsight/mgmt/2018-06-01/hdinsight",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/azure-sdk-for-go/version",
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/Azure/go-autorest/autorest/to",
+        "//vendor/github.com/Azure/go-autorest/autorest/validation",
+        "//vendor/github.com/Azure/go-autorest/tracing",
+    ],
+)

@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "client",
+    srcs = ["client.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/mobilenetwork/client",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/common",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mobilenetwork/2022-11-01/attacheddatanetwork",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mobilenetwork/2022-11-01/datanetwork",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mobilenetwork/2022-11-01/mobilenetwork",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mobilenetwork/2022-11-01/packetcorecontrolplane",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mobilenetwork/2022-11-01/packetcoredataplane",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mobilenetwork/2022-11-01/service",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mobilenetwork/2022-11-01/simgroup",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mobilenetwork/2022-11-01/simpolicy",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mobilenetwork/2022-11-01/site",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mobilenetwork/2022-11-01/slice",
+    ],
+)

@@ -1,0 +1,53 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "consumption",
+    srcs = [
+        "consumption_budget_base.go",
+        "consumption_budget_management_group_resource.go",
+        "consumption_budget_resource_group_data_source.go",
+        "consumption_budget_resource_group_resource.go",
+        "consumption_budget_subscription_data_source.go",
+        "consumption_budget_subscription_resource.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/consumption",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/tf",
+        "//internal/clients",
+        "//internal/features",
+        "//internal/sdk",
+        "//internal/services/consumption/migration",
+        "//internal/services/consumption/validate",
+        "//internal/services/managementgroup/validate",
+        "//internal/services/resource/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/Azure/go-autorest/autorest/date",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/consumption/2019-10-01/budgets",
+    ],
+)
+
+go_test(
+    name = "consumption_test",
+    srcs = [
+        "consumption_budget_management_group_resource_test.go",
+        "consumption_budget_resource_group_data_source_test.go",
+        "consumption_budget_resource_group_resource_test.go",
+        "consumption_budget_subscription_data_source_test.go",
+        "consumption_budget_subscription_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/consumption/2019-10-01/budgets",
+    ],
+)

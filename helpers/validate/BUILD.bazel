@@ -1,0 +1,35 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "float.go",
+        "kubernetes.go",
+        "network.go",
+        "port_or_port_range.go",
+        "regex.go",
+        "strings.go",
+        "time.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/helpers/validate",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//internal/tf/validation",
+        "//vendor/github.com/btubbs/datetime",
+        "//vendor/github.com/rickb777/date/period",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "float_test.go",
+        "kubernetes_test.go",
+        "network_test.go",
+        "port_or_port_range_test.go",
+        "strings_test.go",
+        "time_test.go",
+    ],
+    embed = [":validate"],
+    deps = ["//internal/tf/pluginsdk"],
+)

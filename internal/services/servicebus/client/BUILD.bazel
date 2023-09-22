@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "client",
+    srcs = ["client.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/servicebus/client",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/common",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/servicebus/2021-06-01-preview/disasterrecoveryconfigs",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/servicebus/2021-06-01-preview/namespacesauthorizationrule",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/servicebus/2021-06-01-preview/queues",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/servicebus/2021-06-01-preview/queuesauthorizationrule",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/servicebus/2021-06-01-preview/rules",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/servicebus/2021-06-01-preview/subscriptions",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/servicebus/2021-06-01-preview/topics",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/servicebus/2021-06-01-preview/topicsauthorizationrule",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/servicebus/2022-01-01-preview/namespaces",
+    ],
+)

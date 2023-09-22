@@ -1,0 +1,35 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "accountfilters",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_accountfilter.go",
+        "id_mediaservice.go",
+        "method_accountfilterscreateorupdate.go",
+        "method_accountfiltersdelete.go",
+        "method_accountfiltersget.go",
+        "method_accountfilterslist.go",
+        "method_accountfiltersupdate.go",
+        "model_accountfilter.go",
+        "model_filtertrackpropertycondition.go",
+        "model_filtertrackselection.go",
+        "model_firstquality.go",
+        "model_mediafilterproperties.go",
+        "model_presentationtimerange.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/media/2021-11-01/accountfilters",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/media/2021-11-01/accountfilters",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

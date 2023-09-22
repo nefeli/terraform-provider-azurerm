@@ -1,0 +1,35 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "agreements",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_offerplan.go",
+        "id_plan.go",
+        "method_marketplaceagreementscancel.go",
+        "method_marketplaceagreementscreate.go",
+        "method_marketplaceagreementsget.go",
+        "method_marketplaceagreementsgetagreement.go",
+        "method_marketplaceagreementslist.go",
+        "method_marketplaceagreementssign.go",
+        "model_agreementproperties.go",
+        "model_agreementterms.go",
+        "model_agreementtermslist.go",
+        "model_oldagreementproperties.go",
+        "model_oldagreementterms.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/marketplaceordering/2015-06-01/agreements",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/marketplaceordering/2015-06-01/agreements",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

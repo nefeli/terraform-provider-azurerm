@@ -1,0 +1,24 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "consumer_group.go",
+        "eventhub_authorization_rule.go",
+        "namespace_authorization_rule.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/eventhub/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/eventhub/2021-11-01/consumergroups",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/eventhub/2021-11-01/eventhubs",
+    ],
+)
+
+go_test(
+    name = "migration_test",
+    srcs = ["consumer_group_test.go"],
+    embed = [":migration"],
+    deps = ["//utils"],
+)

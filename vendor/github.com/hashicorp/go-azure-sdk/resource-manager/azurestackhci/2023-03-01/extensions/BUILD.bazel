@@ -1,0 +1,37 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "extensions",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_arcsetting.go",
+        "id_extension.go",
+        "method_extensionscreate_autorest.go",
+        "method_extensionsdelete_autorest.go",
+        "method_extensionsget_autorest.go",
+        "method_extensionslistbyarcsetting_autorest.go",
+        "method_extensionsupdate_autorest.go",
+        "method_extensionsupgrade_autorest.go",
+        "model_extension.go",
+        "model_extensioninstanceview.go",
+        "model_extensioninstanceviewstatus.go",
+        "model_extensionparameters.go",
+        "model_extensionproperties.go",
+        "model_extensionupgradeparameters.go",
+        "model_pernodeextensionstate.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/extensions",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/extensions",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/polling",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+    ],
+)

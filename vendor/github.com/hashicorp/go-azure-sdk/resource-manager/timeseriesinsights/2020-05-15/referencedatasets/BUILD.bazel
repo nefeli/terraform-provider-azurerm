@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "referencedatasets",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_environment.go",
+        "id_referencedataset.go",
+        "method_createorupdate_autorest.go",
+        "method_delete_autorest.go",
+        "method_get_autorest.go",
+        "method_listbyenvironment_autorest.go",
+        "method_update_autorest.go",
+        "model_referencedatasetcreateorupdateparameters.go",
+        "model_referencedatasetcreationproperties.go",
+        "model_referencedatasetkeyproperty.go",
+        "model_referencedatasetlistresponse.go",
+        "model_referencedatasetresource.go",
+        "model_referencedatasetresourceproperties.go",
+        "model_referencedatasetupdateparameters.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/timeseriesinsights/2020-05-15/referencedatasets",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/timeseriesinsights/2020-05-15/referencedatasets",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)

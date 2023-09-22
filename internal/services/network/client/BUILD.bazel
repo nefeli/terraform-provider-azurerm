@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "client",
+    srcs = ["client.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/network/client",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/common",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/adminrulecollections",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/adminrules",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/applicationsecuritygroups",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/bastionhosts",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/connectionmonitors",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/connectivityconfigurations",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/flowlogs",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/networkgroups",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/networkmanagerconnections",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/networkmanagers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/privateendpoints",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/routefilters",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/routes",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/routetables",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/scopeconnections",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/securityadminconfigurations",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/securityrules",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/staticmembers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2023-02-01/networkinterfaces",
+        "//vendor/github.com/tombuildsstuff/kermit/sdk/network/2022-07-01/network",
+    ],
+)

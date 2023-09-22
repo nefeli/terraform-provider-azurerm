@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "blobservice",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_storageaccount.go",
+        "method_getserviceproperties_autorest.go",
+        "method_list_autorest.go",
+        "method_setserviceproperties_autorest.go",
+        "model_blobserviceitems.go",
+        "model_blobserviceproperties.go",
+        "model_blobservicepropertiesproperties.go",
+        "model_changefeed.go",
+        "model_corsrule.go",
+        "model_corsrules.go",
+        "model_deleteretentionpolicy.go",
+        "model_lastaccesstimetrackingpolicy.go",
+        "model_restorepolicyproperties.go",
+        "model_sku.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/blobservice",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/blobservice",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)

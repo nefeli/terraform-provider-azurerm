@@ -1,0 +1,35 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "sqldedicatedgateway",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_service.go",
+        "method_servicecreate_autorest.go",
+        "method_servicedelete_autorest.go",
+        "method_serviceget_autorest.go",
+        "model_datatransferserviceresourceproperties.go",
+        "model_graphapicomputeregionalserviceresource.go",
+        "model_graphapicomputeserviceresourceproperties.go",
+        "model_materializedviewsbuilderserviceresourceproperties.go",
+        "model_regionalserviceresource.go",
+        "model_serviceresource.go",
+        "model_serviceresourcecreateupdateparameters.go",
+        "model_serviceresourcecreateupdateproperties.go",
+        "model_serviceresourceproperties.go",
+        "model_sqldedicatedgatewayregionalserviceresource.go",
+        "model_sqldedicatedgatewayserviceresourceproperties.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/cosmosdb/2022-05-15/sqldedicatedgateway",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/cosmosdb/2022-05-15/sqldedicatedgateway",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/polling",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)

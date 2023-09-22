@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "accesscontrol",
+    srcs = [
+        "ace.go",
+        "acl.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/tombuildsstuff/giovanni/storage/accesscontrol",
+    importpath = "github.com/tombuildsstuff/giovanni/storage/accesscontrol",
+    visibility = ["//visibility:public"],
+    deps = ["//vendor/github.com/google/uuid"],
+)

@@ -1,0 +1,34 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "clusters",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_cluster.go",
+        "id_privatecloud.go",
+        "method_createorupdate.go",
+        "method_delete.go",
+        "method_get.go",
+        "method_list.go",
+        "method_update.go",
+        "model_cluster.go",
+        "model_clusterupdate.go",
+        "model_clusterupdateproperties.go",
+        "model_commonclusterproperties.go",
+        "model_sku.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/vmware/2022-05-01/clusters",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/vmware/2022-05-01/clusters",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/pollers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

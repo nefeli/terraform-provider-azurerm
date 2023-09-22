@@ -1,0 +1,34 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "topicsauthorizationrule",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_topic.go",
+        "id_topicauthorizationrule.go",
+        "method_topicscreateorupdateauthorizationrule.go",
+        "method_topicsdeleteauthorizationrule.go",
+        "method_topicsgetauthorizationrule.go",
+        "method_topicslistauthorizationrules.go",
+        "method_topicslistkeys.go",
+        "method_topicsregeneratekeys.go",
+        "model_accesskeys.go",
+        "model_regenerateaccesskeyparameters.go",
+        "model_sbauthorizationrule.go",
+        "model_sbauthorizationruleproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/servicebus/2021-06-01-preview/topicsauthorizationrule",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/servicebus/2021-06-01-preview/topicsauthorizationrule",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

@@ -1,0 +1,35 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "activitylogalertsapis",
+    srcs = [
+        "client.go",
+        "id_activitylogalert.go",
+        "method_activitylogalertscreateorupdate_autorest.go",
+        "method_activitylogalertsdelete_autorest.go",
+        "method_activitylogalertsget_autorest.go",
+        "method_activitylogalertslistbyresourcegroup_autorest.go",
+        "method_activitylogalertslistbysubscriptionid_autorest.go",
+        "method_activitylogalertsupdate_autorest.go",
+        "model_actiongroup.go",
+        "model_actionlist.go",
+        "model_activitylogalertresource.go",
+        "model_alertruleallofcondition.go",
+        "model_alertruleanyoforleafcondition.go",
+        "model_alertruleleafcondition.go",
+        "model_alertrulepatchobject.go",
+        "model_alertrulepatchproperties.go",
+        "model_alertruleproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/insights/2020-10-01/activitylogalertsapis",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/insights/2020-10-01/activitylogalertsapis",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)

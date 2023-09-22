@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "build",
+    srcs = [
+        "get_go_version.go",
+        "go_build.go",
+        "go_is_installed.go",
+        "install_go_version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/hc-install/internal/build",
+    importpath = "github.com/hashicorp/hc-install/internal/build",
+    visibility = ["//vendor/github.com/hashicorp/hc-install:__subpackages__"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-version",
+        "//vendor/golang.org/x/mod/modfile",
+    ],
+)

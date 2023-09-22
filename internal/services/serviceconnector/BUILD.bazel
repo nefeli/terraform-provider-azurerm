@@ -1,0 +1,44 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "serviceconnector",
+    srcs = [
+        "helper.go",
+        "registration.go",
+        "service_connector_app_service_resource.go",
+        "service_connector_spring_cloud_resource.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/serviceconnector",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//internal/sdk",
+        "//internal/services/springcloud/validate",
+        "//internal/services/storage/parse",
+        "//internal/services/web/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/servicelinker/2022-05-01/links",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/servicelinker/2022-05-01/servicelinker",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)
+
+go_test(
+    name = "serviceconnector_test",
+    srcs = [
+        "service_connector_app_service_resource_test.go",
+        "service_connector_spring_cloud_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/servicelinker/2022-05-01/servicelinker",
+    ],
+)

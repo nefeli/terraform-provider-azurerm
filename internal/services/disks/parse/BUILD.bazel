@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "disk_pool_managed_disk_attachment.go",
+        "iscsitarget_lun.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/disks/parse",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/compute/2022-03-02/disks",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagepool/2021-08-01/diskpools",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagepool/2021-08-01/iscsitargets",
+    ],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "disk_pool_managed_disk_attachment_test.go",
+        "iscsitarget_lun_test.go",
+    ],
+    embed = [":parse"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/compute/2022-03-02/disks",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagepool/2021-08-01/diskpools",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagepool/2021-08-01/iscsitargets",
+    ],
+)

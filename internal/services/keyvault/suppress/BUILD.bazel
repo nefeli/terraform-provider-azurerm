@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "suppress",
+    srcs = ["key_vault_key.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/keyvault/suppress",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/keyvault/parse",
+        "//internal/tf/pluginsdk",
+    ],
+)
+
+go_test(
+    name = "suppress_test",
+    srcs = ["key_vault_key_test.go"],
+    embed = [":suppress"],
+)

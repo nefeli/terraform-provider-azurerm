@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "host_pool_registration_info.go",
+        "workspace_application_group_association.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/desktopvirtualization/parse",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/desktopvirtualization/2022-02-10-preview/applicationgroup",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/desktopvirtualization/2022-02-10-preview/workspace",
+    ],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = ["host_pool_registration_info_test.go"],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

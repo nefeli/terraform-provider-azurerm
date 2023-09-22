@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "kusto_attached_database_configuration_migration_v0_to_v1.go",
+        "kusto_cluster_customer_managed_key_v0_to_v1.go",
+        "kusto_cluster_migration_v0_to_v1.go",
+        "kusto_cluster_principal_assignment_migration_v0_to_v1.go",
+        "kusto_database_data_connection_eventgrid_migration_v0_to_v1.go",
+        "kusto_database_data_connection_eventhub_migration_v0_to_v1.go",
+        "kusto_database_data_connection_iothub_migration_v0_to_v1.go",
+        "kusto_database_migration_v0_to_v1.go",
+        "kusto_database_principal_assignment_migration_v0_to_v1.go",
+        "kusto_database_script_migration_v0_to_v1.go",
+        "kusto_managed_private_endpoint_migration_v0_to_v1.go",
+        "kusto_managed_private_endpoint_migration_v1_to_v2.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/kusto/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/kusto/parse",
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)

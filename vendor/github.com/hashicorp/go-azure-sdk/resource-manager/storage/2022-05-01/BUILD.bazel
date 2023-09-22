@@ -1,0 +1,30 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "2022-05-01",
+    srcs = ["client.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/blobcontainers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/blobinventorypolicies",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/blobservice",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/deletedaccounts",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/encryptionscopes",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/fileservice",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/fileshares",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/localusers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/managementpolicies",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/objectreplicationpolicies",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/privateendpointconnections",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/privatelinkresources",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/queueservice",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/queueserviceproperties",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/skus",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/storageaccounts",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/tableservice",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/tableserviceproperties",
+    ],
+)

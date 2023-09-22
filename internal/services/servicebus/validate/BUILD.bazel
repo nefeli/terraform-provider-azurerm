@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "authorization_rule_name.go",
+        "namespace_name.go",
+        "queue_name.go",
+        "servicebus.go",
+        "sql_filter.go",
+        "subscription_name.go",
+        "topic_name.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/servicebus/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "sql_filter_test.go",
+        "topic_name_test.go",
+    ],
+    embed = [":validate"],
+)

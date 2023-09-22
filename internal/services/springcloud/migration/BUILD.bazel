@@ -1,0 +1,34 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "active_deployment_migration_v0_to_v1.go",
+        "api_portal_custom_domain_migration_v0_to_v1.go",
+        "api_portal_migration_v0_to_v1.go",
+        "app_cosmosdb_association_migration_v0_to_v1.go",
+        "app_migration_v0_to_v1.go",
+        "app_mysql_association_migration_v0_to_v1.go",
+        "app_redis_association_migration_v0_to_v1.go",
+        "build_deployment_migration_v0_to_v1.go",
+        "build_pack_binding_v0_to_v1.go",
+        "build_service_builder_migration_v0_to_v1.go",
+        "certificate_migration_v0_to_v1.go",
+        "cloud_storage_migration_v0_to_v1.go",
+        "configuration_service_migration_v0_to_v1.go",
+        "container_deployment_migration_v0_to_v1.go",
+        "custom_domain_migration_v0_to_v1.go",
+        "gateway_custom_domain_migration_v0_to_v1.go",
+        "gateway_migration_v0_to_v1.go",
+        "gateway_route_config_migration_v0_to_v1.go",
+        "java_deployment_migration_v0_to_v1.go",
+        "spring_cloud_migration_v0_to_v1.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/springcloud/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/springcloud/parse",
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)

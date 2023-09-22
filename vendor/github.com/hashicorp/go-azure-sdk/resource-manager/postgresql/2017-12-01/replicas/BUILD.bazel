@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "replicas",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_server.go",
+        "method_listbyserver_autorest.go",
+        "model_privateendpointproperty.go",
+        "model_server.go",
+        "model_serverlistresult.go",
+        "model_serverprivateendpointconnection.go",
+        "model_serverprivateendpointconnectionproperties.go",
+        "model_serverprivatelinkserviceconnectionstateproperty.go",
+        "model_serverproperties.go",
+        "model_sku.go",
+        "model_storageprofile.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/postgresql/2017-12-01/replicas",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/postgresql/2017-12-01/replicas",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/identity",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)

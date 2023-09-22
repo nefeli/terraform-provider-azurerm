@@ -1,0 +1,55 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "labservice",
+    srcs = [
+        "lab_service_lab_resource.go",
+        "lab_service_plan_resource.go",
+        "lab_service_schedule_resource.go",
+        "lab_service_user_resource.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/labservice",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/validate",
+        "//internal/sdk",
+        "//internal/services/compute/validate",
+        "//internal/services/labservice/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/suppress",
+        "//internal/tf/validation",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/compute/2022-03-03/galleries",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/labservices/2022-08-01/lab",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/labservices/2022-08-01/labplan",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/labservices/2022-08-01/schedule",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/labservices/2022-08-01/user",
+    ],
+)
+
+go_test(
+    name = "labservice_test",
+    srcs = [
+        "lab_service_lab_resource_test.go",
+        "lab_service_plan_resource_test.go",
+        "lab_service_schedule_resource_test.go",
+        "lab_service_user_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/labservices/2022-08-01/lab",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/labservices/2022-08-01/labplan",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/labservices/2022-08-01/schedule",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/labservices/2022-08-01/user",
+    ],
+)

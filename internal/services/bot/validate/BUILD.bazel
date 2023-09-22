@@ -1,0 +1,38 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "bot.go",
+        "bot_channel_id.go",
+        "bot_channel_registration_description.go",
+        "bot_channel_registration_icon_url.go",
+        "bot_connection_id.go",
+        "bot_healthbot_id.go",
+        "bot_healthbot_name.go",
+        "bot_name.go",
+        "bot_service_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/bot/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/bot/parse",
+        "//internal/tf/pluginsdk",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "bot_channel_id_test.go",
+        "bot_channel_registration_description_test.go",
+        "bot_channel_registration_icon_url_test.go",
+        "bot_connection_id_test.go",
+        "bot_healthbot_id_test.go",
+        "bot_healthbot_name_test.go",
+        "bot_name_test.go",
+        "bot_service_id_test.go",
+        "bot_test.go",
+    ],
+    embed = [":validate"],
+)

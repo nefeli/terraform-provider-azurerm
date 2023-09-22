@@ -1,0 +1,24 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "cluster_id.go",
+        "hdinsight.go",
+        "hdinsight_cluster_ldaps_urls.go",
+        "node_definition_vm_size.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/hdinsight/validate",
+    visibility = ["//:__subpackages__"],
+    deps = ["//internal/services/hdinsight/parse"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "cluster_id_test.go",
+        "hdinsight_cluster_ldaps_urls_test.go",
+        "hdinsight_test.go",
+    ],
+    embed = [":validate"],
+)

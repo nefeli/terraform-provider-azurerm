@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "accounts",
+    srcs = [
+        "client.go",
+        "get_service_properties.go",
+        "models.go",
+        "set_service_properties.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/blob/accounts",
+    importpath = "github.com/tombuildsstuff/giovanni/storage/2020-08-04/blob/accounts",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/Azure/go-autorest/autorest/validation",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/internal/endpoints",
+        "//vendor/github.com/tombuildsstuff/giovanni/version",
+    ],
+)

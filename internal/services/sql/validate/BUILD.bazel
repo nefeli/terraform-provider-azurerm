@@ -1,0 +1,42 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "azure_active_directory_administrator_id.go",
+        "database_id.go",
+        "elastic_pool_id.go",
+        "failover_group_id.go",
+        "firewall_rule_id.go",
+        "instance_failover_group_id.go",
+        "managed_database_id.go",
+        "managed_instance_azure_active_directory_administrator_id.go",
+        "managed_instance_id.go",
+        "server_id.go",
+        "virtual_network_rule_id.go",
+        "virtual_network_rule_name.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/sql/validate",
+    visibility = ["//:__subpackages__"],
+    deps = ["//internal/services/sql/parse"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "azure_active_directory_administrator_id_test.go",
+        "database_id_test.go",
+        "elastic_pool_id_test.go",
+        "failover_group_id_test.go",
+        "firewall_rule_id_test.go",
+        "instance_failover_group_id_test.go",
+        "managed_database_id_test.go",
+        "managed_instance_azure_active_directory_administrator_id_test.go",
+        "managed_instance_id_test.go",
+        "server_id_test.go",
+        "virtual_network_rule_id_test.go",
+        "virtual_network_rule_name_test.go",
+    ],
+    embed = [":validate"],
+    deps = ["//internal/acceptance"],
+)

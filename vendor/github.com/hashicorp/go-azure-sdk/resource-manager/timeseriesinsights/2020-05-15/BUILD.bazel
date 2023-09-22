@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "2020-05-15",
+    srcs = ["client.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/timeseriesinsights/2020-05-15",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/timeseriesinsights/2020-05-15",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/timeseriesinsights/2020-05-15/accesspolicies",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/timeseriesinsights/2020-05-15/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/timeseriesinsights/2020-05-15/eventsources",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/timeseriesinsights/2020-05-15/referencedatasets",
+    ],
+)

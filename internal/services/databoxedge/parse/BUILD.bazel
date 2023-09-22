@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = ["databox_edge_device_sku.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/databoxedge/parse",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/databoxedge/2022-03-01/devices"],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = ["databox_edge_device_sku_test.go"],
+    embed = [":parse"],
+)

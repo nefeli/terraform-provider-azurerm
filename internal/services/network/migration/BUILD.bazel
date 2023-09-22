@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "network_interface_application_security_group_association.go",
+        "network_packet_capture.go",
+        "network_watcher_flow_log.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/network/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/network/parse",
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/flowlogs",
+    ],
+)

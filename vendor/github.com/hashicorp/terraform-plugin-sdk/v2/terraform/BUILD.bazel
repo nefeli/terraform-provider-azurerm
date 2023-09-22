@@ -1,0 +1,32 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "terraform",
+    srcs = [
+        "diff.go",
+        "instancetype.go",
+        "instancetype_string.go",
+        "resource.go",
+        "resource_address.go",
+        "resource_mode.go",
+        "resource_mode_string.go",
+        "resource_provider.go",
+        "schemas.go",
+        "state.go",
+        "state_filter.go",
+        "util.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-plugin-sdk/v2/terraform",
+    importpath = "github.com/hashicorp/terraform-plugin-sdk/v2/terraform",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-cty/cty",
+        "//vendor/github.com/hashicorp/go-multierror",
+        "//vendor/github.com/hashicorp/go-uuid",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/internal/addrs",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/internal/configs/configschema",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/internal/configs/hcl2shim",
+        "//vendor/github.com/mitchellh/copystructure",
+        "//vendor/github.com/mitchellh/reflectwalk",
+    ],
+)

@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "assignment.go",
+        "definition.go",
+        "version.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/blueprints/parse",
+    visibility = ["//:__subpackages__"],
+    deps = ["//helpers/azure"],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "assignment_test.go",
+        "version_test.go",
+    ],
+    embed = [":parse"],
+)

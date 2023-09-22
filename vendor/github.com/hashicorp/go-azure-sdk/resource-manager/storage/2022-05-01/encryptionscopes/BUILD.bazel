@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "encryptionscopes",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_encryptionscope.go",
+        "id_storageaccount.go",
+        "method_get_autorest.go",
+        "method_list_autorest.go",
+        "method_patch_autorest.go",
+        "method_put_autorest.go",
+        "model_encryptionscope.go",
+        "model_encryptionscopekeyvaultproperties.go",
+        "model_encryptionscopeproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/encryptionscopes",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/encryptionscopes",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)

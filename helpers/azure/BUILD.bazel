@@ -1,0 +1,30 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "azure",
+    srcs = [
+        "deprecated_soon.go",
+        "error_output.go",
+        "resourceid.go",
+        "sku.go",
+        "strings.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/helpers/azure",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//internal/tf/pluginsdk",
+        "//internal/tf/suppress",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourcegroups",
+    ],
+)
+
+go_test(
+    name = "azure_test",
+    srcs = [
+        "deprecated_soon_test.go",
+        "error_output_test.go",
+        "resourceid_test.go",
+    ],
+    deps = [":azure"],
+)

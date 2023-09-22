@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "spacecraft",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_spacecraft.go",
+        "method_createorupdate.go",
+        "method_delete.go",
+        "method_get.go",
+        "method_list.go",
+        "method_listbysubscription.go",
+        "method_updatetags.go",
+        "model_authorizedgroundstation.go",
+        "model_spacecraft.go",
+        "model_spacecraftlink.go",
+        "model_spacecraftsproperties.go",
+        "model_tagsobject.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/orbital/2022-11-01/spacecraft",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/orbital/2022-11-01/spacecraft",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/pollers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

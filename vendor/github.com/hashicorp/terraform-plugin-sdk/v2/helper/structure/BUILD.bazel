@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "structure",
+    srcs = [
+        "expand_json.go",
+        "flatten_json.go",
+        "normalize_json.go",
+        "suppress_json_diff.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/structure",
+    importpath = "github.com/hashicorp/terraform-plugin-sdk/v2/helper/structure",
+    visibility = ["//visibility:public"],
+    deps = ["//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"],
+)

@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "helpers",
+    srcs = ["helpers.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/storage/helpers",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+    ],
+)

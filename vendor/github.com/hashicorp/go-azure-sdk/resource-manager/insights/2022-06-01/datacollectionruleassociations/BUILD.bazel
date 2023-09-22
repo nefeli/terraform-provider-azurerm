@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "datacollectionruleassociations",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_datacollectionendpoint.go",
+        "id_datacollectionrule.go",
+        "id_scopeddatacollectionruleassociation.go",
+        "method_create_autorest.go",
+        "method_delete_autorest.go",
+        "method_get_autorest.go",
+        "method_listbydatacollectionendpoint_autorest.go",
+        "method_listbyresource_autorest.go",
+        "method_listbyrule_autorest.go",
+        "model_datacollectionruleassociation.go",
+        "model_datacollectionruleassociationproxyonlyresource.go",
+        "model_metadata.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/insights/2022-06-01/datacollectionruleassociations",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/insights/2022-06-01/datacollectionruleassociations",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+    ],
+)

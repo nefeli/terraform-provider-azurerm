@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "kubernetes",
+    srcs = ["kube_config.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/containers/kubernetes",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/gopkg.in/yaml.v3:yaml_v3"],
+)
+
+go_test(
+    name = "kubernetes_test",
+    srcs = ["kube_config_test.go"],
+    data = glob(["testdata/**"]),
+    embed = [":kubernetes"],
+)

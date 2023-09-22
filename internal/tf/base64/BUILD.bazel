@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "base64",
+    srcs = ["schema.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/tf/base64",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tf/validation",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)

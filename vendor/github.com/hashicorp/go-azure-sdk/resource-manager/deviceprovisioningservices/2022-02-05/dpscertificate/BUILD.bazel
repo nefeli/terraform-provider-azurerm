@@ -1,0 +1,35 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "dpscertificate",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_certificate.go",
+        "method_createorupdate.go",
+        "method_delete.go",
+        "method_generateverificationcode.go",
+        "method_get.go",
+        "method_list.go",
+        "method_verifycertificate.go",
+        "model_certificatelistdescription.go",
+        "model_certificateproperties.go",
+        "model_certificateresponse.go",
+        "model_verificationcoderequest.go",
+        "model_verificationcoderesponse.go",
+        "model_verificationcoderesponseproperties.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/deviceprovisioningservices/2022-02-05/dpscertificate",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/deviceprovisioningservices/2022-02-05/dpscertificate",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

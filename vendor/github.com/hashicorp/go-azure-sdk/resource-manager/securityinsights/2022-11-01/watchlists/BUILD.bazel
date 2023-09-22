@@ -1,0 +1,30 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "watchlists",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_watchlist.go",
+        "id_workspace.go",
+        "method_createorupdate_autorest.go",
+        "method_delete_autorest.go",
+        "method_get_autorest.go",
+        "method_list_autorest.go",
+        "model_userinfo.go",
+        "model_watchlist.go",
+        "model_watchlistproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/securityinsights/2022-11-01/watchlists",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/securityinsights/2022-11-01/watchlists",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+    ],
+)

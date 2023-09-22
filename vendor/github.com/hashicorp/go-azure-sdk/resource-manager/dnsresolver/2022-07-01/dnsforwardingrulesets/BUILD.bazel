@@ -1,0 +1,38 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "dnsforwardingrulesets",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_dnsforwardingruleset.go",
+        "method_createorupdate.go",
+        "method_delete.go",
+        "method_get.go",
+        "method_list.go",
+        "method_listbyresourcegroup.go",
+        "method_listbyvirtualnetwork.go",
+        "method_update.go",
+        "model_dnsforwardingruleset.go",
+        "model_dnsforwardingrulesetpatch.go",
+        "model_dnsforwardingrulesetproperties.go",
+        "model_subresource.go",
+        "model_virtualnetworkdnsforwardingruleset.go",
+        "model_virtualnetworklinksubresourceproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/dnsresolver/2022-07-01/dnsforwardingrulesets",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/dnsresolver/2022-07-01/dnsforwardingrulesets",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/pollers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

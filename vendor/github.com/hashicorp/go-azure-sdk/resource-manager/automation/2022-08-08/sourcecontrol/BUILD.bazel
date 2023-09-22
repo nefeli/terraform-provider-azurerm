@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "sourcecontrol",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_automationaccount.go",
+        "id_sourcecontrol.go",
+        "method_createorupdate.go",
+        "method_delete.go",
+        "method_get.go",
+        "method_listbyautomationaccount.go",
+        "method_update.go",
+        "model_sourcecontrol.go",
+        "model_sourcecontrolcreateorupdateparameters.go",
+        "model_sourcecontrolcreateorupdateproperties.go",
+        "model_sourcecontrolproperties.go",
+        "model_sourcecontrolsecuritytokenproperties.go",
+        "model_sourcecontrolupdateparameters.go",
+        "model_sourcecontrolupdateproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/sourcecontrol",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/sourcecontrol",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

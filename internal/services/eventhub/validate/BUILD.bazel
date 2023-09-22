@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "eventhub_archive.go",
+        "eventhub_message_retention.go",
+        "eventhub_names.go",
+        "eventhub_partition.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/eventhub/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+    ],
+)

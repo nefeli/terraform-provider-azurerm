@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "locationbasedcapabilities",
+    srcs = [
+        "client.go",
+        "id_location.go",
+        "method_list.go",
+        "model_capabilityproperties.go",
+        "model_servereditioncapability.go",
+        "model_serverversioncapability.go",
+        "model_skucapability.go",
+        "model_storageeditioncapability.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mysql/2021-05-01/locationbasedcapabilities",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/mysql/2021-05-01/locationbasedcapabilities",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

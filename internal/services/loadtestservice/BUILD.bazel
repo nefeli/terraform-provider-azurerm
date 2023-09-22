@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "loadtestservice",
+    srcs = [
+        "load_test_resource_gen.go",
+        "registration.go",
+        "registration_gen.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/loadtestservice",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/sdk",
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/identity",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/loadtestservice/2022-12-01/loadtests",
+    ],
+)
+
+go_test(
+    name = "loadtestservice_test",
+    srcs = ["load_test_resource_gen_test.go"],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/loadtestservice/2022-12-01/loadtests",
+    ],
+)

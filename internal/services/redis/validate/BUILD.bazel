@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "cache_backup_frequency.go",
+        "firewall_rule_name.go",
+        "max_memory_policy.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/redis/validate",
+    visibility = ["//:__subpackages__"],
+    deps = ["//internal/tf/validation"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "cache_backup_frequency_test.go",
+        "firewall_rule_name_test.go",
+        "max_memory_policy_test.go",
+    ],
+    embed = [":validate"],
+)

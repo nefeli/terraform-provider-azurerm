@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "localusers",
+    srcs = [
+        "client.go",
+        "id_localuser.go",
+        "id_storageaccount.go",
+        "method_createorupdate_autorest.go",
+        "method_delete_autorest.go",
+        "method_get_autorest.go",
+        "method_list_autorest.go",
+        "method_listkeys_autorest.go",
+        "method_regeneratepassword_autorest.go",
+        "model_localuser.go",
+        "model_localuserkeys.go",
+        "model_localuserproperties.go",
+        "model_localuserregeneratepasswordresult.go",
+        "model_localusers.go",
+        "model_permissionscope.go",
+        "model_sshpublickey.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/localusers",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/localusers",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+    ],
+)

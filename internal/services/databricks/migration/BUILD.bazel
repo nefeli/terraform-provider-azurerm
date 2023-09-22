@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = ["customer_managed_key.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/databricks/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/databricks/2023-02-01/workspaces",
+    ],
+)

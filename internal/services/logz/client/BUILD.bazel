@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "client",
+    srcs = ["client.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/logz/client",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/common",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logz/2020-10-01/monitors",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logz/2020-10-01/subaccount",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logz/2020-10-01/tagrules",
+    ],
+)

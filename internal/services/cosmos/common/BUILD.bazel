@@ -1,0 +1,41 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "common",
+    srcs = [
+        "autoscale_settings.go",
+        "conflict_resolution_policy.go",
+        "cors_rule.go",
+        "indexing_policy.go",
+        "ip_rules.go",
+        "schema.go",
+        "throughput.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/cosmos/common",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//internal/services/cosmos/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/suppress",
+        "//internal/tf/validation",
+        "//utils",
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/cosmos-db/mgmt/2021-10-15/documentdb",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/cosmosdb/2023-04-15/cosmosdb",
+    ],
+)
+
+go_test(
+    name = "common_test",
+    srcs = [
+        "indexing_policy_test.go",
+        "ip_rules_test.go",
+    ],
+    embed = [":common"],
+    deps = [
+        "//utils",
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/cosmos-db/mgmt/2021-10-15/documentdb",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/cosmosdb/2023-04-15/cosmosdb",
+    ],
+)

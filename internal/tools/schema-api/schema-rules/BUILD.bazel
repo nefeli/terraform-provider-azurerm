@@ -1,0 +1,34 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "schema-rules",
+    srcs = [
+        "become_computed_only.go",
+        "default_value_change.go",
+        "new_required_property.go",
+        "optional_remove_computed.go",
+        "optional_to_required.go",
+        "property_type.go",
+        "rule.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/tools/schema-api/schema-rules",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tools/schema-api/providerjson",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+    ],
+)
+
+go_test(
+    name = "schema-rules_test",
+    srcs = [
+        "become_computed_only_test.go",
+        "default_value_change_test.go",
+        "new_required_property_test.go",
+        "optional_remove_computed_test.go",
+        "optional_to_required_test.go",
+        "property_type_test.go",
+    ],
+    embed = [":schema-rules"],
+    deps = ["//internal/tools/schema-api/providerjson"],
+)

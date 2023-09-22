@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "accesspolicies",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_accesspolicy.go",
+        "id_environment.go",
+        "method_createorupdate_autorest.go",
+        "method_delete_autorest.go",
+        "method_get_autorest.go",
+        "method_listbyenvironment_autorest.go",
+        "method_update_autorest.go",
+        "model_accesspolicycreateorupdateparameters.go",
+        "model_accesspolicylistresponse.go",
+        "model_accesspolicymutableproperties.go",
+        "model_accesspolicyresource.go",
+        "model_accesspolicyresourceproperties.go",
+        "model_accesspolicyupdateparameters.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/timeseriesinsights/2020-05-15/accesspolicies",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/timeseriesinsights/2020-05-15/accesspolicies",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)

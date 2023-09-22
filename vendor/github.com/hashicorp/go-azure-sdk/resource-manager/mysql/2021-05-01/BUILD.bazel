@@ -1,0 +1,25 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "2021-05-01",
+    srcs = ["client.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mysql/2021-05-01",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/mysql/2021-05-01",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mysql/2021-05-01/backups",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mysql/2021-05-01/checknameavailability",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mysql/2021-05-01/configurations",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mysql/2021-05-01/databases",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mysql/2021-05-01/firewallrules",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mysql/2021-05-01/getprivatednszonesuffix",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mysql/2021-05-01/locationbasedcapabilities",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mysql/2021-05-01/serverfailover",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mysql/2021-05-01/serverrestart",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mysql/2021-05-01/servers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mysql/2021-05-01/serverstart",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mysql/2021-05-01/serverstop",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+    ],
+)

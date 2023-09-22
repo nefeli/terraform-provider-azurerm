@@ -1,0 +1,38 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "configurations",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_configuration.go",
+        "id_coordinatorconfiguration.go",
+        "id_nodeconfiguration.go",
+        "id_server.go",
+        "id_servergroupsv2.go",
+        "method_get_autorest.go",
+        "method_getcoordinator_autorest.go",
+        "method_getnode_autorest.go",
+        "method_listbycluster_autorest.go",
+        "method_listbyserver_autorest.go",
+        "method_updateoncoordinator_autorest.go",
+        "method_updateonnode_autorest.go",
+        "model_configuration.go",
+        "model_configurationproperties.go",
+        "model_serverconfiguration.go",
+        "model_serverconfigurationproperties.go",
+        "model_serverrolegroupconfiguration.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/postgresqlhsc/2022-11-08/configurations",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/postgresqlhsc/2022-11-08/configurations",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/polling",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+    ],
+)

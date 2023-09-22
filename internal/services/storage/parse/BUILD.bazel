@@ -1,0 +1,50 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "blob_inventory_policy.go",
+        "encryption_scope.go",
+        "object_replication.go",
+        "storage_account.go",
+        "storage_account_default_blob.go",
+        "storage_account_management_policy.go",
+        "storage_container_data_plane.go",
+        "storage_container_resource_manager.go",
+        "storage_queue_data_plane.go",
+        "storage_queue_resource_manager.go",
+        "storage_share_data_plane.go",
+        "storage_share_resource_manager.go",
+        "storage_table_data_plane.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/storage/parse",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/objectreplicationpolicies",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/blob/containers",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/file/shares",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/queue/queues",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/table/tables",
+    ],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "blob_inventory_policy_test.go",
+        "encryption_scope_test.go",
+        "object_replication_test.go",
+        "storage_account_default_blob_test.go",
+        "storage_account_management_policy_test.go",
+        "storage_account_test.go",
+        "storage_container_resource_manager_test.go",
+        "storage_queue_resource_manager_test.go",
+        "storage_share_resource_manager_test.go",
+    ],
+    embed = [":parse"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/objectreplicationpolicies",
+    ],
+)

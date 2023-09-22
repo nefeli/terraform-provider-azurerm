@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "logging",
+    srcs = [
+        "filtering.go",
+        "log.go",
+        "options.go",
+        "provider.go",
+        "sdk.go",
+        "sink.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-plugin-log/internal/logging",
+    importpath = "github.com/hashicorp/terraform-plugin-log/internal/logging",
+    visibility = ["//vendor/github.com/hashicorp/terraform-plugin-log:__subpackages__"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-hclog",
+        "//vendor/github.com/hashicorp/terraform-plugin-log/internal/fieldutils",
+        "//vendor/github.com/hashicorp/terraform-plugin-log/internal/hclogutils",
+    ],
+)

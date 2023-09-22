@@ -1,0 +1,34 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "containers",
+    srcs = [
+        "api.go",
+        "client.go",
+        "create.go",
+        "delete.go",
+        "get_properties.go",
+        "lease_acquire.go",
+        "lease_break.go",
+        "lease_change.go",
+        "lease_release.go",
+        "lease_renew.go",
+        "list_blobs.go",
+        "models.go",
+        "resource_id.go",
+        "set_acl.go",
+        "set_metadata.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/blob/containers",
+    importpath = "github.com/tombuildsstuff/giovanni/storage/2020-08-04/blob/containers",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/Azure/go-autorest/autorest/validation",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/internal/endpoints",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/internal/metadata",
+        "//vendor/github.com/tombuildsstuff/giovanni/version",
+    ],
+)

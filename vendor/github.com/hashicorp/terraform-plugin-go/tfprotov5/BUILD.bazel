@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "tfprotov5",
+    srcs = [
+        "data_source.go",
+        "diagnostic.go",
+        "doc.go",
+        "dynamic_value.go",
+        "provider.go",
+        "resource.go",
+        "schema.go",
+        "server_capabilities.go",
+        "state.go",
+        "string_kind.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-plugin-go/tfprotov5",
+    importpath = "github.com/hashicorp/terraform-plugin-go/tfprotov5",
+    visibility = ["//visibility:public"],
+    deps = ["//vendor/github.com/hashicorp/terraform-plugin-go/tftypes"],
+)

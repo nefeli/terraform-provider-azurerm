@@ -1,0 +1,11 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "project_name.go",
+        "service_name.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/databasemigration/validate",
+    visibility = ["//:__subpackages__"],
+)

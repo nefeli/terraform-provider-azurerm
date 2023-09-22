@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "endpoints",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_endpointtype.go",
+        "method_createorupdate_autorest.go",
+        "method_delete_autorest.go",
+        "method_get_autorest.go",
+        "method_update_autorest.go",
+        "model_deleteoperationresult.go",
+        "model_endpoint.go",
+        "model_endpointproperties.go",
+        "model_endpointpropertiescustomheadersinlined.go",
+        "model_endpointpropertiessubnetsinlined.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/trafficmanager/2018-08-01/endpoints",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/trafficmanager/2018-08-01/endpoints",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)

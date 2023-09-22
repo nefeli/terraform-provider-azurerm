@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "attestation_provider_name.go",
+        "is_cert.go",
+        "stored_attestation_policy_base64.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/attestation/validate",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/tombuildsstuff/kermit/sdk/attestation/2022-08-01/attestation"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = ["stored_attestation_policy_base64_test.go"],
+    embed = [":validate"],
+    deps = ["//vendor/github.com/golang-jwt/jwt/v4:jwt"],
+)

@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "data_factory_v0_to_v1.go",
+        "data_factory_v1_to_v2.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/datafactory/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/datafactory/2018-06-01/factories",
+    ],
+)
+
+go_test(
+    name = "migration_test",
+    srcs = ["data_factory_v1_to_v2_test.go"],
+    embed = [":migration"],
+)

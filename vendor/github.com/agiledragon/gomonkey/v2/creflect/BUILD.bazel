@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "creflect",
+    srcs = [
+        "ae1.17.go",
+        "be1.16.go",
+        "type.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/agiledragon/gomonkey/v2/creflect",
+    importpath = "github.com/agiledragon/gomonkey/v2/creflect",
+    visibility = ["//visibility:public"],
+)

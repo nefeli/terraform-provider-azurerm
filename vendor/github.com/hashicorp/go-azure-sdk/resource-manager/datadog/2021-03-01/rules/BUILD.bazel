@@ -1,0 +1,32 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "rules",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_monitor.go",
+        "id_tagrule.go",
+        "method_tagrulescreateorupdate.go",
+        "method_tagrulesget.go",
+        "method_tagruleslist.go",
+        "model_filteringtag.go",
+        "model_logrules.go",
+        "model_metricrules.go",
+        "model_monitoringtagrules.go",
+        "model_monitoringtagrulesproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/datadog/2021-03-01/rules",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/datadog/2021-03-01/rules",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

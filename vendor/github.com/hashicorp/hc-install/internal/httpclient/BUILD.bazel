@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "httpclient",
+    srcs = ["httpclient.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/hc-install/internal/httpclient",
+    importpath = "github.com/hashicorp/hc-install/internal/httpclient",
+    visibility = ["//vendor/github.com/hashicorp/hc-install:__subpackages__"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-cleanhttp",
+        "//vendor/github.com/hashicorp/hc-install/version",
+    ],
+)

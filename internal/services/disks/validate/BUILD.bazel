@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "disk_pool_managed_disk_attachment.go",
+        "disk_pool_name.go",
+        "disk_pool_sku.go",
+        "iscsi_qualified_name.go",
+        "iscsi_target_lun.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/disks/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/disks/parse",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "disk_pool_managed_disk_attachment_test.go",
+        "iscsi_qualified_name_test.go",
+    ],
+    embed = [":validate"],
+)

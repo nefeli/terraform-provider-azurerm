@@ -1,0 +1,37 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "files",
+    srcs = [
+        "api.go",
+        "client.go",
+        "copy.go",
+        "copy_abort.go",
+        "copy_wait.go",
+        "create.go",
+        "delete.go",
+        "metadata_get.go",
+        "metadata_set.go",
+        "properties_get.go",
+        "properties_set.go",
+        "range_clear.go",
+        "range_get.go",
+        "range_get_file.go",
+        "range_put.go",
+        "range_put_file.go",
+        "ranges_list.go",
+        "resource_id.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/file/files",
+    importpath = "github.com/tombuildsstuff/giovanni/storage/2020-08-04/file/files",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/Azure/go-autorest/autorest/validation",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/internal/endpoints",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/internal/metadata",
+        "//vendor/github.com/tombuildsstuff/giovanni/version",
+    ],
+)

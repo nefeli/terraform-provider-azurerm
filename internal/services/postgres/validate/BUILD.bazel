@@ -1,0 +1,38 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "admin_usernames.go",
+        "azure_active_directory_administrator_id.go",
+        "database_charset.go",
+        "database_collation.go",
+        "flexible_server_database_name.go",
+        "flexible_server_firewall_rule_name.go",
+        "flexible_server_name.go",
+        "flexible_server_sku_name.go",
+        "server_name.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/postgres/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/validate",
+        "//internal/services/postgres/parse",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "admin_usernames_test.go",
+        "azure_active_directory_administrator_id_test.go",
+        "database_charset_test.go",
+        "database_collation_test.go",
+        "flexible_server_database_name_test.go",
+        "flexible_server_firewall_rule_name_test.go",
+        "flexible_server_name_test.go",
+        "flexible_server_sku_name_test.go",
+        "server_name_test.go",
+    ],
+    embed = [":validate"],
+)

@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "checkpoint",
+    srcs = ["latest_version.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/hc-install/checkpoint",
+    importpath = "github.com/hashicorp/hc-install/checkpoint",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-checkpoint",
+        "//vendor/github.com/hashicorp/go-version",
+        "//vendor/github.com/hashicorp/hc-install/internal/pubkey",
+        "//vendor/github.com/hashicorp/hc-install/internal/releasesjson",
+        "//vendor/github.com/hashicorp/hc-install/internal/src",
+        "//vendor/github.com/hashicorp/hc-install/internal/validators",
+        "//vendor/github.com/hashicorp/hc-install/product",
+    ],
+)

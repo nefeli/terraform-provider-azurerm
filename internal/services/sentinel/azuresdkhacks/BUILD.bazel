@@ -1,0 +1,24 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "azuresdkhacks",
+    srcs = [
+        "dataconnectors.go",
+        "models.go",
+        "securitymlanalyticssettings.go",
+        "securitymlanalyticssettings_models.go",
+        "threat_intelligence_indicator_models.go",
+        "threatintelligenceindicator.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/sentinel/azuresdkhacks",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/Azure/go-autorest/autorest/date",
+        "//vendor/github.com/Azure/go-autorest/autorest/to",
+        "//vendor/github.com/Azure/go-autorest/autorest/validation",
+        "//vendor/github.com/gofrs/uuid",
+        "//vendor/github.com/tombuildsstuff/kermit/sdk/securityinsights/2022-10-01-preview/securityinsights",
+    ],
+)

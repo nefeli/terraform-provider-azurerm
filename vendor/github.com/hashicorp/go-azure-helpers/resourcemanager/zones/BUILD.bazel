@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "zones",
+    srcs = [
+        "expand.go",
+        "flatten.go",
+        "schema.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/zones",
+    importpath = "github.com/hashicorp/go-azure-helpers/resourcemanager/zones",
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "schema",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_schema.go",
+        "id_service.go",
+        "method_globalschemacreateorupdate_autorest.go",
+        "method_globalschemadelete_autorest.go",
+        "method_globalschemaget_autorest.go",
+        "method_globalschemagetentitytag_autorest.go",
+        "method_globalschemalistbyservice_autorest.go",
+        "model_globalschemacontract.go",
+        "model_globalschemacontractproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/apimanagement/2021-08-01/schema",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/apimanagement/2021-08-01/schema",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/polling",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)

@@ -1,0 +1,37 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "assessment_metadata_id.go",
+        "auto_provisioning_setting_id.go",
+        "automation_id.go",
+        "contact_id.go",
+        "iot_security_solution_id.go",
+        "iot_security_solution_name.go",
+        "pricing_id.go",
+        "setting_id.go",
+        "vulnerability_assessment_vm_id.go",
+        "workspace_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/securitycenter/validate",
+    visibility = ["//:__subpackages__"],
+    deps = ["//internal/services/securitycenter/parse"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "assessment_metadata_id_test.go",
+        "auto_provisioning_setting_id_test.go",
+        "automation_id_test.go",
+        "contact_id_test.go",
+        "iot_security_solution_id_test.go",
+        "iot_security_solution_name_test.go",
+        "pricing_id_test.go",
+        "setting_id_test.go",
+        "vulnerability_assessment_vm_id_test.go",
+        "workspace_id_test.go",
+    ],
+    embed = [":validate"],
+)

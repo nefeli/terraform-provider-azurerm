@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "database_v0_to_v1.go",
+        "server_transparent_data_encryption_v0_to_v1.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/mssql/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tags",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/suppress",
+    ],
+)

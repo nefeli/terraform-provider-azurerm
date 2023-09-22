@@ -33,7 +33,7 @@ website/vendor
 .vscode/
 
 # mkdocs output
-site/
+/site/
 
 # Test exclusions
 !command/test-fixtures/**/*.tfstate
@@ -53,3 +53,7 @@ tf.zip
 
 # do not upload secrets
 .env
+
+# bazel
+/bazel-*
+

@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "client",
+    srcs = ["client.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/batch/client",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/common",
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/batch/2023-05-01/application",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/batch/2023-05-01/batchaccount",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/batch/2023-05-01/certificate",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/batch/2023-05-01/pool",
+        "//vendor/github.com/tombuildsstuff/kermit/sdk/batch/2022-01.15.0/batch",
+    ],
+)

@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "replicationvaultsetting",
+    srcs = [
+        "client.go",
+        "id_replicationvaultsetting.go",
+        "id_vault.go",
+        "method_create_autorest.go",
+        "method_get_autorest.go",
+        "method_list_autorest.go",
+        "model_vaultsetting.go",
+        "model_vaultsettingcreationinput.go",
+        "model_vaultsettingcreationinputproperties.go",
+        "model_vaultsettingproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/recoveryservicessiterecovery/2022-10-01/replicationvaultsetting",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/recoveryservicessiterecovery/2022-10-01/replicationvaultsetting",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/polling",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)

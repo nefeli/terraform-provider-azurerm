@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "vnetpeering",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_virtualnetworkpeering.go",
+        "id_workspace.go",
+        "method_createorupdate.go",
+        "method_delete.go",
+        "method_get.go",
+        "method_listbyworkspace.go",
+        "model_addressspace.go",
+        "model_virtualnetworkpeering.go",
+        "model_virtualnetworkpeeringpropertiesformat.go",
+        "model_virtualnetworkpeeringpropertiesformatdatabricksvirtualnetwork.go",
+        "model_virtualnetworkpeeringpropertiesformatremotevirtualnetwork.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/databricks/2023-02-01/vnetpeering",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/databricks/2023-02-01/vnetpeering",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/pollers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

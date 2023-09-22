@@ -1,0 +1,40 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "consumer_group.go",
+        "endpoint_eventhub.go",
+        "endpoint_service_bus_queue.go",
+        "endpoint_service_bus_topic.go",
+        "endpoint_storage_container.go",
+        "enrichment.go",
+        "fallback_route.go",
+        "iot_hub.go",
+        "iot_hub_certificate.go",
+        "route.go",
+        "shared_access_policy.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/iothub/parse",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "consumer_group_test.go",
+        "endpoint_eventhub_test.go",
+        "endpoint_service_bus_queue_test.go",
+        "endpoint_service_bus_topic_test.go",
+        "endpoint_storage_container_test.go",
+        "enrichment_test.go",
+        "fallback_route_test.go",
+        "iot_hub_certificate_test.go",
+        "iot_hub_test.go",
+        "route_test.go",
+        "shared_access_policy_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

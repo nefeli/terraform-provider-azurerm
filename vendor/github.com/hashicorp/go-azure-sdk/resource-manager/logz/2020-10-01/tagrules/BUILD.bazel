@@ -1,0 +1,38 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "tagrules",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_account.go",
+        "id_accounttagrule.go",
+        "id_monitor.go",
+        "id_tagrule.go",
+        "method_createorupdate.go",
+        "method_delete.go",
+        "method_get.go",
+        "method_list.go",
+        "method_subaccounttagrulescreateorupdate.go",
+        "method_subaccounttagrulesdelete.go",
+        "method_subaccounttagrulesget.go",
+        "method_subaccounttagruleslist.go",
+        "model_filteringtag.go",
+        "model_logrules.go",
+        "model_monitoringtagrules.go",
+        "model_monitoringtagrulesproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logz/2020-10-01/tagrules",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/logz/2020-10-01/tagrules",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

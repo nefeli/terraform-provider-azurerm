@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "locks",
+    srcs = [
+        "arrays.go",
+        "lock.go",
+        "mutexkv.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/locks",
+    visibility = ["//:__subpackages__"],
+)
+
+go_test(
+    name = "locks_test",
+    srcs = ["arrays_test.go"],
+    embed = [":locks"],
+)

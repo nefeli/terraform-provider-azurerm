@@ -1,0 +1,53 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "consumer_group_id.go",
+        "endpoint_eventhub_id.go",
+        "endpoint_service_bus_queue_id.go",
+        "endpoint_service_bus_topic_id.go",
+        "endpoint_storage_container_id.go",
+        "enrichment_id.go",
+        "fallback_route_id.go",
+        "file_name_format.go",
+        "iot_hub_certificate_id.go",
+        "iot_hub_consumer_group.go",
+        "iot_hub_device_update_account_name.go",
+        "iot_hub_device_update_instance_name.go",
+        "iot_hub_dps_certificate_name.go",
+        "iot_hub_endpoint_name.go",
+        "iot_hub_id.go",
+        "iot_hub_name.go",
+        "iot_hub_shared_access_policy_name.go",
+        "iothub_ip_rule_name.go",
+        "route_id.go",
+        "shared_access_policy_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/iothub/validate",
+    visibility = ["//:__subpackages__"],
+    deps = ["//internal/services/iothub/parse"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "consumer_group_id_test.go",
+        "endpoint_eventhub_id_test.go",
+        "endpoint_service_bus_queue_id_test.go",
+        "endpoint_service_bus_topic_id_test.go",
+        "endpoint_storage_container_id_test.go",
+        "enrichment_id_test.go",
+        "fallback_route_id_test.go",
+        "iot_hub_certificate_id_test.go",
+        "iot_hub_consumer_group_test.go",
+        "iot_hub_device_update_account_name_test.go",
+        "iot_hub_device_update_instance_name_test.go",
+        "iot_hub_dps_certificate_name_test.go",
+        "iot_hub_id_test.go",
+        "iot_hub_name_test.go",
+        "route_id_test.go",
+        "shared_access_policy_id_test.go",
+    ],
+    embed = [":validate"],
+)

@@ -1,0 +1,32 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "helper",
+    srcs = [
+        "database.go",
+        "elasticpool.go",
+        "sku.go",
+        "sql_extended_auditing.go",
+        "sql_retention_policies.go",
+        "sql_virtual_machine_storage_settings.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/mssql/helper",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/validate",
+        "//internal/services/mssql/parse",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//utils",
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/preview/sql/mgmt/v5.0/sql",
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2020-06-01/resources",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+    ],
+)
+
+go_test(
+    name = "helper_test",
+    srcs = ["mssql_test.go"],
+    embed = [":helper"],
+    deps = ["//internal/services/mssql/validate"],
+)

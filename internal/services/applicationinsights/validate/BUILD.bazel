@@ -1,0 +1,34 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "analytics_shared_item_id.go",
+        "analytics_user_item_id.go",
+        "api_key_id.go",
+        "component_id.go",
+        "smart_detection_rule_id.go",
+        "web_test_id.go",
+        "workbook_name.go",
+        "workbook_tags.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/applicationinsights/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/applicationinsights/parse",
+        "//internal/tags",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "analytics_shared_item_id_test.go",
+        "analytics_user_item_id_test.go",
+        "api_key_id_test.go",
+        "component_id_test.go",
+        "smart_detection_rule_id_test.go",
+        "web_test_id_test.go",
+    ],
+    embed = [":validate"],
+)

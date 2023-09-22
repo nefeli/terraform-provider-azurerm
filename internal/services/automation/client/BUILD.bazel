@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "client",
+    srcs = ["client.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/automation/client",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/common",
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/preview/automation/mgmt/2020-01-13-preview/automation",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2015-10-31/webhook",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2019-06-01/runbook",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2019-06-01/softwareupdateconfiguration",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2020-01-13-preview/dscnodeconfiguration",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2020-01-13-preview/watcher",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2021-06-22/hybridrunbookworkergroup",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/automationaccount",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/certificate",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/connection",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/connectiontype",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/credential",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/dscconfiguration",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/hybridrunbookworker",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/jobschedule",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/module",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/runbook",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/schedule",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/sourcecontrol",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/variable",
+    ],
+)

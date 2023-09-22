@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "domain.go",
+        "domain_topic.go",
+        "event_subscription.go",
+        "system_topic.go",
+        "system_topic_event_subscription.go",
+        "topic.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/eventgrid/parse",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "domain_test.go",
+        "domain_topic_test.go",
+        "event_subscription_test.go",
+        "system_topic_event_subscription_test.go",
+        "system_topic_test.go",
+        "topic_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

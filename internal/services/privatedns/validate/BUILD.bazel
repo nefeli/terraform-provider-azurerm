@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = ["private_dns_zone_soa_record_email.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/privatedns/validate",
+    visibility = ["//:__subpackages__"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = ["private_dns_zone_soa_record_email_test.go"],
+    embed = [":validate"],
+)

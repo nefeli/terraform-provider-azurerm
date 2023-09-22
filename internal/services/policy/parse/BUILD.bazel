@@ -1,0 +1,50 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "assignment.go",
+        "definition.go",
+        "management_group_assignment.go",
+        "remediation.go",
+        "resource_group_assignment.go",
+        "resource_group_policy_exemption.go",
+        "resource_group_policy_remediation.go",
+        "resource_policy_exemption.go",
+        "resource_policy_remediation.go",
+        "scope.go",
+        "set_definition.go",
+        "subscription_assignment.go",
+        "subscription_policy_exemption.go",
+        "subscription_policy_remediation.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/policy/parse",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//internal/services/managementgroup/parse",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "assignment_test.go",
+        "definition_test.go",
+        "management_group_assignment_test.go",
+        "remediation_test.go",
+        "resource_group_assignment_test.go",
+        "resource_group_policy_exemption_test.go",
+        "resource_group_policy_remediation_test.go",
+        "resource_policy_exemption_test.go",
+        "resource_policy_remediation_test.go",
+        "scope_test.go",
+        "set_definition_test.go",
+        "subscription_assignment_test.go",
+        "subscription_policy_exemption_test.go",
+        "subscription_policy_remediation_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

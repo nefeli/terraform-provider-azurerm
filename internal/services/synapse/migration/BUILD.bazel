@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "role_assignment_v0_to_v1.go",
+        "synapse_integration_runtime_azure_migration_v0_to_v1.go",
+        "synapse_integration_runtime_self_hosted_migration_v0_to_v1.go",
+        "synapse_linked_service_migration_v0_to_v1.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/synapse/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/synapse/parse",
+        "//internal/tf/pluginsdk",
+    ],
+)

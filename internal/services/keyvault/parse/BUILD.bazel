@@ -1,0 +1,46 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "access_policy.go",
+        "access_policy_application.go",
+        "access_policy_object.go",
+        "certificate.go",
+        "certificate_contacts.go",
+        "certificate_issuer.go",
+        "certificate_versionless.go",
+        "key.go",
+        "key_versionless.go",
+        "nested_item.go",
+        "nested_key.go",
+        "sas_definition.go",
+        "secret.go",
+        "secret_versionless.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/keyvault/parse",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "access_policy_application_test.go",
+        "access_policy_object_test.go",
+        "certificate_contacts_test.go",
+        "certificate_test.go",
+        "certificate_versionless_test.go",
+        "key_test.go",
+        "key_versionless_test.go",
+        "nested_item_test.go",
+        "secret_test.go",
+        "secret_versionless_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

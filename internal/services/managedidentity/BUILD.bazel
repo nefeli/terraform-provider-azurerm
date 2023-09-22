@@ -1,0 +1,50 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "managedidentity",
+    srcs = [
+        "federated_identity_credential_resource.go",
+        "registration.go",
+        "registration_gen.go",
+        "user_assigned_identity_data_source.go",
+        "user_assigned_identity_resource.go",
+        "user_assigned_identity_resource_gen.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/managedidentity",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/clients",
+        "//internal/locks",
+        "//internal/sdk",
+        "//internal/services/managedidentity/migration",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/managedidentity/2023-01-31/managedidentities",
+    ],
+)
+
+go_test(
+    name = "managedidentity_test",
+    srcs = [
+        "federated_identity_credential_resource_test.go",
+        "user_assigned_identity_data_source_test.go",
+        "user_assigned_identity_resource_gen_test.go",
+    ],
+    deps = [
+        "//helpers/azure",
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/managedidentity/2023-01-31/managedidentities",
+    ],
+)

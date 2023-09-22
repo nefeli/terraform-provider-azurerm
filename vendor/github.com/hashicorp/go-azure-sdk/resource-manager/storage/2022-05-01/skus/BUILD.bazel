@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "skus",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "method_list_autorest.go",
+        "model_restriction.go",
+        "model_skucapability.go",
+        "model_skuinformation.go",
+        "model_storageskulistresult.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/skus",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/skus",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+    ],
+)

@@ -1,0 +1,25 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "access_connector_name.go",
+        "cidr.go",
+        "databricks_virtual_network_peering_name.go",
+        "workspace_name.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/databricks/validate",
+    visibility = ["//:__subpackages__"],
+    deps = ["//helpers/validate"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "access_connector_name_test.go",
+        "cidr_test.go",
+        "databricks_virtual_network_peering_name_test.go",
+        "workspace_name_test.go",
+    ],
+    embed = [":validate"],
+)

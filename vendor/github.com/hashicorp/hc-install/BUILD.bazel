@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "hc-install",
+    srcs = ["installer.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/hc-install",
+    importpath = "github.com/hashicorp/hc-install",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-multierror",
+        "//vendor/github.com/hashicorp/hc-install/errors",
+        "//vendor/github.com/hashicorp/hc-install/src",
+    ],
+)

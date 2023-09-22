@@ -1,0 +1,34 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "sourcecontrol",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_automationaccount.go",
+        "id_sourcecontrol.go",
+        "method_createorupdate_autorest.go",
+        "method_delete_autorest.go",
+        "method_get_autorest.go",
+        "method_listbyautomationaccount_autorest.go",
+        "method_update_autorest.go",
+        "model_sourcecontrol.go",
+        "model_sourcecontrolcreateorupdateparameters.go",
+        "model_sourcecontrolcreateorupdateproperties.go",
+        "model_sourcecontrolproperties.go",
+        "model_sourcecontrolsecuritytokenproperties.go",
+        "model_sourcecontrolupdateparameters.go",
+        "model_sourcecontrolupdateproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2020-01-13-preview/sourcecontrol",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/automation/2020-01-13-preview/sourcecontrol",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)

@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = ["legacy_vmss_v0_to_v1.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/legacy/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+    ],
+)

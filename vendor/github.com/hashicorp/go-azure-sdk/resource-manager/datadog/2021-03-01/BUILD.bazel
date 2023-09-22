@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "2021-03-01",
+    srcs = ["client.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/datadog/2021-03-01",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/datadog/2021-03-01",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/datadog/2021-03-01/agreements",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/datadog/2021-03-01/apikey",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/datadog/2021-03-01/hosts",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/datadog/2021-03-01/linkedresources",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/datadog/2021-03-01/monitoredresources",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/datadog/2021-03-01/monitorsresource",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/datadog/2021-03-01/refreshsetpasswordlink",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/datadog/2021-03-01/rules",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/datadog/2021-03-01/singlesignon",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+    ],
+)

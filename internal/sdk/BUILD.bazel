@@ -1,0 +1,48 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "sdk",
+    srcs = [
+        "logger.go",
+        "logger_console.go",
+        "logger_diagnostics.go",
+        "logger_null.go",
+        "resource.go",
+        "resource_decode.go",
+        "resource_encode.go",
+        "resource_id.go",
+        "service_registration.go",
+        "wrapper_data_source.go",
+        "wrapper_helpers.go",
+        "wrapper_resource.go",
+        "wrapper_validate.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/sdk",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/tf",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/diag",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)
+
+go_test(
+    name = "sdk_test",
+    srcs = [
+        "plugin_sdk_test.go",
+        "resource_decode_test.go",
+        "resource_encode_test.go",
+        "resource_test.go",
+        "wrapper_validate_test.go",
+    ],
+    embed = [":sdk"],
+    deps = [
+        "//vendor/github.com/google/go-cmp/cmp",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+        "//vendor/github.com/hashicorp/terraform-plugin-testing/helper/resource",
+        "//vendor/github.com/hashicorp/terraform-plugin-testing/terraform",
+    ],
+)

@@ -1,0 +1,53 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "domainservices",
+    srcs = [
+        "active_directory_domain_service_data_source.go",
+        "active_directory_domain_service_replica_set_resource.go",
+        "active_directory_domain_service_resource.go",
+        "active_directory_domain_service_trust_resource.go",
+        "registration.go",
+        "resourceids.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/domainservices",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/tf",
+        "//helpers/validate",
+        "//internal/clients",
+        "//internal/locks",
+        "//internal/sdk",
+        "//internal/services/domainservices/parse",
+        "//internal/services/domainservices/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/aad/2021-05-01/domainservices",
+    ],
+)
+
+go_test(
+    name = "domainservices_test",
+    srcs = [
+        "active_directory_domain_service_test.go",
+        "active_directory_domain_service_trust_resource_test.go",
+    ],
+    deps = [
+        "//helpers/azure",
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/services/domainservices/parse",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/aad/2021-05-01/domainservices",
+    ],
+)

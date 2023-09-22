@@ -1,0 +1,45 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "action_group.go",
+        "activity_log_alert.go",
+        "autoscale_setting.go",
+        "autoscale_setting_v1_to_v2.go",
+        "log_profile.go",
+        "metric_alert.go",
+        "scheduled_query_rules_alert.go",
+        "scheduled_query_rules_log.go",
+        "smart_detector_alert_rule_migration_v0_to_v1.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/monitor/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/monitor/parse",
+        "//internal/tags",
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/insights/2016-03-01/logprofiles",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/insights/2018-03-01/metricalerts",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/insights/2018-04-16/scheduledqueryrules",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/insights/2020-10-01/activitylogalertsapis",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/insights/2022-10-01/autoscalesettings",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)
+
+go_test(
+    name = "migration_test",
+    srcs = [
+        "action_group_test.go",
+        "activity_log_alert_test.go",
+        "autoscale_setting_test.go",
+        "log_profile_test.go",
+        "metric_alert_test.go",
+        "scheduled_query_rules_alert_test.go",
+        "scheduled_query_rules_log_test.go",
+    ],
+    embed = [":migration"],
+    deps = ["//utils"],
+)

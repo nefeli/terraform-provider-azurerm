@@ -1,0 +1,34 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "azure_active_directory_administrator.go",
+        "configuration.go",
+        "database.go",
+        "firewall_rule.go",
+        "flexible_server_azure_active_directory_administrator.go",
+        "key.go",
+        "server.go",
+        "virtual_network_rule.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/mysql/parse",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "azure_active_directory_administrator_test.go",
+        "configuration_test.go",
+        "database_test.go",
+        "firewall_rule_test.go",
+        "flexible_server_azure_active_directory_administrator_test.go",
+        "key_test.go",
+        "server_test.go",
+        "virtual_network_rule_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

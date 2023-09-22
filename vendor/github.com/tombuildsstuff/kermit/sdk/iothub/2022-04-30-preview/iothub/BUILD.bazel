@@ -1,0 +1,30 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "iothub",
+    srcs = [
+        "certificates.go",
+        "client.go",
+        "enums.go",
+        "iothub.go",
+        "iothubresource.go",
+        "models.go",
+        "operations.go",
+        "privateendpointconnections.go",
+        "privatelinkresources.go",
+        "resourceprovidercommon.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/tombuildsstuff/kermit/sdk/iothub/2022-04-30-preview/iothub",
+    importpath = "github.com/tombuildsstuff/kermit/sdk/iothub/2022-04-30-preview/iothub",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/Azure/go-autorest/autorest/date",
+        "//vendor/github.com/Azure/go-autorest/autorest/to",
+        "//vendor/github.com/Azure/go-autorest/autorest/validation",
+        "//vendor/github.com/Azure/go-autorest/tracing",
+        "//vendor/github.com/tombuildsstuff/kermit/version",
+    ],
+)

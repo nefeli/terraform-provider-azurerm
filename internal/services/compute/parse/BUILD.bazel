@@ -1,0 +1,52 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "community_gallery_image.go",
+        "community_gallery_image_version.go",
+        "data_disk.go",
+        "disk_encryption_set.go",
+        "host_group.go",
+        "hybrid_machine.go",
+        "plan.go",
+        "shared_gallery_image.go",
+        "shared_gallery_image_version.go",
+        "shared_image.go",
+        "shared_image_version.go",
+        "ssh_public_key.go",
+        "virtual_machine.go",
+        "virtual_machine_extension.go",
+        "virtual_machine_scale_set.go",
+        "virtual_machine_scale_set_extension.go",
+        "vmss_instance.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/compute/parse",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "community_gallery_image_test.go",
+        "community_gallery_image_version_test.go",
+        "data_disk_test.go",
+        "disk_encryption_set_test.go",
+        "host_group_test.go",
+        "hybrid_machine_test.go",
+        "plan_test.go",
+        "shared_gallery_image_test.go",
+        "shared_gallery_image_version_test.go",
+        "shared_image_test.go",
+        "shared_image_version_test.go",
+        "ssh_public_key_test.go",
+        "virtual_machine_extension_test.go",
+        "virtual_machine_scale_set_extension_test.go",
+        "virtual_machine_scale_set_test.go",
+        "virtual_machine_test.go",
+        "vmss_instance_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

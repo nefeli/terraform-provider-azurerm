@@ -1,0 +1,25 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "logging",
+    srcs = [
+        "context.go",
+        "doc.go",
+        "environment_variables.go",
+        "keys.go",
+        "protocol.go",
+        "protocol_data.go",
+        "provider.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-plugin-go/internal/logging",
+    importpath = "github.com/hashicorp/terraform-plugin-go/internal/logging",
+    visibility = ["//vendor/github.com/hashicorp/terraform-plugin-go:__subpackages__"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-uuid",
+        "//vendor/github.com/hashicorp/terraform-plugin-go/tfprotov5",
+        "//vendor/github.com/hashicorp/terraform-plugin-go/tfprotov6",
+        "//vendor/github.com/hashicorp/terraform-plugin-log/tflog",
+        "//vendor/github.com/hashicorp/terraform-plugin-log/tfsdklog",
+        "//vendor/github.com/hashicorp/terraform-registry-address",
+    ],
+)

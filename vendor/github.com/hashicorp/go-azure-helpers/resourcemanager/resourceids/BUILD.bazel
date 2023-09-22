@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "resourceids",
+    srcs = [
+        "error_number_of_segments_didnt_match.go",
+        "error_segment_not_specified.go",
+        "errors.go",
+        "interface.go",
+        "legacy.go",
+        "parse.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    importpath = "github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    visibility = ["//visibility:public"],
+)

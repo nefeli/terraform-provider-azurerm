@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "convert",
+    srcs = [
+        "diagnostics.go",
+        "schema.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-plugin-sdk/v2/internal/plugin/convert",
+    importpath = "github.com/hashicorp/terraform-plugin-sdk/v2/internal/plugin/convert",
+    visibility = ["//vendor/github.com/hashicorp/terraform-plugin-sdk/v2:__subpackages__"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-cty/cty",
+        "//vendor/github.com/hashicorp/terraform-plugin-go/tfprotov5",
+        "//vendor/github.com/hashicorp/terraform-plugin-go/tftypes",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/diag",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/internal/configs/configschema",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/internal/logging",
+    ],
+)

@@ -1,0 +1,8 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "validate",
+    srcs = ["custom_provider_name.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/customproviders/validate",
+    visibility = ["//:__subpackages__"],
+)

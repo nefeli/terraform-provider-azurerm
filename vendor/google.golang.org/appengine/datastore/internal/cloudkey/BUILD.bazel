@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "cloudkey",
+    srcs = ["cloudkey.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/google.golang.org/appengine/datastore/internal/cloudkey",
+    importpath = "google.golang.org/appengine/datastore/internal/cloudkey",
+    visibility = ["//vendor/google.golang.org/appengine/datastore:__subpackages__"],
+    deps = [
+        "//vendor/github.com/golang/protobuf/proto",
+        "//vendor/google.golang.org/appengine/datastore/internal/cloudpb",
+    ],
+)

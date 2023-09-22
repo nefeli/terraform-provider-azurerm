@@ -1,0 +1,37 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "anomaly_alert_view.go",
+        "billing_account_cost_management_export.go",
+        "cost_management_export.go",
+        "cost_management_export_resource_group.go",
+        "resource_group_cost_management_export.go",
+        "resource_group_cost_management_view.go",
+        "subscription_cost_management_export.go",
+        "subscription_cost_management_view.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/costmanagement/parse",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "anomaly_alert_view_test.go",
+        "billing_account_cost_management_export_test.go",
+        "cost_management_export_resource_group_test.go",
+        "cost_management_export_test.go",
+        "resource_group_cost_management_export_test.go",
+        "resource_group_cost_management_view_test.go",
+        "subscription_cost_management_export_test.go",
+        "subscription_cost_management_view_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

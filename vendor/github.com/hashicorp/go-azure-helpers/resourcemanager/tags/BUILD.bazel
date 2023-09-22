@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "tags",
+    srcs = [
+        "expand.go",
+        "flatten.go",
+        "validate.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+    importpath = "github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+    visibility = ["//visibility:public"],
+    deps = ["//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"],
+)

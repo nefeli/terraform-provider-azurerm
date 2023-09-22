@@ -1,0 +1,30 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "pluginsdk",
+    srcs = [
+        "customize_diff.go",
+        "explicitly_null_config.go",
+        "hashstring.go",
+        "imports.go",
+        "resource.go",
+        "retries.go",
+        "schema.go",
+        "shim.go",
+        "state_upgrades.go",
+        "structure.go",
+        "tests.go",
+        "timeouts.go",
+        "types.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/tf/pluginsdk",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-multierror",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/customdiff",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/structure",
+        "//vendor/github.com/hashicorp/terraform-plugin-testing/helper/resource",
+        "//vendor/github.com/hashicorp/terraform-plugin-testing/terraform",
+    ],
+)

@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "auth",
+    srcs = [
+        "auth.go",
+        "azure_cli_authorizer.go",
+        "cached_authorizer.go",
+        "client.go",
+        "client_certificate_authorizer.go",
+        "client_credentials.go",
+        "client_secret_authorizer.go",
+        "config.go",
+        "github_oidc_authorizer.go",
+        "interface.go",
+        "managed_identity_authorizer.go",
+        "oidc_authorizer.go",
+        "shared_key_authorizer.go",
+        "token.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/sdk/auth",
+    importpath = "github.com/hashicorp/go-azure-sdk/sdk/auth",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/claims",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/internal/azurecli",
+        "//vendor/github.com/hashicorp/go-retryablehttp",
+        "//vendor/github.com/hashicorp/go-uuid",
+        "//vendor/golang.org/x/oauth2",
+        "//vendor/software.sslmate.com/src/go-pkcs12",
+    ],
+)

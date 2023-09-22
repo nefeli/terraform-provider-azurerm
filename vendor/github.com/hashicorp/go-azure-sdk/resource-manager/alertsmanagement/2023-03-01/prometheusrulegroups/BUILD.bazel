@@ -1,0 +1,34 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "prometheusrulegroups",
+    srcs = [
+        "client.go",
+        "id_prometheusrulegroup.go",
+        "method_createorupdate_autorest.go",
+        "method_delete_autorest.go",
+        "method_get_autorest.go",
+        "method_listbyresourcegroup_autorest.go",
+        "method_listbysubscription_autorest.go",
+        "method_update_autorest.go",
+        "model_prometheusrule.go",
+        "model_prometheusrulegroupaction.go",
+        "model_prometheusrulegroupproperties.go",
+        "model_prometheusrulegroupresource.go",
+        "model_prometheusrulegroupresourcecollection.go",
+        "model_prometheusrulegroupresourcepatchparameters.go",
+        "model_prometheusrulegroupresourcepatchparametersproperties.go",
+        "model_prometheusruleresolveconfiguration.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/alertsmanagement/2023-03-01/prometheusrulegroups",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/alertsmanagement/2023-03-01/prometheusrulegroups",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+    ],
+)

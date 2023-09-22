@@ -1,0 +1,40 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "account_name.go",
+        "pool_name.go",
+        "snapshot_name.go",
+        "volume_group_sap_hana_volumes_export_policy_validation.go",
+        "volume_group_sap_hana_volumes_validation.go",
+        "volume_grupo_name.go",
+        "volume_name.go",
+        "volume_path.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/netapp/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/netapp/2022-05-01/volumegroups",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "snapshot_name_test.go",
+        "volume_group_name_test.go",
+        "volume_group_sap_hana_volumes_export_policy_validation_test.go",
+        "volume_group_sap_hana_volumes_validation_test.go",
+        "volume_name_test.go",
+        "volume_path_test.go",
+    ],
+    embed = [":validate"],
+    deps = [
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/netapp/2022-05-01/volumegroups",
+    ],
+)

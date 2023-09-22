@@ -1,0 +1,46 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "managementgroup",
+    srcs = [
+        "management_group_data_source.go",
+        "management_group_resource.go",
+        "registration.go",
+        "subscription_association_resource.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/managementgroup",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/tf",
+        "//internal/clients",
+        "//internal/sdk",
+        "//internal/services/managementgroup/parse",
+        "//internal/services/managementgroup/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2020-05-01/managementgroups",
+        "//vendor/github.com/google/uuid",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+    ],
+)
+
+go_test(
+    name = "managementgroup_test",
+    srcs = [
+        "management_group_data_source_test.go",
+        "management_group_resource_test.go",
+        "subscription_association_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/services/managementgroup/parse",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2020-05-01/managementgroups",
+    ],
+)

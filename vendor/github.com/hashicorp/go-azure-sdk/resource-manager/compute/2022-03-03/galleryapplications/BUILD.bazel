@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "galleryapplications",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_application.go",
+        "id_gallery.go",
+        "method_createorupdate_autorest.go",
+        "method_delete_autorest.go",
+        "method_get_autorest.go",
+        "method_listbygallery_autorest.go",
+        "method_update_autorest.go",
+        "model_galleryapplication.go",
+        "model_galleryapplicationcustomaction.go",
+        "model_galleryapplicationcustomactionparameter.go",
+        "model_galleryapplicationproperties.go",
+        "model_galleryapplicationupdate.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/compute/2022-03-03/galleryapplications",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/compute/2022-03-03/galleryapplications",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/polling",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)

@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "application_group_v0.go",
+        "host_pool_v0.go",
+        "workspace_application_group_association_v0.go",
+        "workspace_v0.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/desktopvirtualization/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/desktopvirtualization/parse",
+        "//internal/tags",
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/desktopvirtualization/2021-09-03-preview/applicationgroup",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/desktopvirtualization/2021-09-03-preview/hostpool",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/desktopvirtualization/2021-09-03-preview/workspace",
+    ],
+)

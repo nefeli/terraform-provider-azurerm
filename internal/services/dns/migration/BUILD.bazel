@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "a_record_v0_to_v1.go",
+        "aaaa_record_v0_to_v1.go",
+        "caa_record_v0_to_v1.go",
+        "cname_record_v0_to_v1.go",
+        "dns_zone_V0_to_V1.go",
+        "dns_zone_v1_to_v2.go",
+        "mx_record_v0_to_v1.go",
+        "ns_record_v0_to_v1.go",
+        "ptr_record_v0_to_v1.go",
+        "srv_record_v0_to_v1.go",
+        "txt_record_v0_to_v1.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/dns/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/set",
+        "//internal/tf/validation",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/dns/2018-05-01/recordsets",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/dns/2018-05-01/zones",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)

@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "compute_cluster_id.go",
+        "compute_id.go",
+        "datastore_name.go",
+        "inference_cluster_id.go",
+        "kubernetes_cluster_id.go",
+        "workspace_id.go",
+        "workspace_name.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/machinelearning/validate",
+    visibility = ["//:__subpackages__"],
+    deps = ["//internal/services/machinelearning/parse"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "compute_cluster_id_test.go",
+        "compute_id_test.go",
+        "datastore_name_test.go",
+        "inference_cluster_id_test.go",
+        "kubernetes_cluster_id_test.go",
+        "workspace_id_test.go",
+        "workspace_name_test.go",
+    ],
+    embed = [":validate"],
+)

@@ -1,0 +1,35 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "frontdoor",
+    srcs = [
+        "client.go",
+        "endpoints.go",
+        "enums.go",
+        "experiments.go",
+        "frontdoors.go",
+        "frontendendpoints.go",
+        "managedrulesets.go",
+        "models.go",
+        "nameavailability.go",
+        "nameavailabilitywithsubscription.go",
+        "networkexperimentprofiles.go",
+        "policies.go",
+        "preconfiguredendpoints.go",
+        "reports.go",
+        "rulesengines.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/Azure/azure-sdk-for-go/services/frontdoor/mgmt/2020-11-01/frontdoor",
+    importpath = "github.com/Azure/azure-sdk-for-go/services/frontdoor/mgmt/2020-11-01/frontdoor",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/azure-sdk-for-go/version",
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/Azure/go-autorest/autorest/date",
+        "//vendor/github.com/Azure/go-autorest/autorest/to",
+        "//vendor/github.com/Azure/go-autorest/autorest/validation",
+        "//vendor/github.com/Azure/go-autorest/tracing",
+    ],
+)

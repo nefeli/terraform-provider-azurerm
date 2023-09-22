@@ -1,0 +1,10 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "parser",
+    srcs = ["parser.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/vmihailenco/tagparser/internal/parser",
+    importpath = "github.com/vmihailenco/tagparser/internal/parser",
+    visibility = ["//vendor/github.com/vmihailenco/tagparser:__subpackages__"],
+    deps = ["//vendor/github.com/vmihailenco/tagparser/internal"],
+)

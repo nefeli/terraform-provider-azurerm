@@ -1,0 +1,42 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "databox_edge_city.go",
+        "databox_edge_company_name.go",
+        "databox_edge_contact_name.go",
+        "databox_edge_country.go",
+        "databox_edge_device_sku_name.go",
+        "databox_edge_email.go",
+        "databox_edge_name.go",
+        "databox_edge_phone_number.go",
+        "databox_edge_postal_code.go",
+        "databox_edge_state.go",
+        "databox_edge_street_address.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/databoxedge/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/databoxedge/2022-03-01/devices",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "databox_edge_city_test.go",
+        "databox_edge_company_name_test.go",
+        "databox_edge_contact_name_test.go",
+        "databox_edge_country_test.go",
+        "databox_edge_device_sku_name_test.go",
+        "databox_edge_email_test.go",
+        "databox_edge_name_test.go",
+        "databox_edge_phone_number_test.go",
+        "databox_edge_postal_code_test.go",
+        "databox_edge_state_test.go",
+        "databox_edge_street_address_test.go",
+    ],
+    embed = [":validate"],
+)

@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "firewall_rule_name.go",
+        "server_name.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/mariadb/validate",
+    visibility = ["//:__subpackages__"],
+    deps = ["//helpers/validate"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "firewall_rule_name_test.go",
+        "server_name_test.go",
+    ],
+    embed = [":validate"],
+)

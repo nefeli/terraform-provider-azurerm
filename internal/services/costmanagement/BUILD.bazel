@@ -1,0 +1,62 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "costmanagement",
+    srcs = [
+        "anomaly_alert_resource.go",
+        "export_billing_account_resource.go",
+        "export_resource_base.go",
+        "export_resource_group_resource.go",
+        "export_subscription_resource.go",
+        "registration.go",
+        "resourceids.go",
+        "scheduled_action_resource.go",
+        "view_resource_base.go",
+        "view_resource_group_resource.go",
+        "view_subscription_resource.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/costmanagement",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/tf",
+        "//internal/sdk",
+        "//internal/services/costmanagement/parse",
+        "//internal/services/costmanagement/validate",
+        "//internal/services/resource/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/costmanagement/2021-10-01/exports",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/costmanagement/2022-06-01-preview/scheduledactions",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/costmanagement/2022-10-01/scheduledactions",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/costmanagement/2022-10-01/views",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/blobcontainers",
+    ],
+)
+
+go_test(
+    name = "costmanagement_test",
+    srcs = [
+        "anomaly_alert_resource_test.go",
+        "export_billing_account_resource_test.go",
+        "export_resource_group_resource_test.go",
+        "export_subscription_resource_test.go",
+        "scheduled_action_resource_test.go",
+        "view_resource_group_resource_test.go",
+        "view_subscription_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/costmanagement/2021-10-01/exports",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/costmanagement/2022-06-01-preview/scheduledactions",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/costmanagement/2022-10-01/scheduledactions",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/costmanagement/2022-10-01/views",
+    ],
+)

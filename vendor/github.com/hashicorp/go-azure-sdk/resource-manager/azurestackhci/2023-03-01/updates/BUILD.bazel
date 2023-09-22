@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "updates",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_cluster.go",
+        "id_update.go",
+        "method_updatesdelete_autorest.go",
+        "method_updatesget_autorest.go",
+        "method_updateslist_autorest.go",
+        "method_updatespost_autorest.go",
+        "method_updatesput_autorest.go",
+        "model_packageversioninfo.go",
+        "model_precheckresult.go",
+        "model_precheckresulttags.go",
+        "model_update.go",
+        "model_updateprerequisite.go",
+        "model_updateproperties.go",
+        "model_updatestateproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/updates",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/updates",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/polling",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+    ],
+)

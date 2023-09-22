@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "metadata",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_metadata.go",
+        "id_workspace.go",
+        "method_create_autorest.go",
+        "method_delete_autorest.go",
+        "method_get_autorest.go",
+        "method_list_autorest.go",
+        "method_update_autorest.go",
+        "model_metadataauthor.go",
+        "model_metadatacategories.go",
+        "model_metadatadependencies.go",
+        "model_metadatamodel.go",
+        "model_metadatapatch.go",
+        "model_metadataproperties.go",
+        "model_metadatapropertiespatch.go",
+        "model_metadatasource.go",
+        "model_metadatasupport.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/securityinsights/2022-10-01-preview/metadata",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/securityinsights/2022-10-01-preview/metadata",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+    ],
+)

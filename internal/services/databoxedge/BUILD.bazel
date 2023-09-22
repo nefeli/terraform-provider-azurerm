@@ -1,0 +1,51 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "databoxedge",
+    srcs = [
+        "customizediff.go",
+        "databox_edge_device_data_source.go",
+        "databox_edge_device_resource.go",
+        "databox_edge_order_resource.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/databoxedge",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/tf",
+        "//internal/clients",
+        "//internal/features",
+        "//internal/sdk",
+        "//internal/services/databoxedge/migration",
+        "//internal/services/databoxedge/parse",
+        "//internal/services/databoxedge/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/databoxedge/2022-03-01/devices",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/databoxedge/2022-03-01/orders",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)
+
+go_test(
+    name = "databoxedge_test",
+    srcs = [
+        "databox_edge_device_data_source_test.go",
+        "databox_edge_device_resource_test.go",
+        "databox_edge_order_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/features",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/databoxedge/2022-03-01/devices",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/databoxedge/2022-03-01/orders",
+    ],
+)

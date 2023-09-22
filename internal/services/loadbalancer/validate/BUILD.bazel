@@ -1,0 +1,37 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "backend_address_pool_address_id.go",
+        "load_balancer_backend_address_pool_id.go",
+        "load_balancer_frontend_ip_configuration_id.go",
+        "load_balancer_id.go",
+        "load_balancer_inbound_nat_pool_id.go",
+        "load_balancer_inbound_nat_rule_id.go",
+        "load_balancer_outbound_rule_id.go",
+        "load_balancer_probe_id.go",
+        "load_balancing_rule_id.go",
+        "rule_name.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/loadbalancer/validate",
+    visibility = ["//:__subpackages__"],
+    deps = ["//internal/services/loadbalancer/parse"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "backend_address_pool_address_id_test.go",
+        "load_balancer_backend_address_pool_id_test.go",
+        "load_balancer_frontend_ip_configuration_id_test.go",
+        "load_balancer_id_test.go",
+        "load_balancer_inbound_nat_pool_id_test.go",
+        "load_balancer_inbound_nat_rule_id_test.go",
+        "load_balancer_outbound_rule_id_test.go",
+        "load_balancer_probe_id_test.go",
+        "load_balancing_rule_id_test.go",
+        "rule_name_test.go",
+    ],
+    embed = [":validate"],
+)

@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = ["sql_administrator_resource_migration_v0_to_v1.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/sql/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/sql/parse",
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+    ],
+)

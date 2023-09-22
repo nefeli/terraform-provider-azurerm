@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "advisor",
+    srcs = [
+        "advisor_recommendations_data_source.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/advisor",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/clients",
+        "//internal/sdk",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/advisor/2020-01-01/getrecommendations",
+    ],
+)
+
+go_test(
+    name = "advisor_test",
+    srcs = ["advisor_recommendations_data_source_test.go"],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+    ],
+)

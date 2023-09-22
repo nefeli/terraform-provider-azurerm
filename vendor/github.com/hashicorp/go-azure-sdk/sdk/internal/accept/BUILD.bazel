@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "accept",
+    srcs = ["accept.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/sdk/internal/accept",
+    importpath = "github.com/hashicorp/go-azure-sdk/sdk/internal/accept",
+    visibility = ["//vendor/github.com/hashicorp/go-azure-sdk/sdk:__subpackages__"],
+)

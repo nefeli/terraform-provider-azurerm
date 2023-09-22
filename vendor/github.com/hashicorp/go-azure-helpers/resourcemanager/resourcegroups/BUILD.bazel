@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "resourcegroups",
+    srcs = ["validate.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourcegroups",
+    importpath = "github.com/hashicorp/go-azure-helpers/resourcemanager/resourcegroups",
+    visibility = ["//visibility:public"],
+)

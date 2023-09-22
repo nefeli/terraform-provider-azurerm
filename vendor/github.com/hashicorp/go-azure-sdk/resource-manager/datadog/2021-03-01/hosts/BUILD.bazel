@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "hosts",
+    srcs = [
+        "client.go",
+        "id_monitor.go",
+        "method_monitorslisthosts.go",
+        "model_datadoghost.go",
+        "model_datadoghostmetadata.go",
+        "model_datadoginstallmethod.go",
+        "model_datadoglogsagent.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/datadog/2021-03-01/hosts",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/datadog/2021-03-01/hosts",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

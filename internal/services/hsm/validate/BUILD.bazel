@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = ["dedicated_hardware_security_module_name.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/hsm/validate",
+    visibility = ["//:__subpackages__"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = ["dedicated_hardware_security_module_name_test.go"],
+    embed = [":validate"],
+)

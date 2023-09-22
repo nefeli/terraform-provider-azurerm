@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "tf6serverlogging",
+    srcs = [
+        "context_keys.go",
+        "doc.go",
+        "downstream_request.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-plugin-go/tfprotov6/internal/tf6serverlogging",
+    importpath = "github.com/hashicorp/terraform-plugin-go/tfprotov6/internal/tf6serverlogging",
+    visibility = ["//vendor/github.com/hashicorp/terraform-plugin-go/tfprotov6:__subpackages__"],
+    deps = [
+        "//vendor/github.com/hashicorp/terraform-plugin-go/internal/logging",
+        "//vendor/github.com/hashicorp/terraform-plugin-go/tfprotov6/internal/diag",
+    ],
+)

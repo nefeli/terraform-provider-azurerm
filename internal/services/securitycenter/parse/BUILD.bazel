@@ -1,0 +1,44 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "advanced_threat_protection.go",
+        "assessment.go",
+        "assessment_metadata.go",
+        "auto_provisioning_setting.go",
+        "automation.go",
+        "contact.go",
+        "iot_security_device_group.go",
+        "iot_security_solution.go",
+        "pricing.go",
+        "setting.go",
+        "vulnerability_assessment_vm.go",
+        "workspace.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/securitycenter/parse",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "assessment_metadata_test.go",
+        "assessment_test.go",
+        "auto_provisioning_setting_test.go",
+        "automation_test.go",
+        "contact_test.go",
+        "iot_security_device_group_test.go",
+        "iot_security_solution_test.go",
+        "pricing_test.go",
+        "setting_test.go",
+        "vulnerability_assessment_vm_test.go",
+        "workspace_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

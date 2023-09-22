@@ -1,0 +1,40 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "feature_id.go",
+        "management_group_template_deployment_id.go",
+        "management_lock_name.go",
+        "resource_group_id.go",
+        "resource_group_template_deployment_id.go",
+        "resource_provider_id.go",
+        "subscription_template_deployment_id.go",
+        "template_deployment_name.go",
+        "template_spec_name.go",
+        "template_spec_version.go",
+        "template_spec_version_id.go",
+        "tenant_template_deployment_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/resource/validate",
+    visibility = ["//:__subpackages__"],
+    deps = ["//internal/services/resource/parse"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "feature_id_test.go",
+        "management_group_template_deployment_id_test.go",
+        "management_lock_name_test.go",
+        "resource_group_id_test.go",
+        "resource_group_template_deployment_id_test.go",
+        "subscription_template_deployment_id_test.go",
+        "template_deployment_name_test.go",
+        "template_spec_name_test.go",
+        "template_spec_version_id_test.go",
+        "template_spec_version_test.go",
+        "tenant_template_deployment_id_test.go",
+    ],
+    embed = [":validate"],
+)

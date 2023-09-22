@@ -1,0 +1,47 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "attestation",
+    srcs = [
+        "attestation_provider_data_source.go",
+        "attestation_provider_resource.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/attestation",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/tf",
+        "//internal/clients",
+        "//internal/features",
+        "//internal/sdk",
+        "//internal/services/attestation/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/attestation/2020-10-01/attestationproviders",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+        "//vendor/github.com/tombuildsstuff/kermit/sdk/attestation/2022-08-01/attestation",
+    ],
+)
+
+go_test(
+    name = "attestation_test",
+    srcs = [
+        "attestation_provider_data_source_test.go",
+        "attestation_provider_resource_test.go",
+    ],
+    data = glob(["testdata/**"]),
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/golang-jwt/jwt/v4:jwt",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/attestation/2020-10-01/attestationproviders",
+    ],
+)

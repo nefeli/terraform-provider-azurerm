@@ -1,0 +1,39 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "data_flow_id.go",
+        "data_set_id.go",
+        "datafactory.go",
+        "integration_runtime_id.go",
+        "linked_service_dataset_name.go",
+        "linked_service_id.go",
+        "managed_private_endpoint_id.go",
+        "pipeline_id.go",
+        "trigger.go",
+        "trigger_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/datafactory/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/datafactory/parse",
+        "//internal/tf/pluginsdk",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "data_flow_id_test.go",
+        "data_set_id_test.go",
+        "datafactory_test.go",
+        "integration_runtime_id_test.go",
+        "linked_service_id_test.go",
+        "managed_private_endpoint_id_test.go",
+        "pipeline_id_test.go",
+        "trigger_id_test.go",
+        "trigger_test.go",
+    ],
+    embed = [":validate"],
+)

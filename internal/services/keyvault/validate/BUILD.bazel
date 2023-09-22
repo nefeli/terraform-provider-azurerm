@@ -1,0 +1,50 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "access_policy_application_id.go",
+        "access_policy_object_id.go",
+        "certificate_contacts_id.go",
+        "certificate_id.go",
+        "certificate_issuer_name.go",
+        "certificate_versionless_id.go",
+        "child_id.go",
+        "key_id.go",
+        "key_versionless_id.go",
+        "managed_hsm_name.go",
+        "nested_item_id.go",
+        "nested_item_name.go",
+        "secret_id.go",
+        "secret_versionless_id.go",
+        "uuid.go",
+        "vault_name.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/keyvault/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/keyvault/parse",
+        "//internal/tf/validation",
+        "//vendor/github.com/hashicorp/go-uuid",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "access_policy_application_id_test.go",
+        "access_policy_object_id_test.go",
+        "certificate_contacts_id_test.go",
+        "certificate_id_test.go",
+        "certificate_versionless_id_test.go",
+        "key_id_test.go",
+        "key_versionless_id_test.go",
+        "managed_hsm_name_test.go",
+        "nested_item_id_test.go",
+        "nested_item_name_test.go",
+        "secret_id_test.go",
+        "secret_versionless_id_test.go",
+        "vault_name_test.go",
+    ],
+    embed = [":validate"],
+)

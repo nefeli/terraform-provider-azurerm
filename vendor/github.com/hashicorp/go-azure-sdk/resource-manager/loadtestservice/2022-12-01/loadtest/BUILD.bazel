@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "loadtest",
+    srcs = [
+        "client.go",
+        "id_loadtest.go",
+        "method_listoutboundnetworkdependenciesendpoints_autorest.go",
+        "model_endpointdependency.go",
+        "model_endpointdetail.go",
+        "model_outboundenvironmentendpoint.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/loadtestservice/2022-12-01/loadtest",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/loadtestservice/2022-12-01/loadtest",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)

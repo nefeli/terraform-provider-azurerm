@@ -1,0 +1,35 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "networkmanagerconnections",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_networkmanagerconnection.go",
+        "id_providers2networkmanagerconnection.go",
+        "method_managementgroupnetworkmanagerconnectionscreateorupdate.go",
+        "method_managementgroupnetworkmanagerconnectionsdelete.go",
+        "method_managementgroupnetworkmanagerconnectionsget.go",
+        "method_managementgroupnetworkmanagerconnectionslist.go",
+        "method_subscriptionnetworkmanagerconnectionscreateorupdate.go",
+        "method_subscriptionnetworkmanagerconnectionsdelete.go",
+        "method_subscriptionnetworkmanagerconnectionsget.go",
+        "method_subscriptionnetworkmanagerconnectionslist.go",
+        "model_networkmanagerconnection.go",
+        "model_networkmanagerconnectionproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/networkmanagerconnections",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/network/2022-09-01/networkmanagerconnections",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

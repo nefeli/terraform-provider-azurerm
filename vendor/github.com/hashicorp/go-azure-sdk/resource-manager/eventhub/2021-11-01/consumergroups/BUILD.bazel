@@ -1,0 +1,30 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "consumergroups",
+    srcs = [
+        "client.go",
+        "id_consumergroup.go",
+        "id_eventhub.go",
+        "method_createorupdate.go",
+        "method_delete.go",
+        "method_get.go",
+        "method_listbyeventhub.go",
+        "model_consumergroup.go",
+        "model_consumergroupproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/eventhub/2021-11-01/consumergroups",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/eventhub/2021-11-01/consumergroups",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

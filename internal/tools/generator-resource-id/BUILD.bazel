@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
+
+go_library(
+    name = "generator-resource-id_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/tools/generator-resource-id",
+    visibility = ["//visibility:private"],
+    deps = ["//helpers/azure"],
+)
+
+go_binary(
+    name = "generator-resource-id",
+    embed = [":generator-resource-id_lib"],
+    visibility = ["//:__subpackages__"],
+)
+
+go_test(
+    name = "generator-resource-id_test",
+    srcs = ["main_test.go"],
+    embed = [":generator-resource-id_lib"],
+)

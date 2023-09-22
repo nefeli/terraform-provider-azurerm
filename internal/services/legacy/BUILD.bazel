@@ -1,0 +1,60 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "legacy",
+    srcs = [
+        "helpers.go",
+        "registration.go",
+        "virtual_machine_resource.go",
+        "virtual_machine_scale_set_resource.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/legacy",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//helpers/tf",
+        "//helpers/validate",
+        "//internal/clients",
+        "//internal/locks",
+        "//internal/services/compute",
+        "//internal/services/compute/parse",
+        "//internal/services/compute/validate",
+        "//internal/services/legacy/migration",
+        "//internal/services/network/parse",
+        "//internal/services/storage/client",
+        "//internal/tags",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/suppress",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/compute/2022-03-02/disks",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/blob/blobs",
+        "//vendor/github.com/tombuildsstuff/kermit/sdk/compute/2023-03-01/compute",
+        "//vendor/github.com/tombuildsstuff/kermit/sdk/network/2022-07-01/network",
+        "//vendor/golang.org/x/net/context",
+    ],
+)
+
+go_test(
+    name = "legacy_test",
+    srcs = [
+        "virtual_machine_managed_disks_resource_test.go",
+        "virtual_machine_resource_test.go",
+        "virtual_machine_scale_set_resource_test.go",
+        "virtual_machine_unmanaged_disks_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/services/compute/parse",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/compute/2022-03-02/disks",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/blob/blobs",
+        "//vendor/github.com/tombuildsstuff/kermit/sdk/compute/2023-03-01/compute",
+    ],
+)

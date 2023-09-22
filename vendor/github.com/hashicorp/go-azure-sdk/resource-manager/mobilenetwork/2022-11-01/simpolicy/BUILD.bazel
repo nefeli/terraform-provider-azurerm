@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "simpolicy",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_simpolicy.go",
+        "method_simpoliciescreateorupdate.go",
+        "method_simpoliciesdelete.go",
+        "method_simpoliciesget.go",
+        "method_simpoliciesupdatetags.go",
+        "model_ambr.go",
+        "model_datanetworkconfiguration.go",
+        "model_datanetworkresourceid.go",
+        "model_serviceresourceid.go",
+        "model_simpolicy.go",
+        "model_simpolicypropertiesformat.go",
+        "model_sliceconfiguration.go",
+        "model_sliceresourceid.go",
+        "model_tagsobject.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/mobilenetwork/2022-11-01/simpolicy",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/mobilenetwork/2022-11-01/simpolicy",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/pollers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

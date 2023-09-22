@@ -1,0 +1,24 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "management_group.go",
+        "management_group_subscription_association.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/managementgroup/parse",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//vendor/github.com/hashicorp/go-uuid",
+    ],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "management_group_subscription_association_test.go",
+        "management_group_test.go",
+    ],
+    embed = [":parse"],
+)

@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "elasticsearch_name.go",
+        "email_address.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/elastic/validate",
+    visibility = ["//:__subpackages__"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "elasticsearch_name_test.go",
+        "email_address_test.go",
+    ],
+    embed = [":validate"],
+)

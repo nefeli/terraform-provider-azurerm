@@ -1,0 +1,32 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "common",
+    srcs = [
+        "client_options.go",
+        "correlation_id.go",
+        "middleware.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/common",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/features",
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/sender",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/auth",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-uuid",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/meta",
+        "//version",
+    ],
+)
+
+go_test(
+    name = "common_test",
+    srcs = ["correlation_id_test.go"],
+    embed = [":common"],
+    deps = ["//vendor/github.com/Azure/go-autorest/autorest"],
+)

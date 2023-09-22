@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "deliveryruleconditions",
+    srcs = [
+        "cookies.go",
+        "device.go",
+        "http_version.go",
+        "post_arg.go",
+        "query_string.go",
+        "remote_address.go",
+        "request_body.go",
+        "request_header.go",
+        "request_method.go",
+        "request_scheme.go",
+        "request_uri.go",
+        "url_file_extension.go",
+        "url_file_name.go",
+        "url_path.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/cdn/deliveryruleconditions",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//utils",
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/cdn/mgmt/2020-09-01/cdn",
+    ],
+)

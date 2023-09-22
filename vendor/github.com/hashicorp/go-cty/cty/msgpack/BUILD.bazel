@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "msgpack",
+    srcs = [
+        "doc.go",
+        "dynamic.go",
+        "infinity.go",
+        "marshal.go",
+        "type_implied.go",
+        "unknown.go",
+        "unmarshal.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-cty/cty/msgpack",
+    importpath = "github.com/hashicorp/go-cty/cty/msgpack",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-cty/cty",
+        "//vendor/github.com/hashicorp/go-cty/cty/convert",
+        "//vendor/github.com/vmihailenco/msgpack",
+        "//vendor/github.com/vmihailenco/msgpack/codes",
+    ],
+)

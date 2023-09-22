@@ -1,0 +1,52 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "acceptance",
+    srcs = [
+        "client_data.go",
+        "data.go",
+        "locations.go",
+        "plugin_sdk_aliases.go",
+        "random.go",
+        "steps.go",
+        "subscriptions.go",
+        "testcase.go",
+        "testing.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/acceptance",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/acceptance/check",
+        "//internal/acceptance/helpers",
+        "//internal/acceptance/testclient",
+        "//internal/acceptance/types",
+        "//internal/clients",
+        "//internal/features",
+        "//internal/provider",
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/authentication",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/auth",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+        "//vendor/github.com/hashicorp/terraform-plugin-testing/helper/acctest",
+        "//vendor/github.com/hashicorp/terraform-plugin-testing/helper/resource",
+        "//vendor/github.com/hashicorp/terraform-plugin-testing/terraform",
+    ],
+)
+
+go_test(
+    name = "acceptance_test",
+    srcs = [
+        "data_test.go",
+        "random_test.go",
+        "required_test.go",
+    ],
+    embed = [":acceptance"],
+    deps = [
+        "//internal/clients",
+        "//internal/resourceproviders",
+        "//vendor/github.com/davecgh/go-spew/spew",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+    ],
+)

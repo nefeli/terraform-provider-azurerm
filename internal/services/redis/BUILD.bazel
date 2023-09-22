@@ -1,0 +1,60 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "redis",
+    srcs = [
+        "redis_cache_data_source.go",
+        "redis_cache_resource.go",
+        "redis_firewall_rule_resource.go",
+        "redis_linked_server_resource.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/redis",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/tf",
+        "//helpers/validate",
+        "//internal/clients",
+        "//internal/locks",
+        "//internal/sdk",
+        "//internal/services/network",
+        "//internal/services/redis/migration",
+        "//internal/services/redis/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/suppress",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/identity",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/zones",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/redis/2023-04-01/firewallrules",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/redis/2023-04-01/patchschedules",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/redis/2023-04-01/redis",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)
+
+go_test(
+    name = "redis_test",
+    srcs = [
+        "redis_cache_data_source_test.go",
+        "redis_cache_resource_test.go",
+        "redis_firewall_rule_resource_test.go",
+        "redis_linked_server_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/redis/2023-04-01/firewallrules",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/redis/2023-04-01/redis",
+    ],
+)

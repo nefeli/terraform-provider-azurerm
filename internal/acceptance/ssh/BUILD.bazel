@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "ssh",
+    srcs = [
+        "commands.go",
+        "run.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/acceptance/ssh",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//vendor/github.com/hashicorp/terraform-plugin-testing/helper/resource",
+        "//vendor/golang.org/x/crypto/ssh",
+    ],
+)

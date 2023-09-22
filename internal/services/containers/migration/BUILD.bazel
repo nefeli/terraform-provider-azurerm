@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "kubernetes_cluster.go",
+        "kubernetes_cluster_node_pool.go",
+        "registry.go",
+        "registry_webhook_migration_v0_to_v1.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/containers/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/clients",
+        "//internal/services/containers/parse",
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourcegroups",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerregistry/2021-08-01-preview/webhooks",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)
+
+go_test(
+    name = "migration_test",
+    srcs = [
+        "kubernetes_cluster_node_pool_test.go",
+        "kubernetes_cluster_test.go",
+    ],
+    embed = [":migration"],
+    deps = ["//utils"],
+)

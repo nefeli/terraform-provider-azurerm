@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "offers",
+    srcs = [
+        "client.go",
+        "id_cluster.go",
+        "id_offer.go",
+        "id_publisher.go",
+        "method_offersget_autorest.go",
+        "method_offerslistbycluster_autorest.go",
+        "method_offerslistbypublisher_autorest.go",
+        "model_offer.go",
+        "model_offerproperties.go",
+        "model_skumappings.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/offers",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/offers",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+    ],
+)

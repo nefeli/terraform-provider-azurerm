@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "systemdata",
+    srcs = ["model.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+    importpath = "github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+    visibility = ["//visibility:public"],
+)

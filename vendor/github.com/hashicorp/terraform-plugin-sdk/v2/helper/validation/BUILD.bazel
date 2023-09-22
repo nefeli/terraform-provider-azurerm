@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "validation",
+    srcs = [
+        "float.go",
+        "int.go",
+        "list.go",
+        "map.go",
+        "meta.go",
+        "network.go",
+        "strings.go",
+        "testing.go",
+        "time.go",
+        "uuid.go",
+        "web.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation",
+    importpath = "github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-cty/cty",
+        "//vendor/github.com/hashicorp/go-uuid",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/diag",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/structure",
+        "//vendor/github.com/mitchellh/go-testing-interface",
+    ],
+)

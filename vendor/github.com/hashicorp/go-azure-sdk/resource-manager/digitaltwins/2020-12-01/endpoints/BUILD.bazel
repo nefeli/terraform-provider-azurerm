@@ -1,0 +1,34 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "endpoints",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_digitaltwinsinstance.go",
+        "id_endpoint.go",
+        "method_digitaltwinsendpointcreateorupdate.go",
+        "method_digitaltwinsendpointdelete.go",
+        "method_digitaltwinsendpointget.go",
+        "method_digitaltwinsendpointlist.go",
+        "model_digitaltwinsendpointresource.go",
+        "model_digitaltwinsendpointresourceproperties.go",
+        "model_eventgrid.go",
+        "model_eventhub.go",
+        "model_servicebus.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/digitaltwins/2020-12-01/endpoints",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/digitaltwins/2020-12-01/endpoints",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/pollers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

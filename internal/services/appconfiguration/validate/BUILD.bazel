@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "app_configuration_feature_id.go",
+        "app_configuration_feature_name.go",
+        "app_configuration_key_id.go",
+        "configuration_store_name.go",
+        "nested_item_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/appconfiguration/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/appconfiguration/parse",
+        "//internal/tf/validation",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "configuration_store_name_test.go",
+        "nested_item_id_test.go",
+    ],
+    embed = [":validate"],
+)

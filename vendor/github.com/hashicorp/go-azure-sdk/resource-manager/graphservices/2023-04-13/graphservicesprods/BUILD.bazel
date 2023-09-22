@@ -1,0 +1,35 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "graphservicesprods",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_account.go",
+        "method_accountscreateandupdate.go",
+        "method_accountsdelete.go",
+        "method_accountsget.go",
+        "method_accountslistbyresourcegroup.go",
+        "method_accountslistbysubscription.go",
+        "method_accountsupdate.go",
+        "model_accountresource.go",
+        "model_accountresourceproperties.go",
+        "model_accountresourcesystemdata.go",
+        "model_tagupdate.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/graphservices/2023-04-13/graphservicesprods",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/graphservices/2023-04-13/graphservicesprods",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/pollers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "2023-03-01",
+    srcs = ["client.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/arcsettings",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/cluster",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/clusters",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/extensions",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/offers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/publishers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/skuses",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/updateruns",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/updates",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/updatesummaries",
+    ],
+)

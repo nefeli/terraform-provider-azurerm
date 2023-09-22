@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "migration",
+    srcs = ["role_definition_migration.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/authorization/migration",
+    visibility = ["//:__subpackages__"],
+    deps = ["//internal/tf/pluginsdk"],
+)
+
+go_test(
+    name = "migration_test",
+    srcs = ["role_definition_migration_test.go"],
+    embed = [":migration"],
+)

@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "check",
+    srcs = ["that.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/acceptance/check",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/acceptance/helpers",
+        "//internal/acceptance/testclient",
+        "//internal/acceptance/types",
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/terraform-plugin-testing/helper/resource",
+        "//vendor/github.com/hashicorp/terraform-plugin-testing/terraform",
+    ],
+)

@@ -1,0 +1,35 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "managed_database_id.go",
+        "managed_instance_azure_active_directory_administrator_id.go",
+        "managed_instance_encryption_protector_id.go",
+        "managed_instance_failover_group_id.go",
+        "managed_instance_id.go",
+        "managed_instance_vulnerability_assessment_id.go",
+        "managed_instances_security_alert_policy_id.go",
+        "mssql.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/mssqlmanagedinstance/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/validate",
+        "//internal/services/mssqlmanagedinstance/parse",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "managed_database_id_test.go",
+        "managed_instance_azure_active_directory_administrator_id_test.go",
+        "managed_instance_encryption_protector_id_test.go",
+        "managed_instance_failover_group_id_test.go",
+        "managed_instance_id_test.go",
+        "managed_instance_vulnerability_assessment_id_test.go",
+        "managed_instances_security_alert_policy_id_test.go",
+    ],
+    embed = [":validate"],
+)

@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "firewall_rule_v0_to_v1.go",
+        "linked_server_v0_to_v1.go",
+        "redis_cache_v0_to_v1.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/redis/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tf/pluginsdk",
+        "//internal/tf/suppress",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/redis/2023-04-01/firewallrules",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/redis/2023-04-01/redis",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)

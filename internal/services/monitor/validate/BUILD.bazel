@@ -1,0 +1,37 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "action_group_id.go",
+        "action_rule_id.go",
+        "action_rule_name.go",
+        "alert_processing_rule_schedule_time.go",
+        "monitor_aad_diagnostic_setting_id.go",
+        "monitor_diagnostic_setting.go",
+        "private_link_scope_name.go",
+        "scheduled_query_rules_alert_threshold.go",
+        "workspace_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/monitor/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/monitor/parse",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "action_group_id_test.go",
+        "action_rule_id_test.go",
+        "action_rule_name_test.go",
+        "monitor_aad_diagnostic_setting_id_test.go",
+        "monitor_diagnostic_setting_test.go",
+        "private_link_scope_name_test.go",
+        "workspace_id_test.go",
+    ],
+    embed = [":validate"],
+)

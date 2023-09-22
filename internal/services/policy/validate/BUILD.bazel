@@ -1,0 +1,44 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "assignment_id.go",
+        "definition_id.go",
+        "management_group_assignment_id.go",
+        "remediation_name.go",
+        "resource_assignment_id.go",
+        "resource_group_assignment_id.go",
+        "resource_group_policy_exemption_id.go",
+        "resource_group_policy_remediation_id.go",
+        "scope_id.go",
+        "set_definition_id.go",
+        "subscription_assignment_id.go",
+        "subscription_policy_exemption_id.go",
+        "subscription_policy_remediation_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/policy/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//internal/services/policy/parse",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "management_group_assignment_id_test.go",
+        "remediation_name_test.go",
+        "resource_group_assignment_id_test.go",
+        "resource_group_policy_exemption_id_test.go",
+        "resource_group_policy_remediation_id_test.go",
+        "subscription_assignment_id_test.go",
+        "subscription_policy_exemption_id_test.go",
+        "subscription_policy_remediation_id_test.go",
+    ],
+    embed = [":validate"],
+)

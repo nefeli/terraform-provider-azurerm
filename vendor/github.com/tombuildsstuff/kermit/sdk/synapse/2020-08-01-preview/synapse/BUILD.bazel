@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "synapse",
+    srcs = [
+        "client.go",
+        "models.go",
+        "roleassignments.go",
+        "roledefinitions.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/tombuildsstuff/kermit/sdk/synapse/2020-08-01-preview/synapse",
+    importpath = "github.com/tombuildsstuff/kermit/sdk/synapse/2020-08-01-preview/synapse",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/Azure/go-autorest/autorest/validation",
+        "//vendor/github.com/Azure/go-autorest/tracing",
+        "//vendor/github.com/gofrs/uuid",
+        "//vendor/github.com/tombuildsstuff/kermit/version",
+    ],
+)

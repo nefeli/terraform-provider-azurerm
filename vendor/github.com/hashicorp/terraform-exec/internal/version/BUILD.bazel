@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "version",
+    srcs = ["version.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-exec/internal/version",
+    importpath = "github.com/hashicorp/terraform-exec/internal/version",
+    visibility = ["//vendor/github.com/hashicorp/terraform-exec:__subpackages__"],
+)

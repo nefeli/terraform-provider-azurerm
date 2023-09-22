@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "automation_rule.go",
+        "data_connector.go",
+        "ml_analytics_settings.go",
+        "sentinel_alert_rule_template.go",
+        "threat_intelligence_indicator.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/sentinel/parse",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "automation_rule_test.go",
+        "data_connector_test.go",
+        "ml_analytics_settings_test.go",
+        "sentinel_alert_rule_template_test.go",
+        "threat_intelligence_indicator_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

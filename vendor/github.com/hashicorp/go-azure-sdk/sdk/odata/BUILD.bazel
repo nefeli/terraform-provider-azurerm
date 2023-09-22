@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "odata",
+    srcs = [
+        "errors.go",
+        "http.go",
+        "odata.go",
+        "query.go",
+        "types.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    importpath = "github.com/hashicorp/go-azure-sdk/sdk/odata",
+    visibility = ["//visibility:public"],
+    deps = ["//vendor/github.com/hashicorp/go-uuid"],
+)

@@ -1,0 +1,56 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "logz",
+    srcs = [
+        "logz_common.go",
+        "logz_monitor_resource.go",
+        "logz_sub_account_resource.go",
+        "logz_sub_account_tag_rule_resource.go",
+        "logz_tag_rule_resource.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/logz",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/tf",
+        "//internal/clients",
+        "//internal/sdk",
+        "//internal/services/logz/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/suppress",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logz/2020-10-01/monitors",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logz/2020-10-01/subaccount",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logz/2020-10-01/tagrules",
+    ],
+)
+
+go_test(
+    name = "logz_test",
+    srcs = [
+        "logz_monitor_resource_test.go",
+        "logz_sub_account_resource_test.go",
+        "logz_sub_account_tag_rule_resource_test.go",
+        "logz_tag_rule_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logz/2020-10-01/monitors",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logz/2020-10-01/subaccount",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logz/2020-10-01/tagrules",
+    ],
+)

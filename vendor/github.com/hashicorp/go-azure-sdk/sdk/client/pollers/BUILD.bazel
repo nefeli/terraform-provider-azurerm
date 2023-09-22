@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "pollers",
+    srcs = [
+        "interface.go",
+        "poller.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/sdk/client/pollers",
+    importpath = "github.com/hashicorp/go-azure-sdk/sdk/client/pollers",
+    visibility = ["//visibility:public"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-sdk/sdk/client"],
+)

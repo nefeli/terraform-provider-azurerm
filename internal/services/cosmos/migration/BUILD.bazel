@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "cassandra_keyspace.go",
+        "gremlin_database.go",
+        "gremlin_graph.go",
+        "mongo_collection.go",
+        "mongo_database.go",
+        "sql_container.go",
+        "sql_database.go",
+        "table.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/cosmos/migration",
+    visibility = ["//:__subpackages__"],
+    deps = ["//internal/tf/pluginsdk"],
+)

@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "gomonkey",
+    srcs = [
+        "jmp_386.go",
+        "jmp_amd64.go",
+        "jmp_arm64.go",
+        "modify_binary_darwin.go",
+        "modify_binary_linux.go",
+        "modify_binary_windows.go",
+        "patch.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/agiledragon/gomonkey/v2",
+    importpath = "github.com/agiledragon/gomonkey/v2",
+    visibility = ["//visibility:public"],
+    deps = ["//vendor/github.com/agiledragon/gomonkey/v2/creflect"],
+)

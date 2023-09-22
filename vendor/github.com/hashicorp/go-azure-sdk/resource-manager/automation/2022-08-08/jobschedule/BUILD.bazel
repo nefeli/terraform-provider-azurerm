@@ -1,0 +1,32 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "jobschedule",
+    srcs = [
+        "client.go",
+        "id_automationaccount.go",
+        "id_jobschedule.go",
+        "method_create.go",
+        "method_delete.go",
+        "method_get.go",
+        "method_listbyautomationaccount.go",
+        "model_jobschedule.go",
+        "model_jobschedulecreateparameters.go",
+        "model_jobschedulecreateproperties.go",
+        "model_jobscheduleproperties.go",
+        "model_runbookassociationproperty.go",
+        "model_scheduleassociationproperty.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/jobschedule",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/jobschedule",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

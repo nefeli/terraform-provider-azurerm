@@ -1,0 +1,34 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "certificate",
+    srcs = [
+        "client.go",
+        "id_automationaccount.go",
+        "id_certificate.go",
+        "method_createorupdate.go",
+        "method_delete.go",
+        "method_get.go",
+        "method_listbyautomationaccount.go",
+        "method_update.go",
+        "model_certificate.go",
+        "model_certificatecreateorupdateparameters.go",
+        "model_certificatecreateorupdateproperties.go",
+        "model_certificateproperties.go",
+        "model_certificateupdateparameters.go",
+        "model_certificateupdateproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/certificate",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/certificate",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

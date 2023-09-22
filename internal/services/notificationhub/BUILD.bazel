@@ -1,0 +1,53 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "notificationhub",
+    srcs = [
+        "notification_hub_authorization_rule_resource.go",
+        "notification_hub_data_source.go",
+        "notification_hub_namespace_data_source.go",
+        "notification_hub_namespace_resource.go",
+        "notification_hub_resource.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/notificationhub",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/tf",
+        "//internal/clients",
+        "//internal/locks",
+        "//internal/sdk",
+        "//internal/services/notificationhub/migration",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/notificationhubs/2017-04-01/namespaces",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/notificationhubs/2017-04-01/notificationhubs",
+    ],
+)
+
+go_test(
+    name = "notificationhub_test",
+    srcs = [
+        "notification_hub_authorization_rule_resource_test.go",
+        "notification_hub_data_source_test.go",
+        "notification_hub_namespace_data_source_test.go",
+        "notification_hub_namespace_resource_test.go",
+        "notification_hub_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/notificationhubs/2017-04-01/namespaces",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/notificationhubs/2017-04-01/notificationhubs",
+    ],
+)

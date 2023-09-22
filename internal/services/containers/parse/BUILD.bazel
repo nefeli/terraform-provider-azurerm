@@ -1,0 +1,30 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "cluster.go",
+        "container_registry_task_schedule.go",
+        "container_registry_token_password.go",
+        "node_pool.go",
+        "repo_notification.go",
+        "service_version.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/containers/parse",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "cluster_test.go",
+        "container_registry_task_schedule_test.go",
+        "container_registry_token_password_test.go",
+        "node_pool_test.go",
+        "repo_notification_test.go",
+        "service_version_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

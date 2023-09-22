@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "advanced_threat_protection.go",
+        "auto_provisioning_v0_to_v1.go",
+        "iot_security_solution_v0_to_v1.go",
+        "subscription_pricing.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/securitycenter/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/securitycenter/parse",
+        "//internal/tags",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/set",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+    ],
+)
+
+go_test(
+    name = "migration_test",
+    srcs = ["subscription_pricing_test.go"],
+    embed = [":migration"],
+)

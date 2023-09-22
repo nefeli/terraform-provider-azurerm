@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "2021-11-01",
+    srcs = ["client.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/media/2021-11-01",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/media/2021-11-01",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/media/2021-11-01/accountfilters",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/media/2021-11-01/accounts",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/media/2021-11-01/assetsandassetfilters",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/media/2021-11-01/contentkeypolicies",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/media/2021-11-01/encodings",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/media/2021-11-01/liveevents",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/media/2021-11-01/liveoutputs",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/media/2021-11-01/streamingendpoints",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/media/2021-11-01/streamingpoliciesandstreaminglocators",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+    ],
+)

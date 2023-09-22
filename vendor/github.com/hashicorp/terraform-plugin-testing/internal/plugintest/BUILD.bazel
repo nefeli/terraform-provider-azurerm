@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "plugintest",
+    srcs = [
+        "config.go",
+        "doc.go",
+        "environment_variables.go",
+        "guard.go",
+        "helper.go",
+        "util.go",
+        "working_dir.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-plugin-testing/internal/plugintest",
+    importpath = "github.com/hashicorp/terraform-plugin-testing/internal/plugintest",
+    visibility = ["//vendor/github.com/hashicorp/terraform-plugin-testing:__subpackages__"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-version",
+        "//vendor/github.com/hashicorp/hc-install",
+        "//vendor/github.com/hashicorp/hc-install/checkpoint",
+        "//vendor/github.com/hashicorp/hc-install/fs",
+        "//vendor/github.com/hashicorp/hc-install/product",
+        "//vendor/github.com/hashicorp/hc-install/releases",
+        "//vendor/github.com/hashicorp/hc-install/src",
+        "//vendor/github.com/hashicorp/terraform-exec/tfexec",
+        "//vendor/github.com/hashicorp/terraform-json",
+        "//vendor/github.com/hashicorp/terraform-plugin-testing/internal/logging",
+    ],
+)

@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "plural",
+    srcs = [
+        "doc.go",
+        "plural.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/rickb777/plural",
+    importpath = "github.com/rickb777/plural",
+    visibility = ["//visibility:public"],
+)

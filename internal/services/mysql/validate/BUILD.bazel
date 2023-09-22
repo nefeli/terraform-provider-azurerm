@@ -1,0 +1,48 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "azure_active_directory_administrator_id.go",
+        "configuration_id.go",
+        "database_id.go",
+        "firewall_rule_id.go",
+        "firewall_rule_name.go",
+        "flexible_server_administrator_login.go",
+        "flexible_server_administrator_password.go",
+        "flexible_server_azure_active_directory_administrator_id.go",
+        "flexible_server_name.go",
+        "flexible_server_sku_name.go",
+        "key_id.go",
+        "server_id.go",
+        "server_name.go",
+        "virtual_network_rule_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/mysql/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/validate",
+        "//internal/services/mysql/parse",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "azure_active_directory_administrator_id_test.go",
+        "configuration_id_test.go",
+        "database_id_test.go",
+        "firewall_rule_id_test.go",
+        "firewall_rule_name_test.go",
+        "flexible_server_administrator_login_test.go",
+        "flexible_server_administrator_password_test.go",
+        "flexible_server_azure_active_directory_administrator_id_test.go",
+        "flexible_server_name_test.go",
+        "flexible_server_sku_name_test.go",
+        "key_id_test.go",
+        "server_id_test.go",
+        "server_name_test.go",
+        "virtual_network_rule_id_test.go",
+    ],
+    embed = [":validate"],
+)

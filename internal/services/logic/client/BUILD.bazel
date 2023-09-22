@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "client",
+    srcs = ["client.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/logic/client",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/common",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logic/2019-05-01/integrationaccountagreements",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logic/2019-05-01/integrationaccountassemblies",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logic/2019-05-01/integrationaccountbatchconfigurations",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logic/2019-05-01/integrationaccountcertificates",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logic/2019-05-01/integrationaccountmaps",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logic/2019-05-01/integrationaccountpartners",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logic/2019-05-01/integrationaccounts",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logic/2019-05-01/integrationaccountschemas",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logic/2019-05-01/integrationaccountsessions",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logic/2019-05-01/integrationserviceenvironments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logic/2019-05-01/workflows",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/logic/2019-05-01/workflowtriggers",
+    ],
+)

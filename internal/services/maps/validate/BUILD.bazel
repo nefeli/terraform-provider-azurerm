@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = ["account_name.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/maps/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = ["account_name_test.go"],
+    embed = [":validate"],
+)

@@ -1,0 +1,25 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "shim",
+    srcs = [
+        "containers.go",
+        "containers_data_plane.go",
+        "queues.go",
+        "queues_data_plane.go",
+        "shares.go",
+        "shares_data_plane.go",
+        "tables.go",
+        "tables_data_plane.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/storage/shim",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/blob/containers",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/file/shares",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/queue/queues",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/table/tables",
+    ],
+)

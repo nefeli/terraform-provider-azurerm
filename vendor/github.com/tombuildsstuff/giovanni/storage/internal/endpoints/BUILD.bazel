@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "endpoints",
+    srcs = ["endpoints.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/tombuildsstuff/giovanni/storage/internal/endpoints",
+    importpath = "github.com/tombuildsstuff/giovanni/storage/internal/endpoints",
+    visibility = ["//vendor/github.com/tombuildsstuff/giovanni/storage:__subpackages__"],
+)

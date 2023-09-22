@@ -1,0 +1,39 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "account.go",
+        "account_v3_to_v4.go",
+        "blob.go",
+        "container.go",
+        "queue.go",
+        "share.go",
+        "table.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/storage/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/file/shares",
+    ],
+)
+
+go_test(
+    name = "migration_test",
+    srcs = [
+        "blob_test.go",
+        "container_test.go",
+        "queue_test.go",
+        "share_test.go",
+        "table_test.go",
+    ],
+    embed = [":migration"],
+    deps = [
+        "//internal/clients",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+    ],
+)

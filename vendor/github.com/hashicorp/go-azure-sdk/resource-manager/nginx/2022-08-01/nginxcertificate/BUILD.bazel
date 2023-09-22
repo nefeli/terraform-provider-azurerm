@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "nginxcertificate",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_certificate.go",
+        "id_nginxdeployment.go",
+        "method_certificatescreateorupdate.go",
+        "method_certificatesdelete.go",
+        "method_certificatesget.go",
+        "method_certificateslist.go",
+        "model_nginxcertificate.go",
+        "model_nginxcertificateproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/nginx/2022-08-01/nginxcertificate",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/nginx/2022-08-01/nginxcertificate",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/pollers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

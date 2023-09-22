@@ -1,0 +1,34 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "privatelinkscopesapis",
+    srcs = [
+        "client.go",
+        "id_privatelinkscope.go",
+        "method_privatelinkscopescreateorupdate_autorest.go",
+        "method_privatelinkscopesdelete_autorest.go",
+        "method_privatelinkscopesget_autorest.go",
+        "method_privatelinkscopeslist_autorest.go",
+        "method_privatelinkscopeslistbyresourcegroup_autorest.go",
+        "method_privatelinkscopesupdatetags_autorest.go",
+        "model_azuremonitorprivatelinkscope.go",
+        "model_azuremonitorprivatelinkscopeproperties.go",
+        "model_privateendpointconnection.go",
+        "model_privateendpointconnectionproperties.go",
+        "model_privateendpointproperty.go",
+        "model_privatelinkserviceconnectionstateproperty.go",
+        "model_tagsresource.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/insights/2019-10-17-preview/privatelinkscopesapis",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/insights/2019-10-17-preview/privatelinkscopesapis",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/polling",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)

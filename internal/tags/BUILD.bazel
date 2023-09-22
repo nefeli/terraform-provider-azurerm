@@ -1,0 +1,32 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "tags",
+    srcs = [
+        "expand.go",
+        "filter.go",
+        "flatten.go",
+        "schema.go",
+        "typed.go",
+        "validation.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/tags",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)
+
+go_test(
+    name = "tags_test",
+    srcs = [
+        "expand_test.go",
+        "filter_test.go",
+        "flatten_test.go",
+        "typed_test.go",
+        "validation_test.go",
+    ],
+    embed = [":tags"],
+    deps = ["//utils"],
+)

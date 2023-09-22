@@ -1,0 +1,24 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "terraform-json",
+    srcs = [
+        "action.go",
+        "config.go",
+        "expression.go",
+        "metadata.go",
+        "plan.go",
+        "schemas.go",
+        "state.go",
+        "tfjson.go",
+        "validate.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-json",
+    importpath = "github.com/hashicorp/terraform-json",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-version",
+        "//vendor/github.com/zclconf/go-cty/cty",
+    ],
+)

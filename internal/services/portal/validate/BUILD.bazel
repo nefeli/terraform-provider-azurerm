@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "dashboard_id.go",
+        "dashboard_name.go",
+        "dashboard_properties.go",
+        "portal_tenant_configuration_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/portal/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/portal/parse",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/portal/2019-01-01-preview/dashboard",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "dashboard_id_test.go",
+        "dashboard_name_test.go",
+        "dashboard_properties_test.go",
+        "portal_tenant_configuration_id_test.go",
+    ],
+    embed = [":validate"],
+)

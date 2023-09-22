@@ -1,0 +1,32 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "quotas",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_location.go",
+        "id_quota.go",
+        "method_checkavailability_autorest.go",
+        "method_get_autorest.go",
+        "method_list_autorest.go",
+        "model_checkquotaavailabilityresponse.go",
+        "model_checkquotaavailabilityresponseproperties.go",
+        "model_quotabucketrequest.go",
+        "model_quotabucketrequestproperties.go",
+        "model_quotabucketrequestpropertiesdimensions.go",
+        "model_quotaresource.go",
+        "model_quotaresourceproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/loadtestservice/2022-12-01/quotas",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/loadtestservice/2022-12-01/quotas",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+    ],
+)

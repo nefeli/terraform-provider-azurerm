@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "helpers",
+    srcs = [
+        "check_destroyed.go",
+        "delete.go",
+        "exists.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/acceptance/helpers",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/acceptance/types",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/terraform-plugin-testing/terraform",
+    ],
+)

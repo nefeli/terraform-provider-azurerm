@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "certificate_migration_v0_to_v1.go",
+        "consumer_group_migration_v0_to_v1.go",
+        "endpoint_eventhub_migration_v0_to_v1.go",
+        "endpoint_servicebus_topic_migration_v0_to_v1.go",
+        "endpoint_storage_container_migration_v0_to_v1.go",
+        "enrichment_migration_v0_to_v1.go",
+        "fallback_route_migration_v0_to_v1.go",
+        "iothub_migration_v0_to_v1.go",
+        "route_migration_v0_to_v1.go",
+        "servicebus_queue_migration_v0_to_v1.go",
+        "shared_access_policy_migration_v0_to_v1.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/iothub/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/iothub/parse",
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)

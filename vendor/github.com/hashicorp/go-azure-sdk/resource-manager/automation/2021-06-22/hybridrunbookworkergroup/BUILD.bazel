@@ -1,0 +1,32 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "hybridrunbookworkergroup",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_automationaccount.go",
+        "id_hybridrunbookworkergroup.go",
+        "method_create_autorest.go",
+        "method_delete_autorest.go",
+        "method_get_autorest.go",
+        "method_listbyautomationaccount_autorest.go",
+        "method_update_autorest.go",
+        "model_hybridrunbookworkergroup.go",
+        "model_hybridrunbookworkergroupcreateorupdateparameters.go",
+        "model_hybridrunbookworkerlegacy.go",
+        "model_runascredentialassociationproperty.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2021-06-22/hybridrunbookworkergroup",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/automation/2021-06-22/hybridrunbookworkergroup",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+    ],
+)

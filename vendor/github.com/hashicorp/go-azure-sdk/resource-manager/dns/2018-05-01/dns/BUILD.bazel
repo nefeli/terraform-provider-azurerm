@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "dns",
+    srcs = [
+        "client.go",
+        "method_dnsresourcereferencegetbytargetresources.go",
+        "model_dnsresourcereference.go",
+        "model_dnsresourcereferencerequest.go",
+        "model_dnsresourcereferencerequestproperties.go",
+        "model_dnsresourcereferenceresult.go",
+        "model_dnsresourcereferenceresultproperties.go",
+        "model_subresource.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/dns/2018-05-01/dns",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/dns/2018-05-01/dns",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

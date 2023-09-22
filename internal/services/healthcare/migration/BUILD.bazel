@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "healthcare_dicom_service_migration_v0_to_v1.go",
+        "healthcare_fhir_migration_v0_to_v1.go",
+        "healthcare_iot_connector_migration_v0_to_v1.go",
+        "healthcare_medtech_service_fhir_destination_migration_v0_to_v1.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/healthcare/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/healthcareapis/2022-12-01/dicomservices",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/healthcareapis/2022-12-01/fhirservices",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/healthcareapis/2022-12-01/iotconnectors",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)

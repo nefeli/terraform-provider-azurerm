@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "client",
+    srcs = ["client.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/datafactory/client",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/common",
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/datafactory/mgmt/2018-06-01/datafactory",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/datafactory/2018-06-01/factories",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/datafactory/2018-06-01/managedprivateendpoints",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/datafactory/2018-06-01/managedvirtualnetworks",
+    ],
+)

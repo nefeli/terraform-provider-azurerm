@@ -1,0 +1,38 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "tokens",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_registry.go",
+        "id_token.go",
+        "method_create.go",
+        "method_delete.go",
+        "method_get.go",
+        "method_list.go",
+        "method_update.go",
+        "model_token.go",
+        "model_tokencertificate.go",
+        "model_tokencredentialsproperties.go",
+        "model_tokenpassword.go",
+        "model_tokenproperties.go",
+        "model_tokenupdateparameters.go",
+        "model_tokenupdateproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerregistry/2021-08-01-preview/tokens",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/containerregistry/2021-08-01-preview/tokens",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/pollers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

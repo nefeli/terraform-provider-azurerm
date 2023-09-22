@@ -1,0 +1,30 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "tftypes",
+    srcs = [
+        "attribute_path.go",
+        "attribute_path_error.go",
+        "diff.go",
+        "doc.go",
+        "list.go",
+        "map.go",
+        "object.go",
+        "primitive.go",
+        "set.go",
+        "tuple.go",
+        "type.go",
+        "unknown_value.go",
+        "value.go",
+        "value_json.go",
+        "value_msgpack.go",
+        "walk.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-plugin-go/tftypes",
+    importpath = "github.com/hashicorp/terraform-plugin-go/tftypes",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/vmihailenco/msgpack/v4:msgpack",
+        "//vendor/github.com/vmihailenco/msgpack/v4/codes",
+    ],
+)

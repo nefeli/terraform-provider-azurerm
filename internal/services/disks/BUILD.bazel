@@ -1,0 +1,55 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "disks",
+    srcs = [
+        "disk_pool_iscsi_target_lun_resource.go",
+        "disk_pool_iscsi_target_resource.go",
+        "disk_pool_managed_disk_attachment_resource.go",
+        "disk_pool_resource.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/disks",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/locks",
+        "//internal/sdk",
+        "//internal/services/disks/parse",
+        "//internal/services/disks/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/zones",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/compute/2022-03-02/disks",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagepool/2021-08-01/diskpools",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagepool/2021-08-01/iscsitargets",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)
+
+go_test(
+    name = "disks_test",
+    srcs = [
+        "disk_pool_iscsi_target_lun_resource_test.go",
+        "disk_pool_iscsi_target_resource_test.go",
+        "disk_pool_managed_disk_attachment_resource_test.go",
+        "disk_pool_resource_test.go",
+    ],
+    deps = [
+        ":disks",
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/locks",
+        "//internal/services/disks/parse",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagepool/2021-08-01/diskpools",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagepool/2021-08-01/iscsitargets",
+    ],
+)

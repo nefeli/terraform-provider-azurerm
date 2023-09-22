@@ -1,0 +1,32 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "workbooktemplatesapis",
+    srcs = [
+        "client.go",
+        "id_workbooktemplate.go",
+        "method_workbooktemplatescreateorupdate.go",
+        "method_workbooktemplatesdelete.go",
+        "method_workbooktemplatesget.go",
+        "method_workbooktemplateslistbyresourcegroup.go",
+        "method_workbooktemplatesupdate.go",
+        "model_workbooktemplate.go",
+        "model_workbooktemplategallery.go",
+        "model_workbooktemplatelocalizedgallery.go",
+        "model_workbooktemplateproperties.go",
+        "model_workbooktemplateslistresult.go",
+        "model_workbooktemplateupdateparameters.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/applicationinsights/2020-11-20/workbooktemplatesapis",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/applicationinsights/2020-11-20/workbooktemplatesapis",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = ["devtest.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/devtestlabs/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/devtestlab/2018-09-15/virtualnetworks",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = ["devtest_test.go"],
+    embed = [":validate"],
+)

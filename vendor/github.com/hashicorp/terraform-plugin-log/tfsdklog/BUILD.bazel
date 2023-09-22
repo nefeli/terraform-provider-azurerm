@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "tfsdklog",
+    srcs = [
+        "doc.go",
+        "options.go",
+        "sdk.go",
+        "sink.go",
+        "subsystem.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-plugin-log/tfsdklog",
+    importpath = "github.com/hashicorp/terraform-plugin-log/tfsdklog",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-hclog",
+        "//vendor/github.com/hashicorp/terraform-plugin-log/internal/hclogutils",
+        "//vendor/github.com/hashicorp/terraform-plugin-log/internal/logging",
+        "//vendor/github.com/mitchellh/go-testing-interface",
+    ],
+)

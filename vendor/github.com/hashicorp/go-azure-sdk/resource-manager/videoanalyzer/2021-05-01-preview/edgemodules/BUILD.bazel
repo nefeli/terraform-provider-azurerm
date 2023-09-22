@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "edgemodules",
+    srcs = [
+        "client.go",
+        "id_edgemodule.go",
+        "id_videoanalyzer.go",
+        "method_edgemodulescreateorupdate.go",
+        "method_edgemodulesdelete.go",
+        "method_edgemodulesget.go",
+        "method_edgemoduleslist.go",
+        "method_edgemoduleslistprovisioningtoken.go",
+        "model_edgemoduleentity.go",
+        "model_edgemoduleproperties.go",
+        "model_edgemoduleprovisioningtoken.go",
+        "model_listprovisioningtokeninput.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/videoanalyzer/2021-05-01-preview/edgemodules",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/videoanalyzer/2021-05-01-preview/edgemodules",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

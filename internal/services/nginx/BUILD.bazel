@@ -1,0 +1,46 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "nginx",
+    srcs = [
+        "nginx_certificate_resource.go",
+        "nginx_configuration_resource.go",
+        "nginx_deployment_resource.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/nginx",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/sdk",
+        "//internal/services/keyvault/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/identity",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/nginx/2022-08-01/nginxcertificate",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/nginx/2022-08-01/nginxconfiguration",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/nginx/2022-08-01/nginxdeployment",
+    ],
+)
+
+go_test(
+    name = "nginx_test",
+    srcs = [
+        "nginx_certificate_resource_test.go",
+        "nginx_configuration_resource_test.go",
+        "nginx_deployment_resource_test.go",
+    ],
+    deps = [
+        ":nginx",
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/nginx/2022-08-01/nginxcertificate",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/nginx/2022-08-01/nginxconfiguration",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/nginx/2022-08-01/nginxdeployment",
+    ],
+)

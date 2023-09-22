@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "client",
+    srcs = ["client.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/policy/client",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/common",
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/preview/resources/mgmt/2021-06-01-preview/policy",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/guestconfiguration/2020-06-25/guestconfigurationassignments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/policyinsights/2021-10-01/remediations",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/resources/2022-06-01/policyassignments",
+    ],
+)

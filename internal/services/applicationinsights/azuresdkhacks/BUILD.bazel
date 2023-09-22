@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "azuresdkhacks",
+    srcs = ["webtests.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/applicationinsights/azuresdkhacks",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/applicationinsights/parse",
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/appinsights/mgmt/2020-02-02/insights",
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+    ],
+)

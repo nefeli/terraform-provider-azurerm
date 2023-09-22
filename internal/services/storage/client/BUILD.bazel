@@ -1,0 +1,35 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "client",
+    srcs = [
+        "client.go",
+        "helpers.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/storage/client",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/common",
+        "//internal/services/storage/parse",
+        "//internal/services/storage/shim",
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/storage/mgmt/2021-09-01/storage",
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/localusers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagesync/2020-03-01/cloudendpointresource",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagesync/2020-03-01/storagesyncservicesresource",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagesync/2020-03-01/syncgroupresource",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/blob/accounts",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/blob/blobs",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/blob/containers",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/datalakestore/filesystems",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/datalakestore/paths",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/file/directories",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/file/files",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/file/shares",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/queue/queues",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/table/entities",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/table/tables",
+    ],
+)

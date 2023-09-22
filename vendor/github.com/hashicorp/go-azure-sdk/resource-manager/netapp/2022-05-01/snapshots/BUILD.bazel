@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "snapshots",
+    srcs = [
+        "client.go",
+        "id_snapshot.go",
+        "id_volume.go",
+        "method_create.go",
+        "method_delete.go",
+        "method_get.go",
+        "method_list.go",
+        "method_restorefiles.go",
+        "method_update.go",
+        "model_snapshot.go",
+        "model_snapshotproperties.go",
+        "model_snapshotrestorefiles.go",
+        "model_snapshotslist.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/netapp/2022-05-01/snapshots",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/netapp/2022-05-01/snapshots",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/pollers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

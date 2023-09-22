@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "backend_address_pool_address.go",
+        "load_balancer.go",
+        "load_balancer_backend_address_pool.go",
+        "load_balancer_frontend_ip_configuration.go",
+        "load_balancer_inbound_nat_pool.go",
+        "load_balancer_inbound_nat_rule.go",
+        "load_balancer_outbound_rule.go",
+        "load_balancer_probe.go",
+        "load_balancing_rule.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/loadbalancer/parse",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "backend_address_pool_address_test.go",
+        "load_balancer_backend_address_pool_test.go",
+        "load_balancer_frontend_ip_configuration_test.go",
+        "load_balancer_inbound_nat_pool_test.go",
+        "load_balancer_inbound_nat_rule_test.go",
+        "load_balancer_outbound_rule_test.go",
+        "load_balancer_probe_test.go",
+        "load_balancer_test.go",
+        "load_balancing_rule_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

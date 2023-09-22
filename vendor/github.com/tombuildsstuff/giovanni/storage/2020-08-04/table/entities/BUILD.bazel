@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "entities",
+    srcs = [
+        "api.go",
+        "client.go",
+        "delete.go",
+        "get.go",
+        "insert.go",
+        "insert_or_merge.go",
+        "insert_or_replace.go",
+        "models.go",
+        "query.go",
+        "resource_id.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/tombuildsstuff/giovanni/storage/2020-08-04/table/entities",
+    importpath = "github.com/tombuildsstuff/giovanni/storage/2020-08-04/table/entities",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/Azure/go-autorest/autorest/validation",
+        "//vendor/github.com/tombuildsstuff/giovanni/storage/internal/endpoints",
+        "//vendor/github.com/tombuildsstuff/giovanni/version",
+    ],
+)

@@ -1,0 +1,25 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "enrollment_billing_scope_id.go",
+        "enrollment_id.go",
+        "mca_billing_scope_id.go",
+        "mpa_billing_scope_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/billing/validate",
+    visibility = ["//:__subpackages__"],
+    deps = ["//internal/services/billing/parse"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "enrollment_billing_scope_id_test.go",
+        "enrollment_id_test.go",
+        "mca_billing_scope_id_test.go",
+        "mpa_billing_scope_id_test.go",
+    ],
+    embed = [":validate"],
+)

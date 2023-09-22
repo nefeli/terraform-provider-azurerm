@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "projectresource",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_project.go",
+        "id_service.go",
+        "method_projectscreateorupdate.go",
+        "method_projectsdelete.go",
+        "method_projectsget.go",
+        "method_projectslistbyresourcegroup.go",
+        "method_projectsupdate.go",
+        "model_connectioninfo.go",
+        "model_databaseinfo.go",
+        "model_project.go",
+        "model_projectproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/datamigration/2018-04-19/projectresource",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/datamigration/2018-04-19/projectresource",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

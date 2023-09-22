@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "tf5server",
+    srcs = [
+        "doc.go",
+        "plugin.go",
+        "server.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-plugin-go/tfprotov5/tf5server",
+    importpath = "github.com/hashicorp/terraform-plugin-go/tfprotov5/tf5server",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-hclog",
+        "//vendor/github.com/hashicorp/go-plugin",
+        "//vendor/github.com/hashicorp/terraform-plugin-go/internal/logging",
+        "//vendor/github.com/hashicorp/terraform-plugin-go/tfprotov5",
+        "//vendor/github.com/hashicorp/terraform-plugin-go/tfprotov5/internal/fromproto",
+        "//vendor/github.com/hashicorp/terraform-plugin-go/tfprotov5/internal/tf5serverlogging",
+        "//vendor/github.com/hashicorp/terraform-plugin-go/tfprotov5/internal/tfplugin5",
+        "//vendor/github.com/hashicorp/terraform-plugin-go/tfprotov5/internal/toproto",
+        "//vendor/github.com/hashicorp/terraform-plugin-log/tflog",
+        "//vendor/github.com/hashicorp/terraform-plugin-log/tfsdklog",
+        "//vendor/github.com/mitchellh/go-testing-interface",
+        "//vendor/google.golang.org/grpc",
+    ],
+)

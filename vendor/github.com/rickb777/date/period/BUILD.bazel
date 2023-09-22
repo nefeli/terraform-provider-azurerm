@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "period",
+    srcs = [
+        "doc.go",
+        "format.go",
+        "marshal.go",
+        "parse.go",
+        "period.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/rickb777/date/period",
+    importpath = "github.com/rickb777/date/period",
+    visibility = ["//visibility:public"],
+    deps = ["//vendor/github.com/rickb777/plural"],
+)

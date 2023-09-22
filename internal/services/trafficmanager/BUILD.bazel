@@ -1,0 +1,59 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "trafficmanager",
+    srcs = [
+        "azure_endpoint_resource.go",
+        "endpoint.go",
+        "external_endpoint_resource.go",
+        "nested_endpoint_resource.go",
+        "registration.go",
+        "traffic_manager_geographical_location_data_source.go",
+        "traffic_manager_profile_data_source.go",
+        "traffic_manager_profile_resource.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/trafficmanager",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//helpers/tf",
+        "//helpers/validate",
+        "//internal/clients",
+        "//internal/sdk",
+        "//internal/services/trafficmanager/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/schema",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/trafficmanager/2018-08-01/endpoints",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/trafficmanager/2018-08-01/geographichierarchies",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/trafficmanager/2018-08-01/profiles",
+    ],
+)
+
+go_test(
+    name = "trafficmanager_test",
+    srcs = [
+        "azure_endpoint_resource_test.go",
+        "external_endpoint_resource_test.go",
+        "nested_endpoint_resource_test.go",
+        "traffic_manager_geographical_location_data_source_test.go",
+        "traffic_manager_profile_data_source_test.go",
+        "traffic_manager_profile_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/trafficmanager/2018-08-01/endpoints",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/trafficmanager/2018-08-01/profiles",
+    ],
+)

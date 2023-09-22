@@ -1,0 +1,38 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "azuremonitorworkspaces",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_account.go",
+        "method_create_autorest.go",
+        "method_delete_autorest.go",
+        "method_get_autorest.go",
+        "method_listbyresourcegroup_autorest.go",
+        "method_listbysubscription_autorest.go",
+        "method_update_autorest.go",
+        "model_azuremonitorworkspace.go",
+        "model_azuremonitorworkspaceresource.go",
+        "model_azuremonitorworkspaceresourceforupdate.go",
+        "model_ingestionsettings.go",
+        "model_metrics.go",
+        "model_privateendpoint.go",
+        "model_privateendpointconnection.go",
+        "model_privateendpointconnectionproperties.go",
+        "model_privatelinkserviceconnectionstate.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/insights/2023-04-03/azuremonitorworkspaces",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/insights/2023-04-03/azuremonitorworkspaces",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/polling",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+    ],
+)

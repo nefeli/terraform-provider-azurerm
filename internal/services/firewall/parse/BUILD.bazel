@@ -1,0 +1,30 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "firewall.go",
+        "firewall_application_rule_collection.go",
+        "firewall_nat_rule_collection.go",
+        "firewall_network_rule_collection.go",
+        "firewall_policy.go",
+        "firewall_policy_rule_collection_group.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/firewall/parse",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "firewall_application_rule_collection_test.go",
+        "firewall_nat_rule_collection_test.go",
+        "firewall_network_rule_collection_test.go",
+        "firewall_policy_rule_collection_group_test.go",
+        "firewall_policy_test.go",
+        "firewall_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

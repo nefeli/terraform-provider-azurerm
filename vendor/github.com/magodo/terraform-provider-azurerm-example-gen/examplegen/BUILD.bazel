@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "examplegen",
+    srcs = ["gen.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/magodo/terraform-provider-azurerm-example-gen/examplegen",
+    importpath = "github.com/magodo/terraform-provider-azurerm-example-gen/examplegen",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/hcl2/hclwrite",
+        "//vendor/golang.org/x/tools/go/packages",
+        "//vendor/golang.org/x/tools/imports",
+    ],
+)

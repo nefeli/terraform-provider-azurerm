@@ -1,0 +1,40 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "firewall_application_rule_collection_id.go",
+        "firewall_id.go",
+        "firewall_management_subnet_name.go",
+        "firewall_name.go",
+        "firewall_nat_rule_collection_id.go",
+        "firewall_network_rule_collection_id.go",
+        "firewall_policy_id.go",
+        "firewall_policy_name.go",
+        "firewall_policy_rule_collection_group_id.go",
+        "firewall_policy_rule_collection_group_name.go",
+        "firewall_policy_rule_name.go",
+        "firewall_subnet_name.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/firewall/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/firewall/parse",
+        "//internal/tf/validation",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "firewall_application_rule_collection_id_test.go",
+        "firewall_id_test.go",
+        "firewall_name_test.go",
+        "firewall_nat_rule_collection_id_test.go",
+        "firewall_network_rule_collection_id_test.go",
+        "firewall_policy_id_test.go",
+        "firewall_policy_rule_collection_group_id_test.go",
+    ],
+    embed = [":validate"],
+)

@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "location",
+    srcs = [
+        "normalize.go",
+        "schema.go",
+        "supported.go",
+        "supported_azure.go",
+        "validation.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+    importpath = "github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation",
+    ],
+)

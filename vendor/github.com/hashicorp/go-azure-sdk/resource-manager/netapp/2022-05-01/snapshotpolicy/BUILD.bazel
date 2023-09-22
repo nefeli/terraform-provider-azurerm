@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "snapshotpolicy",
+    srcs = [
+        "client.go",
+        "id_netappaccount.go",
+        "id_snapshotpolicy.go",
+        "method_snapshotpoliciescreate.go",
+        "method_snapshotpoliciesdelete.go",
+        "method_snapshotpoliciesget.go",
+        "method_snapshotpolicieslist.go",
+        "method_snapshotpoliciesupdate.go",
+        "model_dailyschedule.go",
+        "model_hourlyschedule.go",
+        "model_monthlyschedule.go",
+        "model_snapshotpolicieslist.go",
+        "model_snapshotpolicy.go",
+        "model_snapshotpolicypatch.go",
+        "model_snapshotpolicyproperties.go",
+        "model_weeklyschedule.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/netapp/2022-05-01/snapshotpolicy",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/netapp/2022-05-01/snapshotpolicy",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/pollers",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

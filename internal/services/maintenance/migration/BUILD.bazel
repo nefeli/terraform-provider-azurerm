@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "assignment_dedicated_host_v0_to_v1.go",
+        "assignment_virtual_machine_scale_set_v0_to_v1.go",
+        "assignment_virtual_machine_v0_to_v1.go",
+        "configuration_v0_to_v1.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/maintenance/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/clients",
+        "//internal/services/compute/parse",
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/compute/2021-11-01/dedicatedhosts",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/compute/2021-11-01/virtualmachines",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/maintenance/2022-07-01-preview/configurationassignments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/maintenance/2022-07-01-preview/maintenanceconfigurations",
+    ],
+)

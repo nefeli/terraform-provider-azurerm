@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "autorest",
+    srcs = ["auth.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/sdk/auth/autorest",
+    importpath = "github.com/hashicorp/go-azure-sdk/sdk/auth/autorest",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/adal",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/auth",
+    ],
+)

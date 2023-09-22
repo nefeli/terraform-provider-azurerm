@@ -1,0 +1,32 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "anomaly_alert_view_id.go",
+        "billing_account_cost_management_export_id.go",
+        "cost_anomaly_alert_name.go",
+        "export_container_name.go",
+        "export_name.go",
+        "resource_group_cost_management_export_id.go",
+        "resource_group_cost_management_view_id.go",
+        "subscription_cost_management_export_id.go",
+        "subscription_cost_management_view_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/costmanagement/validate",
+    visibility = ["//:__subpackages__"],
+    deps = ["//internal/services/costmanagement/parse"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "anomaly_alert_view_id_test.go",
+        "billing_account_cost_management_export_id_test.go",
+        "resource_group_cost_management_export_id_test.go",
+        "resource_group_cost_management_view_id_test.go",
+        "subscription_cost_management_export_id_test.go",
+        "subscription_cost_management_view_id_test.go",
+    ],
+    embed = [":validate"],
+)

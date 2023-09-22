@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "datetime",
+    srcs = [
+        "parse.go",
+        "parser.go",
+        "round.go",
+        "scanner.go",
+        "types.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/btubbs/datetime",
+    importpath = "github.com/btubbs/datetime",
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "client",
+    srcs = [
+        "client.go",
+        "client_gen.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/containers/client",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/common",
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerinstance/2023-05-01/containerinstance",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerregistry/2019-06-01-preview",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerregistry/2021-08-01-preview",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2019-08-01/containerservices",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2022-09-02-preview",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2023-03-02-preview",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2023-04-02-preview/agentpools",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2023-04-02-preview/maintenanceconfigurations",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2023-04-02-preview/managedclusters",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerservice/2023-04-02-preview/snapshots",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/kubernetesconfiguration/2022-11-01/extensions",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/kubernetesconfiguration/2022-11-01/fluxconfiguration",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+    ],
+)

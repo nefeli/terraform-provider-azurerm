@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "network_acl_v0_to_v1.go",
+        "service_v0_to_v1.go",
+        "web_pubsub_hub_v0_to_v1.go",
+        "web_pubsub_v0_to_v1.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/signalr/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/signalr/2023-02-01/signalr",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/webpubsub/2023-02-01/webpubsub",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)

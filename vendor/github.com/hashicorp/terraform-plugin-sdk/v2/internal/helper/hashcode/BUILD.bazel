@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "hashcode",
+    srcs = ["hashcode.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-plugin-sdk/v2/internal/helper/hashcode",
+    importpath = "github.com/hashicorp/terraform-plugin-sdk/v2/internal/helper/hashcode",
+    visibility = ["//vendor/github.com/hashicorp/terraform-plugin-sdk/v2:__subpackages__"],
+)

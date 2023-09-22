@@ -1,0 +1,57 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "arckubernetes",
+    srcs = [
+        "arc_kubernetes_cluster_extension_resource.go",
+        "arc_kubernetes_cluster_resource.go",
+        "arc_kubernetes_flux_configuration_resource.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/arckubernetes",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/tf",
+        "//helpers/validate",
+        "//internal/clients",
+        "//internal/sdk",
+        "//internal/services/containers/validate",
+        "//internal/services/storage/parse",
+        "//internal/services/storage/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/identity",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/hybridkubernetes/2021-10-01/connectedclusters",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/kubernetesconfiguration/2022-11-01/extensions",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/kubernetesconfiguration/2022-11-01/fluxconfiguration",
+    ],
+)
+
+go_test(
+    name = "arckubernetes_test",
+    srcs = [
+        "arc_kubernetes_cluster_extension_resource_test.go",
+        "arc_kubernetes_cluster_resource_test.go",
+        "arc_kubernetes_flux_configuration_resource_test.go",
+    ],
+    data = glob(["testdata/**"]),
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/hybridkubernetes/2021-10-01/connectedclusters",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/kubernetesconfiguration/2022-11-01/extensions",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/kubernetesconfiguration/2022-11-01/fluxconfiguration",
+        "//vendor/github.com/hashicorp/terraform-plugin-testing/helper/resource",
+    ],
+)

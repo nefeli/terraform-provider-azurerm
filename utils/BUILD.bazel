@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "utils",
+    srcs = [
+        "base64.go",
+        "bool.go",
+        "common_marshal.go",
+        "float.go",
+        "int.go",
+        "json.go",
+        "pointer.go",
+        "response.go",
+        "slice.go",
+        "string.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/utils",
+    visibility = ["//visibility:public"],
+    deps = ["//vendor/github.com/Azure/go-autorest/autorest"],
+)
+
+go_test(
+    name = "utils_test",
+    srcs = ["response_test.go"],
+    embed = [":utils"],
+    deps = ["//vendor/github.com/Azure/go-autorest/autorest"],
+)

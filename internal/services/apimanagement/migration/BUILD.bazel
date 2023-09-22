@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "api_version_set.go",
+        "policy.go",
+        "property.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/apimanagement/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/clients",
+        "//internal/services/apimanagement/parse",
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/apimanagement/mgmt/2021-08-01/apimanagement",
+    ],
+)

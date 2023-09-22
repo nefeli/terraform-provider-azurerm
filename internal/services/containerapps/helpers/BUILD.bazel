@@ -1,0 +1,24 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "helpers",
+    srcs = ["container_apps.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/containerapps/helpers",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/sdk",
+        "//internal/services/containerapps/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerapps/2022-03-01/containerapps",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerapps/2022-03-01/daprcomponents",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/containerapps/2022-03-01/managedenvironments",
+    ],
+)
+
+go_test(
+    name = "helpers_test",
+    srcs = ["container_apps_test.go"],
+    embed = [":helpers"],
+)

@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "identity",
+    srcs = [
+        "constants.go",
+        "legacy_system_and_user_assigned_list.go",
+        "legacy_system_and_user_assigned_map.go",
+        "model.go",
+        "system_and_user_assigned_list.go",
+        "system_and_user_assigned_map.go",
+        "system_assigned.go",
+        "system_or_user_assigned_list.go",
+        "system_or_user_assigned_map.go",
+        "tfschema_model.go",
+        "user_assigned_list.go",
+        "user_assigned_map.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/identity",
+    importpath = "github.com/hashicorp/go-azure-helpers/resourcemanager/identity",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)

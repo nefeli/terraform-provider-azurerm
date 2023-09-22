@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "querykeys",
+    srcs = [
+        "client.go",
+        "id_createquerykey.go",
+        "id_deletequerykey.go",
+        "id_searchservice.go",
+        "method_create.go",
+        "method_delete.go",
+        "method_listbysearchservice.go",
+        "model_querykey.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/search/2022-09-01/querykeys",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/search/2022-09-01/querykeys",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

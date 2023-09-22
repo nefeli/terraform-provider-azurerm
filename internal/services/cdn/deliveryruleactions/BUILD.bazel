@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "deliveryruleactions",
+    srcs = [
+        "cache_expiration.go",
+        "cache_key_query_string.go",
+        "modify_request_header.go",
+        "modify_response_header.go",
+        "url_redirect.go",
+        "url_rewrite.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/cdn/deliveryruleactions",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/cdn/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//utils",
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/cdn/mgmt/2020-09-01/cdn",
+    ],
+)

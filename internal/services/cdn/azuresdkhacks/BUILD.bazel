@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "azuresdkhacks",
+    srcs = [
+        "cdn_frontdoor_origin.go",
+        "cdn_frontdoor_origin_group.go",
+        "cdn_frontdoor_route.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/cdn/azuresdkhacks",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/cdn/mgmt/2021-06-01/cdn",
+        "//vendor/github.com/Azure/go-autorest/autorest",
+    ],
+)

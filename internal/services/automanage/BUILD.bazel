@@ -1,0 +1,38 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "automanage",
+    srcs = [
+        "automanage_configuration_resource.go",
+        "registration.go",
+        "resourceid.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/automanage",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/sdk",
+        "//internal/services/automanage/parse",
+        "//internal/services/automanage/validate",
+        "//internal/tags",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/tombuildsstuff/kermit/sdk/automanage/2022-05-04/automanage",
+    ],
+)
+
+go_test(
+    name = "automanage_test",
+    srcs = ["automanage_configuration_resource_test.go"],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/services/automanage/parse",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+    ],
+)

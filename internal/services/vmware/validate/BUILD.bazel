@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "cluster_id.go",
+        "express_route_authorization_id.go",
+        "private_cloud_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/vmware/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/vmware/2022-05-01/authorizations",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/vmware/2022-05-01/clusters",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/vmware/2022-05-01/privateclouds",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "cluster_id_test.go",
+        "express_route_authorization_id_test.go",
+        "private_cloud_id_test.go",
+    ],
+    embed = [":validate"],
+)

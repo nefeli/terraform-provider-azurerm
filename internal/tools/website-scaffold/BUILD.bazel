@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
+
+go_library(
+    name = "website-scaffold_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/tools/website-scaffold",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//internal/provider",
+        "//internal/sdk",
+        "//internal/tf/validation",
+        "//vendor/github.com/agiledragon/gomonkey/v2:gomonkey",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+        "//vendor/github.com/magodo/terraform-provider-azurerm-example-gen/examplegen",
+    ],
+)
+
+go_binary(
+    name = "website-scaffold",
+    embed = [":website-scaffold_lib"],
+    visibility = ["//:__subpackages__"],
+)
+
+go_test(
+    name = "website-scaffold_test",
+    srcs = ["main_test.go"],
+    embed = [":website-scaffold_lib"],
+    deps = [
+        "//internal/tf/validation",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+        "//vendor/github.com/sergi/go-diff/diffmatchpatch",
+    ],
+)

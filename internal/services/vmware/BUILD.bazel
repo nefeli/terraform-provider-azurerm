@@ -1,0 +1,58 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "vmware",
+    srcs = [
+        "registration.go",
+        "vmware_cluster_resource.go",
+        "vmware_express_route_authorization_resource.go",
+        "vmware_private_cloud.go",
+        "vmware_private_cloud_data_source.go",
+        "vmware_private_cloud_netapp_file_volume_attachment_resource.go",
+        "vmware_private_cloud_resource.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/vmware",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/tf",
+        "//internal/clients",
+        "//internal/sdk",
+        "//internal/services/vmware/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/vmware/2022-05-01/authorizations",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/vmware/2022-05-01/clusters",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/vmware/2022-05-01/datastores",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/vmware/2022-05-01/privateclouds",
+    ],
+)
+
+go_test(
+    name = "vmware_test",
+    srcs = [
+        "vmware_cluster_resource_test.go",
+        "vmware_express_route_authorization_resource_test.go",
+        "vmware_private_cloud_data_source_test.go",
+        "vmware_private_cloud_netapp_file_volume_attachment_resource_test.go",
+        "vmware_private_cloud_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/vmware/2022-05-01/authorizations",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/vmware/2022-05-01/clusters",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/vmware/2022-05-01/datastores",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/vmware/2022-05-01/privateclouds",
+    ],
+)

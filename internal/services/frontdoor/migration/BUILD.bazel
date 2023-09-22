@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "custom_https_configuration.go",
+        "frontdoor.go",
+        "rules_engine_migration_v0_to_v1.go",
+        "rules_engine_migration_v1_to_v2.go",
+        "web_application_firewall_policy.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/frontdoor/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/frontdoor/parse",
+        "//internal/tags",
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)
+
+go_test(
+    name = "migration_test",
+    srcs = [
+        "custom_https_configuration_test.go",
+        "frontdoor_test.go",
+        "web_application_firewall_policy_test.go",
+    ],
+    embed = [":migration"],
+    deps = ["//utils"],
+)

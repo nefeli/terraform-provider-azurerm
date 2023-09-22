@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "enrollment.go",
+        "enrollment_billing_scope.go",
+        "mca_billing_scope.go",
+        "mpa_billing_scope.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/billing/parse",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "enrollment_billing_scope_test.go",
+        "enrollment_test.go",
+        "mca_billing_scope_test.go",
+        "mpa_billing_scope_test.go",
+    ],
+    embed = [":parse"],
+)

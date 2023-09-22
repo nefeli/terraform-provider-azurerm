@@ -1,0 +1,35 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "app_hybrid_connection.go",
+        "app_service_environment.go",
+        "app_service_source_control_token.go",
+        "function_app.go",
+        "function_app_function.go",
+        "function_app_slot.go",
+        "service_plan.go",
+        "web_app.go",
+        "web_app_slot.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/appservice/parse",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "app_hybrid_connection_test.go",
+        "app_service_environment_test.go",
+        "function_app_function_test.go",
+        "function_app_slot_test.go",
+        "function_app_test.go",
+        "service_plan_test.go",
+        "web_app_slot_test.go",
+        "web_app_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

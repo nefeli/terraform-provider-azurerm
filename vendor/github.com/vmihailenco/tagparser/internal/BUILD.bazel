@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "internal",
+    srcs = ["unsafe.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/vmihailenco/tagparser/internal",
+    importpath = "github.com/vmihailenco/tagparser/internal",
+    visibility = ["//vendor/github.com/vmihailenco/tagparser:__subpackages__"],
+)

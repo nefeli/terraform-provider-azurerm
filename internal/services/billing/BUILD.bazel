@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "billing",
+    srcs = [
+        "billing_enrollment_account_data_source.go",
+        "billing_mca_account_data_source.go",
+        "billing_mpa_account_data_source.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/billing",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/sdk",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+    ],
+)
+
+go_test(
+    name = "billing_test",
+    srcs = [
+        "billing_enrollment_account_data_source_test.go",
+        "billing_mca_account_data_source_test.go",
+        "billing_mpa_account_data_source_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+    ],
+)

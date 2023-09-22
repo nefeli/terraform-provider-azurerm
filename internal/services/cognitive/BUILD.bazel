@@ -1,0 +1,62 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "cognitive",
+    srcs = [
+        "cognitive_account_customer_managed_key_resource.go",
+        "cognitive_account_data_source.go",
+        "cognitive_account_resource.go",
+        "cognitive_deployment_resource.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/cognitive",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//helpers/tf",
+        "//helpers/validate",
+        "//internal/clients",
+        "//internal/features",
+        "//internal/locks",
+        "//internal/sdk",
+        "//internal/services/cognitive/validate",
+        "//internal/services/keyvault/parse",
+        "//internal/services/keyvault/validate",
+        "//internal/services/network",
+        "//internal/services/storage/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/set",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/identity",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/cognitive/2023-05-01/cognitiveservicesaccounts",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/cognitive/2023-05-01/deployments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/search/2022-09-01/services",
+    ],
+)
+
+go_test(
+    name = "cognitive_test",
+    srcs = [
+        "cognitive_account_customer_managed_key_resource_test.go",
+        "cognitive_account_data_source_test.go",
+        "cognitive_account_resource_test.go",
+        "cognitive_deployment_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/cognitive/2023-05-01/cognitiveservicesaccounts",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/cognitive/2023-05-01/deployments",
+    ],
+)

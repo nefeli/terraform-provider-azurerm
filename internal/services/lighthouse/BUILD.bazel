@@ -1,0 +1,45 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "lighthouse",
+    srcs = [
+        "lighthouse_assignment_resource.go",
+        "lighthouse_definition_resource.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/lighthouse",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/tf",
+        "//helpers/validate",
+        "//internal/clients",
+        "//internal/sdk",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/managedservices/2019-06-01/registrationassignments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/managedservices/2022-10-01/registrationdefinitions",
+        "//vendor/github.com/hashicorp/go-uuid",
+    ],
+)
+
+go_test(
+    name = "lighthouse_test",
+    srcs = [
+        "lighthouse_assignment_resource_test.go",
+        "lighthouse_definition_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/google/uuid",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/managedservices/2019-06-01/registrationassignments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/managedservices/2022-10-01/registrationdefinitions",
+    ],
+)

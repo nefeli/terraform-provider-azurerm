@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "releasesjson",
+    srcs = [
+        "checksum_downloader.go",
+        "downloader.go",
+        "product_version.go",
+        "releases.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/hc-install/internal/releasesjson",
+    importpath = "github.com/hashicorp/hc-install/internal/releasesjson",
+    visibility = ["//vendor/github.com/hashicorp/hc-install:__subpackages__"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-version",
+        "//vendor/github.com/hashicorp/hc-install/internal/httpclient",
+        "//vendor/golang.org/x/crypto/openpgp",
+    ],
+)

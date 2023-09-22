@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "azuresdkhacks",
+    srcs = ["definitions.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/authorization/azuresdkhacks",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//vendor/github.com/Azure/azure-sdk-for-go/services/preview/authorization/mgmt/2020-04-01-preview/authorization",
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+    ],
+)

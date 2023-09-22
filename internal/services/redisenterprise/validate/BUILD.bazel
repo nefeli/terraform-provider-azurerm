@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "redis_enterprise_cluster_location.go",
+        "redis_enterprise_cluster_location_flash_sku_support.go",
+        "redis_enterprise_cluster_location_zone_support.go",
+        "redis_enterprise_cluster_sku_name.go",
+        "redis_enterprise_database_name.go",
+        "redis_enterprise_name.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/redisenterprise/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/redisenterprise/2022-01-01/redisenterprise",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "redis_enterprise_cluster_location_flash_sku_support_test.go",
+        "redis_enterprise_cluster_location_test.go",
+        "redis_enterprise_cluster_location_zone_support_test.go",
+        "redis_enterprise_cluster_sku_name_test.go",
+        "redis_enterprise_database_name_test.go",
+        "redis_enterprise_name_test.go",
+    ],
+    embed = [":validate"],
+)

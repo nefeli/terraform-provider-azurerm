@@ -1,0 +1,50 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parse",
+    srcs = [
+        "custom_domain.go",
+        "endpoint.go",
+        "front_door_custom_domain.go",
+        "front_door_custom_domain_association.go",
+        "front_door_endpoint.go",
+        "front_door_firewall_policy.go",
+        "front_door_origin.go",
+        "front_door_origin_group.go",
+        "front_door_profile.go",
+        "front_door_route.go",
+        "front_door_route_disable_link_to_default_domain.go",
+        "front_door_rule.go",
+        "front_door_rule_set.go",
+        "front_door_secret.go",
+        "front_door_security_policy.go",
+        "profile.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/cdn/parse",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)
+
+go_test(
+    name = "parse_test",
+    srcs = [
+        "custom_domain_test.go",
+        "endpoint_test.go",
+        "front_door_custom_domain_association_test.go",
+        "front_door_custom_domain_test.go",
+        "front_door_endpoint_test.go",
+        "front_door_firewall_policy_test.go",
+        "front_door_origin_group_test.go",
+        "front_door_origin_test.go",
+        "front_door_profile_test.go",
+        "front_door_route_disable_link_to_default_domain_test.go",
+        "front_door_route_test.go",
+        "front_door_rule_set_test.go",
+        "front_door_rule_test.go",
+        "front_door_secret_test.go",
+        "front_door_security_policy_test.go",
+        "profile_test.go",
+    ],
+    embed = [":parse"],
+    deps = ["//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids"],
+)

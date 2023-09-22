@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "fieldutils",
+    srcs = ["field_maps.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-plugin-log/internal/fieldutils",
+    importpath = "github.com/hashicorp/terraform-plugin-log/internal/fieldutils",
+    visibility = ["//vendor/github.com/hashicorp/terraform-plugin-log:__subpackages__"],
+)

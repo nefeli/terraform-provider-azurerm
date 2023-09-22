@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "networkrulesets",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_namespace.go",
+        "method_namespacescreateorupdatenetworkruleset.go",
+        "method_namespacesgetnetworkruleset.go",
+        "method_namespaceslistnetworkruleset.go",
+        "model_networkruleset.go",
+        "model_networkrulesetlistresult.go",
+        "model_networkrulesetproperties.go",
+        "model_nwrulesetiprules.go",
+        "model_nwrulesetvirtualnetworkrules.go",
+        "model_subnet.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/eventhub/2021-11-01/networkrulesets",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/eventhub/2021-11-01/networkrulesets",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

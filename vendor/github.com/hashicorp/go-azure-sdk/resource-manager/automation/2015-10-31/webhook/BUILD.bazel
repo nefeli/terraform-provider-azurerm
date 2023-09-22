@@ -1,0 +1,34 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "webhook",
+    srcs = [
+        "client.go",
+        "id_automationaccount.go",
+        "id_webhook.go",
+        "method_createorupdate_autorest.go",
+        "method_delete_autorest.go",
+        "method_generateuri_autorest.go",
+        "method_get_autorest.go",
+        "method_listbyautomationaccount_autorest.go",
+        "method_update_autorest.go",
+        "model_runbookassociationproperty.go",
+        "model_webhook.go",
+        "model_webhookcreateorupdateparameters.go",
+        "model_webhookcreateorupdateproperties.go",
+        "model_webhookproperties.go",
+        "model_webhookupdateparameters.go",
+        "model_webhookupdateproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2015-10-31/webhook",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/automation/2015-10-31/webhook",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)

@@ -1,0 +1,49 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "app_hybrid_connection_id.go",
+        "app_service_environment_id.go",
+        "app_settings.go",
+        "auto_heal_interval.go",
+        "function_app_function_id.go",
+        "function_app_function_name.go",
+        "function_app_id.go",
+        "function_app_slot_id.go",
+        "function_ip_address.go",
+        "service_plan_id.go",
+        "service_plan_name.go",
+        "source_control_token.go",
+        "status_code_range.go",
+        "web_app_id.go",
+        "web_app_name.go",
+        "web_app_slot_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/appservice/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/features",
+        "//internal/services/appservice/parse",
+        "//internal/tf/validation",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "app_hybrid_connection_id_test.go",
+        "app_service_environment_id_test.go",
+        "auto_heal_interval_test.go",
+        "function_app_function_id_test.go",
+        "function_app_function_name_test.go",
+        "function_app_id_test.go",
+        "function_app_slot_id_test.go",
+        "service_plan_id_test.go",
+        "status_code_range_test.go",
+        "web_app_id_test.go",
+        "web_app_name_test.go",
+        "web_app_slot_id_test.go",
+    ],
+    embed = [":validate"],
+)

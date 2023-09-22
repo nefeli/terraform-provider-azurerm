@@ -1,0 +1,32 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "updatesummaries",
+    srcs = [
+        "client.go",
+        "constants.go",
+        "id_cluster.go",
+        "method_updatesummariesdelete_autorest.go",
+        "method_updatesummariesget_autorest.go",
+        "method_updatesummarieslist_autorest.go",
+        "method_updatesummariesput_autorest.go",
+        "model_packageversioninfo.go",
+        "model_precheckresult.go",
+        "model_precheckresulttags.go",
+        "model_updatesummaries.go",
+        "model_updatesummariesproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/updatesummaries",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/azurestackhci/2023-03-01/updatesummaries",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/polling",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+    ],
+)

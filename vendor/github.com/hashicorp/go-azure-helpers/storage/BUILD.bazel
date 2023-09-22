@@ -1,0 +1,10 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "storage",
+    srcs = ["sas_token.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-helpers/storage",
+    importpath = "github.com/hashicorp/go-azure-helpers/storage",
+    visibility = ["//visibility:public"],
+    deps = ["//vendor/github.com/Azure/go-autorest/autorest/azure"],
+)

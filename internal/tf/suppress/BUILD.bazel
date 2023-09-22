@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "suppress",
+    srcs = [
+        "deprecated_soon.go",
+        "time.go",
+        "xml.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/tf/suppress",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"],
+)
+
+go_test(
+    name = "suppress_test",
+    srcs = [
+        "deprecated_soon_test.go",
+        "time_test.go",
+        "xml_test.go",
+    ],
+    embed = [":suppress"],
+)

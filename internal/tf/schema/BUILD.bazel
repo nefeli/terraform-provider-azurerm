@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "schema",
+    srcs = ["import.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/tf/schema",
+    visibility = ["//:__subpackages__"],
+    deps = ["//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"],
+)
+
+go_test(
+    name = "schema_test",
+    srcs = ["import_test.go"],
+    embed = [":schema"],
+    deps = ["//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"],
+)

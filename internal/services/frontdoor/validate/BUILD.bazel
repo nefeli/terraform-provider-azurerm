@@ -1,0 +1,45 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "backend_pool_id.go",
+        "backend_pool_routing_rule_name.go",
+        "custom_block_response_body.go",
+        "custom_https_configuration_id.go",
+        "front_door_id.go",
+        "front_door_name.go",
+        "front_door_waf_name.go",
+        "frontend_endpoint_id.go",
+        "health_probe_id.go",
+        "load_balancing_id.go",
+        "load_balancing_rule_id.go",
+        "routing_rule_id.go",
+        "rules_engine_id.go",
+        "web_application_firewall_policy_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/frontdoor/validate",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/validate",
+        "//internal/services/frontdoor/parse",
+    ],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "backend_pool_id_test.go",
+        "custom_https_configuration_id_test.go",
+        "front_door_id_test.go",
+        "front_door_waf_name_test.go",
+        "frontend_endpoint_id_test.go",
+        "health_probe_id_test.go",
+        "load_balancing_id_test.go",
+        "load_balancing_rule_id_test.go",
+        "routing_rule_id_test.go",
+        "rules_engine_id_test.go",
+        "web_application_firewall_policy_id_test.go",
+    ],
+    embed = [":validate"],
+)

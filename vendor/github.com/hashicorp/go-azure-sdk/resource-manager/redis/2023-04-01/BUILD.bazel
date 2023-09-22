@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "2023-04-01",
+    srcs = ["client.go"],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/redis/2023-04-01",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/redis/2023-04-01",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/redis/2023-04-01/firewallrules",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/redis/2023-04-01/patchschedules",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/redis/2023-04-01/privateendpointconnections",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/redis/2023-04-01/privatelinkresources",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/redis/2023-04-01/redis",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+    ],
+)

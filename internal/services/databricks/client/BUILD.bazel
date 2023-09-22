@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "client",
+    srcs = ["client.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/databricks/client",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/common",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/databricks/2022-10-01-preview/accessconnector",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/databricks/2023-02-01/vnetpeering",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/databricks/2023-02-01/workspaces",
+    ],
+)

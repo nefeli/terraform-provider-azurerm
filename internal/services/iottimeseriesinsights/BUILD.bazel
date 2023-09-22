@@ -1,0 +1,62 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "iottimeseriesinsights",
+    srcs = [
+        "iot_time_series_insights_access_policy_resource.go",
+        "iot_time_series_insights_event_source_eventhub.go",
+        "iot_time_series_insights_event_source_iothub.go",
+        "iot_time_series_insights_gen2_environment_resource.go",
+        "iot_time_series_insights_reference_data_set_resource.go",
+        "iot_time_series_insights_standard_environment_resource.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/iottimeseriesinsights",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/tf",
+        "//helpers/validate",
+        "//internal/clients",
+        "//internal/sdk",
+        "//internal/services/eventhub/validate",
+        "//internal/services/iothub/validate",
+        "//internal/services/iottimeseriesinsights/migration",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/timeseriesinsights/2020-05-15/accesspolicies",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/timeseriesinsights/2020-05-15/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/timeseriesinsights/2020-05-15/eventsources",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/timeseriesinsights/2020-05-15/referencedatasets",
+    ],
+)
+
+go_test(
+    name = "iottimeseriesinsights_test",
+    srcs = [
+        "iot_time_series_insights_access_policy_resource_test.go",
+        "iot_time_series_insights_event_source_eventhub_test.go",
+        "iot_time_series_insights_event_source_iothub_test.go",
+        "iot_time_series_insights_gen2_environment_resource_test.go",
+        "iot_time_series_insights_reference_data_set_resource_test.go",
+        "iot_time_series_insights_standard_environment_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/timeseriesinsights/2020-05-15/accesspolicies",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/timeseriesinsights/2020-05-15/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/timeseriesinsights/2020-05-15/eventsources",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/timeseriesinsights/2020-05-15/referencedatasets",
+    ],
+)

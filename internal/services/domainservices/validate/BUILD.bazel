@@ -1,0 +1,25 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "domain_service_id.go",
+        "domain_service_name.go",
+        "domain_service_replica_set_id.go",
+        "domain_service_trust_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/domainservices/validate",
+    visibility = ["//:__subpackages__"],
+    deps = ["//internal/services/domainservices/parse"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "domain_service_id_test.go",
+        "domain_service_name_test.go",
+        "domain_service_replica_set_id_test.go",
+        "domain_service_trust_id_test.go",
+    ],
+    embed = [":validate"],
+)

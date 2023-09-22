@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "client",
+    srcs = ["client.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/storagemover/client",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/common",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagemover/2023-03-01/agents",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagemover/2023-03-01/endpoints",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagemover/2023-03-01/jobdefinitions",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagemover/2023-03-01/projects",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagemover/2023-03-01/storagemovers",
+    ],
+)

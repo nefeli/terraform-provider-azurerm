@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "azuresdkhacks",
+    srcs = ["firewall.go"],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/firewall/azuresdkhacks",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/tombuildsstuff/kermit/sdk/network/2022-07-01/network",
+    ],
+)

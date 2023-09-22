@@ -1,0 +1,55 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "helpers",
+    srcs = [
+        "app_stack.go",
+        "auth_v2_schema.go",
+        "auto_heal.go",
+        "common_web_app_schema.go",
+        "enums.go",
+        "function_app_schema.go",
+        "function_app_slot_schema.go",
+        "fx_strings.go",
+        "hybrid_connection.go",
+        "linux_web_app_schema.go",
+        "publish_app.go",
+        "service_plan.go",
+        "shared_schema.go",
+        "utils.go",
+        "web_app_slot_schema.go",
+        "windows_web_app_schema.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/appservice/helpers",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/features",
+        "//internal/sdk",
+        "//internal/services/apimanagement/parse",
+        "//internal/services/apimanagement/validate",
+        "//internal/services/appservice/parse",
+        "//internal/services/appservice/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//utils",
+        "//vendor/github.com/Azure/go-autorest/autorest/date",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/relay/2017-04-01/namespaces",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+        "//vendor/github.com/tombuildsstuff/kermit/sdk/web/2022-09-01/web",
+    ],
+)
+
+go_test(
+    name = "helpers_test",
+    srcs = [
+        "function_app_schema_test.go",
+        "service_plan_test.go",
+    ],
+    deps = [
+        ":helpers",
+        "//utils",
+        "//vendor/github.com/tombuildsstuff/kermit/sdk/web/2022-09-01/web",
+    ],
+)

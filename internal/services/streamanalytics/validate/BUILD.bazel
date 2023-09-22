@@ -1,0 +1,25 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "batch_max_wait_time.go",
+        "function_name.go",
+        "stream_analytics.go",
+        "streaming_job_schedule_id.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/streamanalytics/validate",
+    visibility = ["//:__subpackages__"],
+    deps = ["//internal/services/streamanalytics/parse"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "batch_max_wait_time_test.go",
+        "function_name_test.go",
+        "stream_analytics_test.go",
+        "streaming_job_schedule_id_test.go",
+    ],
+    embed = [":validate"],
+)

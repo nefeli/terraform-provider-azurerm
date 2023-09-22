@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "asset_filter_v0_to_v1.go",
+        "asset_v0_to_v1.go",
+        "content_key_policy_v0_to_v1.go",
+        "job_v0_to_v1.go",
+        "live_event_v0_to_v1.go",
+        "live_output_v0_to_v1.go",
+        "service_v0_to_v1.go",
+        "streaming_endpoint_v0_to_v1.go",
+        "streaming_locator_v0_to_v1.go",
+        "streaming_policy_v0_to_v1.go",
+        "transform_v0_to_v1.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/media/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tags",
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/media/2021-11-01/accounts",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/media/2021-11-01/encodings",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/media/2022-08-01/assetsandassetfilters",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/media/2022-08-01/contentkeypolicies",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/media/2022-08-01/liveevents",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/media/2022-08-01/liveoutputs",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/media/2022-08-01/streamingendpoints",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/media/2022-08-01/streamingpoliciesandstreaminglocators",
+        "//vendor/github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema",
+    ],
+)

@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "querypackqueries",
+    srcs = [
+        "client.go",
+        "id_query.go",
+        "id_querypack.go",
+        "method_queriesdelete_autorest.go",
+        "method_queriesget_autorest.go",
+        "method_querieslist_autorest.go",
+        "method_queriesput_autorest.go",
+        "method_queriessearch_autorest.go",
+        "method_queriesupdate_autorest.go",
+        "model_loganalyticsquerypackquery.go",
+        "model_loganalyticsquerypackqueryproperties.go",
+        "model_loganalyticsquerypackquerypropertiesrelated.go",
+        "model_loganalyticsquerypackquerysearchproperties.go",
+        "model_loganalyticsquerypackquerysearchpropertiesrelated.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/operationalinsights/2019-09-01/querypackqueries",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/operationalinsights/2019-09-01/querypackqueries",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/systemdata",
+    ],
+)

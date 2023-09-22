@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "differ",
+    srcs = [
+        "diff.go",
+        "load.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/tools/schema-api/differ",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/tools/schema-api/providerjson",
+        "//internal/tools/schema-api/schema-rules",
+    ],
+)

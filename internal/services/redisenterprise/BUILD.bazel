@@ -1,0 +1,52 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "redisenterprise",
+    srcs = [
+        "redis_enterprise_cluster_resource.go",
+        "redis_enterprise_database_data_source.go",
+        "redis_enterprise_database_resource.go",
+        "registration.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/redisenterprise",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//helpers/tf",
+        "//internal/clients",
+        "//internal/features",
+        "//internal/sdk",
+        "//internal/services/redisenterprise/parse",
+        "//internal/services/redisenterprise/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//internal/timeouts",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/tags",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/zones",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/redisenterprise/2022-01-01/databases",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/redisenterprise/2022-01-01/redisenterprise",
+    ],
+)
+
+go_test(
+    name = "redisenterprise_test",
+    srcs = [
+        "redis_enterprise_cluster_resource_test.go",
+        "redis_enterprise_database_data_source_test.go",
+        "redis_enterprise_database_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/redisenterprise/2022-01-01/databases",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/redisenterprise/2022-01-01/redisenterprise",
+    ],
+)

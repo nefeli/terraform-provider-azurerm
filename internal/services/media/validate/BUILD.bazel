@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "account_name.go",
+        "live_event_name.go",
+        "streaming_endpoint_name.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/media/validate",
+    visibility = ["//:__subpackages__"],
+)

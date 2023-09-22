@@ -1,0 +1,40 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "email.go",
+        "lab_description.go",
+        "lab_image_version.go",
+        "lab_name.go",
+        "lab_password.go",
+        "lab_plan_name.go",
+        "lab_sku_name.go",
+        "lab_title.go",
+        "lab_username.go",
+        "schedule_notes.go",
+        "support_info_email.go",
+        "support_info_phone.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/labservice/validate",
+    visibility = ["//:__subpackages__"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "email_test.go",
+        "lab_description_test.go",
+        "lab_image_version_test.go",
+        "lab_name_test.go",
+        "lab_password_test.go",
+        "lab_plan_name_test.go",
+        "lab_sku_name_test.go",
+        "lab_title_test.go",
+        "lab_username_test.go",
+        "schedule_notes_test.go",
+        "support_info_email_test.go",
+        "support_info_phone_test.go",
+    ],
+    embed = [":validate"],
+)

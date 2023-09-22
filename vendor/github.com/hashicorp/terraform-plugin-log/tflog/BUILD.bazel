@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "tflog",
+    srcs = [
+        "doc.go",
+        "options.go",
+        "provider.go",
+        "subsystem.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/terraform-plugin-log/tflog",
+    importpath = "github.com/hashicorp/terraform-plugin-log/tflog",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-hclog",
+        "//vendor/github.com/hashicorp/terraform-plugin-log/internal/hclogutils",
+        "//vendor/github.com/hashicorp/terraform-plugin-log/internal/logging",
+    ],
+)

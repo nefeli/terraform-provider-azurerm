@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "cache_access_policy_id.go",
+        "cache_namespace_path.go",
+        "cache_nfs_export.go",
+        "cache_nfs_target_path.go",
+        "internal.go",
+        "storage_target_name.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/hpccache/validate",
+    visibility = ["//:__subpackages__"],
+    deps = ["//internal/services/hpccache/parse"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = ["cache_access_policy_id_test.go"],
+    embed = [":validate"],
+)

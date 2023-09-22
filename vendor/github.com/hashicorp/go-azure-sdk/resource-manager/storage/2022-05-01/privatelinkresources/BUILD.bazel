@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "privatelinkresources",
+    srcs = [
+        "client.go",
+        "id_storageaccount.go",
+        "method_listbystorageaccount_autorest.go",
+        "model_privatelinkresource.go",
+        "model_privatelinkresourcelistresult.go",
+        "model_privatelinkresourceproperties.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/privatelinkresources",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/storage/2022-05-01/privatelinkresources",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/Azure/go-autorest/autorest",
+        "//vendor/github.com/Azure/go-autorest/autorest/azure",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+    ],
+)

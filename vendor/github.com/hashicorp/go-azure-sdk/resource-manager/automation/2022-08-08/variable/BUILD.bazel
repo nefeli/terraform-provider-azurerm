@@ -1,0 +1,34 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "variable",
+    srcs = [
+        "client.go",
+        "id_automationaccount.go",
+        "id_variable.go",
+        "method_createorupdate.go",
+        "method_delete.go",
+        "method_get.go",
+        "method_listbyautomationaccount.go",
+        "method_update.go",
+        "model_variable.go",
+        "model_variablecreateorupdateparameters.go",
+        "model_variablecreateorupdateproperties.go",
+        "model_variableproperties.go",
+        "model_variableupdateparameters.go",
+        "model_variableupdateproperties.go",
+        "predicates.go",
+        "version.go",
+    ],
+    importmap = "github.com/hashicorp/terraform-provider-azurerm/vendor/github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/variable",
+    importpath = "github.com/hashicorp/go-azure-sdk/resource-manager/automation/2022-08-08/variable",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/dates",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/resourceids",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/client/resourcemanager",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/environments",
+        "//vendor/github.com/hashicorp/go-azure-sdk/sdk/odata",
+    ],
+)

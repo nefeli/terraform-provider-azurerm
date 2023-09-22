@@ -1,0 +1,59 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "storagemover",
+    srcs = [
+        "registration.go",
+        "storage_mover_agent_resource.go",
+        "storage_mover_job_definition_resource.go",
+        "storage_mover_project_resource.go",
+        "storage_mover_resource.go",
+        "storage_mover_source_endpoint_resource.go",
+        "storage_mover_target_endpoint_resource.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/storagemover",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/sdk",
+        "//internal/services/compute/validate",
+        "//internal/services/storage/validate",
+        "//internal/tf/pluginsdk",
+        "//internal/tf/validation",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/pointer",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/location",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagemover/2023-03-01/agents",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagemover/2023-03-01/endpoints",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagemover/2023-03-01/jobdefinitions",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagemover/2023-03-01/projects",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagemover/2023-03-01/storagemovers",
+    ],
+)
+
+go_test(
+    name = "storagemover_test",
+    srcs = [
+        "storage_mover_agent_resource_test.go",
+        "storage_mover_job_definition_resource_test.go",
+        "storage_mover_project_resource_test.go",
+        "storage_mover_resource_test.go",
+        "storage_mover_source_endpoint_resource_test.go",
+        "storage_mover_target_endpoint_resource_test.go",
+    ],
+    deps = [
+        "//internal/acceptance",
+        "//internal/acceptance/check",
+        "//internal/clients",
+        "//internal/tf/pluginsdk",
+        "//utils",
+        "//vendor/github.com/hashicorp/go-azure-helpers/lang/response",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagemover/2023-03-01/agents",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagemover/2023-03-01/endpoints",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagemover/2023-03-01/jobdefinitions",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagemover/2023-03-01/projects",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/storagemover/2023-03-01/storagemovers",
+        "//vendor/github.com/hashicorp/go-uuid",
+    ],
+)

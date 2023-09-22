@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "validate",
+    srcs = [
+        "datadog_email_address.go",
+        "datadog_enterprise_application_id.go",
+        "datadog_monitor_name.go",
+        "datadog_phone_number.go",
+        "datadog_users_name.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/datadog/validate",
+    visibility = ["//:__subpackages__"],
+)
+
+go_test(
+    name = "validate_test",
+    srcs = [
+        "datadog_email_address_test.go",
+        "datadog_enterprise_application_id_test.go",
+        "datadog_monitor_name_test.go",
+        "datadog_phone_number_test.go",
+        "datadog_users_name_test.go",
+    ],
+    embed = [":validate"],
+)

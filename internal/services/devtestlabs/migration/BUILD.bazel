@@ -1,0 +1,40 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "dev_test_lab.go",
+        "dev_test_lab_schedule.go",
+        "dev_test_linux_virtual_machine.go",
+        "dev_test_policy.go",
+        "dev_test_virtual_network.go",
+        "dev_test_windows_virtual_machine.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/devtestlabs/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//helpers/azure",
+        "//internal/tags",
+        "//internal/tf/pluginsdk",
+        "//vendor/github.com/hashicorp/go-azure-helpers/resourcemanager/commonschema",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/devtestlab/2018-09-15/labs",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/devtestlab/2018-09-15/policies",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/devtestlab/2018-09-15/schedules",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/devtestlab/2018-09-15/virtualmachines",
+        "//vendor/github.com/hashicorp/go-azure-sdk/resource-manager/devtestlab/2018-09-15/virtualnetworks",
+    ],
+)
+
+go_test(
+    name = "migration_test",
+    srcs = [
+        "dev_test_lab_schedule_test.go",
+        "dev_test_lab_test.go",
+        "dev_test_linux_virtual_machine_test.go",
+        "dev_test_policy_test.go",
+        "dev_test_virtual_network_test.go",
+        "dev_test_windows_virtual_machine_test.go",
+    ],
+    embed = [":migration"],
+    deps = ["//utils"],
+)

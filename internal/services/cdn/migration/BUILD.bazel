@@ -1,0 +1,25 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "migration",
+    srcs = [
+        "cdn_endpoint.go",
+        "cdn_profile.go",
+    ],
+    importpath = "github.com/hashicorp/terraform-provider-azurerm/internal/services/cdn/migration",
+    visibility = ["//:__subpackages__"],
+    deps = [
+        "//internal/services/cdn/parse",
+        "//internal/tf/pluginsdk",
+    ],
+)
+
+go_test(
+    name = "migration_test",
+    srcs = [
+        "cdn_endpoint_test.go",
+        "cdn_profile_test.go",
+    ],
+    embed = [":migration"],
+    deps = ["//utils"],
+)
